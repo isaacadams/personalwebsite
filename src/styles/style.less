@@ -1,6 +1,7 @@
 //Help: http://lesscss.org/features/
 
 @import './nav.less';
+@import './common.less';
 
 @color-main: #446eb2;
 
@@ -17,7 +18,18 @@ body {
     background-position: left top;
 }
 
-.btn {
+#gallery {
+    
+    img {
+        height: 500px;
+        width: 500px;
+        padding: 10px;
+        object-fit: cover;
+    }
+}
+
+
+/*.btn {
     color: @color-main;
     background: transparent;
     border: 2px solid @color-main;
@@ -37,4 +49,4 @@ body {
         background-color: @color-main;
         color: white;
     }
-}
+}*/

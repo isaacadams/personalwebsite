@@ -1,14 +1,10 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es5",
-    "strict": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "allowJs": true,
-    "jsx": "react",
-    "experimentalDecorators": true
+    "jsx": "react"
   }
 }

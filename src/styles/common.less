@@ -17,6 +17,44 @@
     position: absolute;
 }
 
+.center-alt() {
+    //position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+
+    .vertical() {
+        top: 0;
+        bottom: 0;
+        margin: auto;
+    }
+}
+
+.center-absolute() {
+    /* Internet Explorer 10 */
+    display: -ms-flexbox;
+    -ms-flex-pack: center;
+    -ms-flex-align: center;
+    /* Firefox */
+    display: -moz-box;
+    -moz-box-pack: center;
+    -moz-box-align: center;
+    /* Safari, Opera, and Chrome */
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    /* W3C */
+    display: box;
+    box-pack: center;
+    box-align: center;
+
+    .alt() {
+        .center-absolute();
+        .center-alt();
+    }
+}
 
 .messageBox() {
     border: 2px solid #000000;
@@ -27,6 +65,9 @@
     .center();
 }
 
+
+@link-color: rgba(255, 255, 255, 0.90);
+
 button {
     &:focus {
         outline: none;
@@ -34,12 +75,14 @@ button {
 }
 
 a {
-    color: black;
+    color: @link-color;
     text-decoration: none;
+
     :active {
         color: none;
     }
+
     &:hover {
-        color: lightseagreen;
+        color: darken(@link-color, 20%);
     }
 }
