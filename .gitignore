@@ -1,3 +1,9 @@
 .vs/
 node_modules/
-/dist/assets/vendor
+*/**/vendors/
+/.firebase
+/.firebaserc
+/firebase.json
+/dist/assets/js/bundle.js
+/dist/assets/js/vendors.js
+/dist/fonts

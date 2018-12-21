@@ -30,7 +30,7 @@ export class Home extends React.Component<any, any> {
         return (
             <div>                
                 {messages.map((val, index) =>
-                    <div key={index}>
+                    <div key={index} className="info">
                         <h3>{val.title}</h3>
                         <p>{val.body}</p>
                     </div>

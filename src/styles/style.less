@@ -3,7 +3,8 @@
 @import './nav.less';
 @import './common.less';
 
-@color-main: #446eb2;
+//@color-main: #446eb2;
+@color-main: #f9f9f9;
 
 html, body {
     height: 100%;
@@ -28,6 +29,30 @@ body {
     }
 }
 
+.info {
+    text-align: center;
+}
+
+//@link-color: rgba(255, 255, 255, 0.90);
+
+button {
+    &:focus {
+        outline: none;
+    }
+}
+
+a {
+    color: @color-main;
+    text-decoration: none;
+
+    :active {
+        color: none;
+    }
+
+    &:hover {
+        color: darken(@color-main, 20%);
+    }
+}
 
 /*.btn {
     color: @color-main;
