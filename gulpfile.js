@@ -19,7 +19,7 @@ var gulp = require('gulp'),
     b_uglify = require('uglifyify');
 
 Array.prototype.contains = function (item) {
-    return (this.indexOf(item) > -1);
+    return this.indexOf(item) > -1;
 };
 
 //function css() {
@@ -180,12 +180,6 @@ function bundler(b, outputPath) {
 gulp.task('vendors', gulp.series('vendors.clean', 'vendors.get', 'vendors.bundle'));
 /* End of vendor section */
 
-gulp.task('watch', function () {
-    gulp.watch(['./src/**/*.{js,jsx,ts,tsx}'], gulp.parallel('build'));
-    gulp.watch(['./src/**/*.{css,less}'], gulp.parallel('vendors.bundle'));
-});
-
-
 gulp.task('data', function (cb) {
     //const testFolder = './dist/assets/imgs/gallery';
     let gallery = {
@@ -204,3 +198,9 @@ gulp.task('data', function (cb) {
 });
 
 gulp.task('app', gulp.series('data', 'vendors', 'build'));
+
+gulp.task('watch', function () {
+    gulp.watch(['./src/**/*.{js,jsx,ts,tsx}'], gulp.parallel('build'));
+    gulp.watch(['./src/**/*.{css,less}'], gulp.parallel('vendors.bundle'));
+    //gulp.watch(['./dist/assets/imgs/**/*.{.jpg,.png,.jpeg}'], gulp.parallel('data'));
+});
