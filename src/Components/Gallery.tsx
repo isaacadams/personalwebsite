@@ -6,11 +6,9 @@ interface state {
 }
 
 export class Gallery extends React.Component<any, state> {
-    //pictures: string[]
     constructor(props: any) {
         super(props);
 
-        //this.pictures = this.LoadPictures();
         this.state = this.getInitialState();
     }
 
