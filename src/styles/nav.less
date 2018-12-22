@@ -5,6 +5,7 @@
 //@color-secondary: #f9f9f9;
 
 header {
+    margin-bottom: 7%;
     background-repeat: no-repeat;
     background-size: cover;
     background-color: transparent;
@@ -14,8 +15,8 @@ header {
     height: 100%;
     background-attachment: fixed;
 
-    div {
-        .center();
+    /*div {
+        .center.abs();
         border: solid;
         border-color: @color-main;
         position: page;
@@ -24,12 +25,12 @@ header {
         font-size: 30;
         padding: 20px;
         background-color: darken(@color-main, 40%);
-    }
+    }*/
 }
 
 nav {
     //background-image: url('./../dir/assets/imgs/beach.jpg');
-    background-color: darken(@color-main, 80%);
+    background-color: @back-dark; //darken(@back-light, 80%);
     padding-top: 1%;
     padding-bottom: 1%;
     background-repeat: no-repeat;

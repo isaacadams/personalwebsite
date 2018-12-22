@@ -4,7 +4,16 @@
 @import './common.less';
 
 //@color-main: #446eb2;
-@color-main: #f9f9f9;
+//@color-main: #f9f9f9;
+@back-light: white;
+@back-dark: #323230;
+@header-dark: #014D5A;
+@header-light: #6B8999;
+@border: #87532E;
+
+::-webkit-scrollbar {
+    display: none;
+}
 
 html, body {
     height: 100%;
@@ -13,13 +22,16 @@ html, body {
 }
 
 body {
-    background-color: white;
+    background-color: @back-light;
     background-size: auto 100%;
     background-repeat: no-repeat;
     background-position: left top;
 }
 
-#gallery {
+#gallery {    
+    width:90%;
+    .center.rel();
+    text-align: center;
     
     img {
         height: 500px;
@@ -31,6 +43,25 @@ body {
 
 .info {
     text-align: center;
+    .center.rel();
+    width: 30%;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    padding-bottom: 5%;
+
+    .title {
+        font-size: 2.25em;
+        word-spacing: 1px;
+        color: @header-light;
+    }
+
+    .sub {
+    }
+
+    .message {
+        text-wrap: normal;
+        font-size: 1.25em;
+        line-height: 1.5;
+    }
 }
 
 //@link-color: rgba(255, 255, 255, 0.90);
@@ -42,7 +73,7 @@ button {
 }
 
 a {
-    color: @color-main;
+    color: @back-light; //@color-main;
     text-decoration: none;
 
     :active {
@@ -50,7 +81,7 @@ a {
     }
 
     &:hover {
-        color: darken(@color-main, 20%);
+        color: darken(@back-light, 20%);
     }
 }
 

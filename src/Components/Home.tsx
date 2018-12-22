@@ -15,24 +15,30 @@ export class Home extends React.Component<any, any> {
     }
 
     render() {
-        
-        let hello = {
-            title: 'Hi.',
-            body: 'I am a software engineer for eMoney Advisor. Everything web development, software, and blockchain I love.'
-        };
 
-        let messages = [];
-
-        for (let i = 0; i < 20; i++) {
-            messages.push(hello);
+        function createBlock(title, message) {
+            return {
+                title: title,
+                message: message
+            };
         }
+        let blocks = [
+            createBlock('who i am', "I'm a web developer based in Malvern, PA. My passion is software development."),
+            createBlock('what i can do', "I create \"mobile first\" web sites and applications."),
+        ];
 
+        let projects = [
+            'Created a web based simulation of the card game War! using react',
+            'Built an API that retrieves and stores healthcare information',
+            ''
+        ];
+        
         return (
             <div>                
-                {messages.map((val, index) =>
+                {blocks.map((val, index) =>
                     <div key={index} className="info">
-                        <h3>{val.title}</h3>
-                        <p>{val.body}</p>
+                        <h2 className="title">{val.title}</h2>
+                        <p className="message">{val.message}</p>
                     </div>
                 )}
             </div>

@@ -21,27 +21,27 @@ export class Gallery extends React.Component<any, state> {
     }
 
     LoadPictures(): string[] {
-        var dir = "/assets/imgs/gallery/";
-        let ext: string = ".jpg, .jpeg";
+        var data = "/assets/data/gallery.json"; //"/assets/imgs/gallery/";
+        //let ext: string = ".jpg, .jpeg";
         let pictures: string[] = [];
         let self = this;
 
         $.ajax({
-            url: dir,
+            url: data,
             success: function (data) {
 
-                let find: string = '';
-                ext.split(/\s*,\s*/g).map((v, i) => {
-                    let contains = `a:contains(${v})`;
-                    find += i == 0 ? contains : `,${contains}`;
-                });
+                //let find: string = '';
+                //ext.split(/\s*,\s*/g).map((v, i) => {
+                //    let contains = `a:contains(${v})`;
+                //    find += i == 0 ? contains : `,${contains}`;
+                //});
 
-                $.default(data).find(find).each(function (index, name: HTMLHtmlElement) {
-                    let path = name.getAttribute('href');
-                    pictures.push(path);                    
-                });
+                //$.default(data).find(find).each(function (index, name: HTMLHtmlElement) {
+                //    let path = name.getAttribute('href');
+                //    pictures.push(path);                    
+                //});
 
-                self.setState({pictures: pictures});
+                self.setState({ pictures: data });
             }
         });
 

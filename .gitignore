@@ -7,3 +7,4 @@ node_modules/
 /dist/assets/js/bundle.js
 /dist/assets/js/vendors.js
 /dist/fonts
+/dist/assets/data/gallery.json
