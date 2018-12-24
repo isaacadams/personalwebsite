@@ -52,16 +52,18 @@ export class Home extends React.Component<any, state> {
             // completed but the result array is empty
             return <div>No result found for this subscription</div>;
         }
-                
+
+        let messagebutton = <a href="mailto:isaac.d.adams@gmail.com"><button className="btn">Message Me</button></a>
+
         return (
             <div>                
                 {this.state.data.map((val, index) =>
                     <div key={index} className="info">
                         <h2 className="title">{val.title}</h2>
                         <p className="message">{val.message}</p>
+                        {index == this.state.data.length - 1 ? messagebutton : null}
                     </div>
-                )}
-                <button>Message Me.</button>
+                )}                
             </div>
         );
     }
