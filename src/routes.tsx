@@ -25,37 +25,60 @@ const routes = {
 };
 
 export class CustomRouter extends React.Component<any, any> {
-
+    toggleSidebar: React.MouseEventHandler
     constructor(props: any) {
         super(props);
 
         routes.dom =
-        <ul className="routes">
-            {routes.data.map((route, i) => (
-                <li key={i}>
-                    <Link to={route.path}><span className={`fa fa-${route.icon}`}></span>{route.name}</Link>
-                </li>
-            ))}
-        </ul>
+            <ul className="routes">
+                {routes.data.map((route, i) => (
+                    <li key={i}>
+                        <Link to={route.path}><span className={`fa fa-${route.icon}`}></span>{route.name}</Link>
+                    </li>
+                ))}
+            </ul>;
+
+        this.toggleSidebar = (event: React.MouseEvent): void => {
+            let mobilenav = $.default(event.target);
+            let sidebar = $.default('.sidebar');
+            let icons = ['fa-bars', 'fa-times'];
+
+            sidebar.toggle();
+
+            function toggleIcons(element: JQuery<any>, icons: string[]) {
+                let one = icons[0];
+                let two = icons[1];
+
+                if (element.hasClass(one)) {
+                    element.removeClass(one);
+                    element.addClass(two);
+                }
+                else {
+                    element.removeClass(two);
+                    element.addClass(one);
+                }                
+            }
+
+            toggleIcons(mobilenav, icons);
+        }
     }
 
-    toggleSideBar() {
+    //toggleSidebar() {
 
-        let sidebar = $.default('.sidebar');
+    //    
 
-        //if (!sidebar || sidebar.length === 0) {
-        //    let domRoutes = $.default('.routes');
-        //    domRoutes.remove();
-        //    $.default('nav').after(domRoutes);
-        //    $.default('.routes').wrap("<div class='sidebar' />");
-        //}
-        //else {
-        //    sidebar.toggle();
-        //}
 
-        sidebar.toggle();
+    //    //if (!sidebar || sidebar.length === 0) {
+    //    //    let domRoutes = $.default('.routes');
+    //    //    domRoutes.remove();
+    //    //    $.default('nav').after(domRoutes);
+    //    //    $.default('.routes').wrap("<div class='sidebar' />");
+    //    //}
+    //    //else {
+    //    //    sidebar.toggle();
+    //    //}
 
-    }
+    //}
 
     render() {
         
@@ -63,7 +86,7 @@ export class CustomRouter extends React.Component<any, any> {
             <BrowserRouter>
                 <div>
                     <nav>
-                        <span className="mobilenav fa fa-bars" onClick={this.toggleSideBar}></span>
+                        <span className="mobilenav fa fa-bars" onClick={this.toggleSidebar}></span>
                         {routes.dom}
                     </nav>
                     <div className="sidebar">
