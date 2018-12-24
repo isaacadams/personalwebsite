@@ -38,7 +38,7 @@ e.home = function (cb) {
     file.data = [
         createBlock('who i am', "I am a web developer based in Malvern, PA. My passion is software development and helping create applications that solve practical problems."),
         createBlock('what i can do', "I create \"mobile first\" web sites and applications. I was previously hired to create a web application that collected health insurance information from an API. See other work I have done in my projects page."),
-        createBlock('how i can help', "Need helping fixing or making your website? Need a web or mobile application solution to your business problems? Send me a message and let's talk about how I can help meet your needs."),
+        createBlock('how i can help', "Need helping creating or fixing your website? Need a web or mobile application solution to your business problems? Send me a message and let's talk about how I can help meet your needs."),
     ];
 
     ensureDirectoriesExist(file.path);

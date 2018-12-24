@@ -53,7 +53,7 @@ export class Home extends React.Component<any, state> {
             return <div>No result found for this subscription</div>;
         }
 
-        let messagebutton = <a href="mailto:isaac.d.adams@gmail.com"><button className="btn">Message Me</button></a>
+        let messagebutton = <a href="mailto:isaac.d.adams@gmail.com"><button>Message Me</button></a>
 
         return (
             <div>                

@@ -1,0 +1,29 @@
+@import './style';
+
+@color-button: @header-light;
+
+button {
+    color: @color-button;
+    background: transparent;
+    border: 2px solid @color-button;
+    border-radius: 6px;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: Lato;
+
+    &:hover {
+        background-color: @color-button;
+        color: white;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
