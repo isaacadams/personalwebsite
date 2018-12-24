@@ -24,61 +24,77 @@ const routes = {
     ]
 };
 
-export class CustomRouter extends React.Component<any, any> {
-    toggleSidebar: React.MouseEventHandler
+routes.dom =
+    <ul className="routes">
+        {routes.data.map((route, i) => (
+            <li key={i}>
+                <Link to={route.path}><span className={`fa fa-${route.icon}`}></span>{route.name}</Link>
+            </li>
+        ))}
+    </ul>;
+
+interface state {
+    isSidebarShowing: boolean;
+}
+
+export class CustomRouter extends React.Component<any, state> {
+    mobilenavOnClickHandler: React.MouseEventHandler
+    mobilenavOnBlurHandler: React.FocusEventHandler
+    sidebarOnScrollHandler: React.UIEventHandler
     constructor(props: any) {
         super(props);
+        let self = this;
 
-        routes.dom =
-            <ul className="routes">
-                {routes.data.map((route, i) => (
-                    <li key={i}>
-                        <Link to={route.path}><span className={`fa fa-${route.icon}`}></span>{route.name}</Link>
-                    </li>
-                ))}
-            </ul>;
-
-        this.toggleSidebar = (event: React.MouseEvent): void => {
-            let mobilenav = $.default(event.target);
-            let sidebar = $.default('.sidebar');
-            let icons = ['fa-bars', 'fa-times'];
-
-            sidebar.toggle();
-
-            function toggleIcons(element: JQuery<any>, icons: string[]) {
-                let one = icons[0];
-                let two = icons[1];
-
-                if (element.hasClass(one)) {
-                    element.removeClass(one);
-                    element.addClass(two);
-                }
-                else {
-                    element.removeClass(two);
-                    element.addClass(one);
-                }                
-            }
-
-            toggleIcons(mobilenav, icons);
+        self.state = {
+            isSidebarShowing: false
         }
+        
+        function sidebarToggle(display?: boolean) {
+            console.log(display);
+            let isDisplaying = display === undefined ? self.state.isSidebarShowing : !display;
+            
+            let mobilenav = $.default('#mobilenav');
+            let sidebar = $.default('#sidebar');
+
+            let icons = {
+                bars: 'fa-bars',
+                times: 'fa-times'
+            };
+
+            if (isDisplaying) {
+                sidebar.hide();
+                mobilenav.removeClass(icons.times);
+                mobilenav.addClass(icons.bars);
+            } else {
+                sidebar.show();
+                mobilenav.removeClass(icons.bars);
+                mobilenav.addClass(icons.times);
+            }
+            
+            self.setState({
+                isSidebarShowing: !isDisplaying
+            });            
+        }
+
+        $.default(document).click(function (e) {
+            //if clicking outside of sidebar
+
+            let sidebarOrMobilenavSelected = isTargetOrParent(e.target, 'sidebar') || isTargetOrParent(e.target, 'mobilenav');
+
+            if (!sidebarOrMobilenavSelected && self.state.isSidebarShowing) {
+                //do stuff
+                sidebarToggle(false);
+            }
+        });
+
+        function isTargetOrParent(target, elementId) {
+            return target.id === elementId || $.default(target).parents('#' + elementId).length > 0;
+        }
+
+        this.mobilenavOnClickHandler = (event: React.MouseEvent): void => {
+            sidebarToggle();
+        };
     }
-
-    //toggleSidebar() {
-
-    //    
-
-
-    //    //if (!sidebar || sidebar.length === 0) {
-    //    //    let domRoutes = $.default('.routes');
-    //    //    domRoutes.remove();
-    //    //    $.default('nav').after(domRoutes);
-    //    //    $.default('.routes').wrap("<div class='sidebar' />");
-    //    //}
-    //    //else {
-    //    //    sidebar.toggle();
-    //    //}
-
-    //}
 
     render() {
         
@@ -86,10 +102,10 @@ export class CustomRouter extends React.Component<any, any> {
             <BrowserRouter>
                 <div>
                     <nav>
-                        <span className="mobilenav fa fa-bars" onClick={this.toggleSidebar}></span>
+                        <a id="mobilenav" className="fa fa-bars" onClick={this.mobilenavOnClickHandler} ></a>
                         {routes.dom}
                     </nav>
-                    <div className="sidebar">
+                    <div id="sidebar">
                         {routes.dom}
                     </div>
                     <header>

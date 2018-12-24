@@ -55,14 +55,14 @@ gulp.task('build', function () {
         entries: [app.entry]
     });
 
-    //b.plugin(tsify, getJsonFile(app.tsconfig).compilerOptions);
+    b.plugin(tsify, getJsonFile(app.tsconfig).compilerOptions);
     b.transform(babelify,
         {
             presets: ['env', 'react']
         }
     );
-    //b.plugin(b_uglify);
-    //b.plugin(b_minify, { map: false });
+    b.plugin(b_uglify);
+    b.plugin(b_minify, { map: false });
     
     return bundler(b, app.publish);
 });
