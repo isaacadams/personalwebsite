@@ -1,57 +1,24 @@
 import * as React from 'react';
 import * as $ from 'jquery';
+import { PageComponent } from './Shared/Page';
 
 interface data {
     title: string,
     message: string
 }
 
-interface state {
-    data: data[]
-}
-
-export class Home extends React.Component<any, state> {
+export class Home extends PageComponent<data> {
 
     constructor(props: any) {
         super(props);
-
-        this.state = this.getInitialState();
-    }
-
-    getInitialState(): state {
-        return {
-            data: undefined
-        };
-    }
-
-    LoadData(): void {
-        var endpoint = "/assets/data/home.json";
-        let self = this;
-
-        $.ajax({
-            url: endpoint,
-            success: function (data) {                
-                self.setState({ data: data });
-            }
-        });
-    }
-
-    componentDidMount() {
-        this.LoadData();
+        this.endpoint = "/assets/data/home.json";
     }
 
     render() {
-        // Handle case where the response is not here yet
-        if (!this.state.data) {
-            // Note that you can return false it you want nothing to be put in the dom
-            // This is also your chance to render a spinner or something...
-            return <div>The responsive it not here yet!</div>
-        }
-        else if (this.state.data.length === 0) {
-            // Gives you the opportunity to handle the case where the ajax request
-            // completed but the result array is empty
-            return <div>No result found for this subscription</div>;
-        }
+
+        let element: JSX.Element = super.render();
+        if (element)
+            return element;
 
         let messagebutton = <a href="mailto:isaac.d.adams@gmail.com"><button>Message Me</button></a>
 
