@@ -85,6 +85,6 @@ gulp.task('app', gulp.series('css', 'data', 'vendors', 'build'));
 
 gulp.task('watch', function () {
     gulp.watch(['./src/**/*.{js,jsx,ts,tsx}'], gulp.parallel('build'));
-    gulp.watch(['./src/**/*.{css,less}'], gulp.parallel('vendors.bundle'));
+    gulp.watch(['./src/**/*.{css,less}'], gulp.parallel('css'));
     //gulp.watch(['./dist/assets/imgs/**/*.{.jpg,.png,.jpeg}'], gulp.parallel('data'));
 });
