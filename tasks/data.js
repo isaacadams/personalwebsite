@@ -6,24 +6,24 @@ let publishFolder = require('./settings').paths.publish;
 let e = module.exports;
 
 e.pictures = function (cb) {
-    let gallery = {
-        folder: '/assets/imgs/gallery',
+    let gallery = '/assets/imgs/gallery';
+
+    let file = {
         path: publishFolder + '/assets/data/gallery.json',
         data: []
     };
 
-    fs.readdirSync(publishFolder + gallery.folder).forEach(file => {
-        gallery.data.push(gallery.folder + '/' + file);
+    fs.readdirSync(publishFolder + gallery).forEach(filename => {
+        file.data.push(gallery + '/' + filename);
         //console.log(file);
     });
 
-    ensureDirectoriesExist(gallery.path);
-    return fs.writeFile(gallery.path, JSON.stringify(gallery.data), 'utf8', cb);
+    ensureDirectoriesExist(file.path);
+    return fs.writeFile(file.path, JSON.stringify(file.data), 'utf8', cb);
 };
 
 e.home = function (cb) {
     let file = {
-        folder: '/assets/data/',
         path: publishFolder + '/assets/data/home.json',
         data: []
     };
