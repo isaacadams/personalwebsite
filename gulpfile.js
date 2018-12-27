@@ -6,7 +6,11 @@ var gulp = require('gulp'),
     tsify = require("tsify"),
     babelify = require('babelify'),
     b_minify = require('minifyify'),
-    b_uglify = require('uglifyify');
+    b_uglify = require('uglifyify'),
+    less = require('gulp-less'),
+    merge = require('merge-stream'),
+    concat = require('gulp-concat'),
+    minify = require('gulp-minify-css');
 
 let { getJsonFile, ensureDirectoriesExist, createFile, bundler } = require('./tasks/utility');
 let settings = require('./tasks/settings');
@@ -28,19 +32,19 @@ gulp.task('data.home', data.home);
 gulp.task('data', gulp.series('data.pictures', 'data.home'));
 
 
-//function css() {
+function css() {
 
-//    var lessFiles = gulp.src('./src/**/*.less')
-//        .pipe(less());
+    var lessFiles = gulp.src('./src/styles/style.less')
+        .pipe(less());
 
-//    return merge(lessFiles)
-//        .pipe(concat('styles.min.css'))
-//        .pipe(minify())
-//        .pipe(gulp.dest('./dist'));
-//}
+    return merge(lessFiles)
+        .pipe(concat('styles.min.css'))
+        .pipe(minify())
+        .pipe(gulp.dest('./dist/assets/styles'));
+}
 
-////gulp.task('build', gulp.series(css, bundle));
-//gulp.task('css', css);
+//gulp.task('build', gulp.series(css, bundle));
+gulp.task('css', css);
 
 let app = {
     //entry extension can be .jsx, .js, .ts, or .tsx

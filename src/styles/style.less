@@ -1,71 +1,19 @@
 //Help: http://lesscss.org/features/
 
-@import './nav.less';
+@import './colors.less';
 @import './common.less';
+@import './defaults.less';
+
+@import './nav.less';
+@import './home.less';
+@import './gallery.less';
+
 @import './button.less';
 
 //@color-main: #446eb2;
 //@color-main: #f9f9f9;
-@back-light: white;
-@back-dark: #323230;
-@header-dark: #014D5A;
-@header-light: #6B8999;
-@border: #87532E;
 
-::-webkit-scrollbar {
-    display: none;
-}
-
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    background-color: @back-light;
-    background-size: auto 100%;
-    background-repeat: no-repeat;
-    background-position: left top;
-}
-
-#gallery {    
-    width:90%;
-    .center.rel();
-    text-align: center;
-    
-    @size-img: 250px;
-    img {
-        height: @size-img;
-        width: @size-img;
-        padding: 10px;
-        object-fit: cover;
-    }
-}
-
-
-.info {
-    width: 70%;
-    text-align: center;
-    .center.rel();
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-    padding-bottom: 5%;
-
-    .title {
-        font-size: 1.5em;
-        word-spacing: 1px;
-        color: @header-light;
-    }
-
-    .sub {
-    }
-
-    .message {
-        font-size: 1em;
-        text-wrap: normal;
-        line-height: 1.5;
-    }
-}
+#gallery.setImage(250px);
 
 nav {
     .routes {
@@ -81,7 +29,7 @@ nav {
 
     nav {
         .routes {
-            display: inline-block;
+            display: block;
         }
 
         #mobilenav {
@@ -92,14 +40,7 @@ nav {
     .sidebar {
         display: none !important;
     }
-
-    #gallery {
-        img {
-            height: 500px;
-            width: 500px;
-        }
-    }
-
+    #gallery.setImage(500px);
 
     .info {
         width: 30%;
@@ -118,19 +59,17 @@ nav {
     }
     
 }
-//@link-color: rgba(255, 255, 255, 0.90);
-
 
 
 a {
-    color: @back-light; //@color-main;
-    text-decoration: none;
-
     :active {
         color: none;
     }
 
     &:hover {
-        color: darken(@back-light, 20%);
+        color: darken(@colors[back-light], 20%);
     }
+
+    text-decoration: none;
+    color: @colors[back-light];
 }

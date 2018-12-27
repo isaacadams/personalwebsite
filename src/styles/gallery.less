@@ -1,0 +1,15 @@
+@import './colors.less';
+@import './common.less';
+
+#gallery {
+    width: 90%;
+    .center.rel();
+    text-align: center;
+    .setImage(@size) {
+        img {
+            .box(@size);
+            padding: 10px;
+            object-fit: cover;
+        }
+    }
+}

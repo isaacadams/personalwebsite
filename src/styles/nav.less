@@ -7,7 +7,7 @@ header {
     background-size: cover;
     background-color: transparent;
     background-position: 50% 10%;
-    background-image: url("./assets/imgs/wedding.jpg");
+    background-image: url("/assets/imgs/wedding.jpg");
     //max-height: 600px;
     height: 100%;
     background-attachment: fixed;
@@ -25,16 +25,19 @@ header {
     }*/
 }
 
-@navbar-height: 5%;
+.defaults(@prop) {
+    @{prop}: 5%;
+    position: fixed;
+    background-color: @colors[back-dark];
+}
 
-nav {
-    background-color: @back-dark;
+nav {    
+    .defaults(height);
     padding-top: 1%;
     padding-bottom: 1%;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    height: @navbar-height;
     overflow: hidden;
     position: sticky;
     width: 100%;
@@ -43,8 +46,7 @@ nav {
     display: -webkit-flex;
     display: flex;
     /* Center vertically */
-    align-items: center;
-    position: fixed;
+    align-items: center;    
     top: 0;
 
     span {
@@ -84,10 +86,8 @@ ul {
 }
 
 #sidebar {
+    .defaults(top);
     display: none;
-    position: fixed;
-    background-color: @back-dark;
-    top: @navbar-height;
 
     ul {
         padding-inline-start: 20px;
@@ -96,17 +96,5 @@ ul {
 
     li {
         padding-bottom: 5px;
-    }
-}
-
-.ghost-on-blur() {
-    transition-property: opacity;
-    transition-duration: 2s; /* This will happen after the hover state and can also be used for consistency on the overall experience */
-    opacity: 0;
-
-    &:hover {
-        opacity: 1;
-        transition-duration: .3s;
-        transition-delay: .1s;
     }
 }
