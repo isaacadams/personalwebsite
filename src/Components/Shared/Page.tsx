@@ -6,10 +6,9 @@ interface state<TData> {
 }
 
 export class PageComponent<TData> extends React.Component<any, state<TData>> {
-    endpoint: string;
+    datafilename: string;
     constructor(props: any) {
         super(props);
-
         this.state = this.getInitialState();        
     }
 
@@ -20,7 +19,7 @@ export class PageComponent<TData> extends React.Component<any, state<TData>> {
     }
 
     LoadData(): void {
-        var endpoint = this.endpoint;
+        var endpoint = "/assets/data/" + this.datafilename + ".json";
         let self = this;
 
         $.ajax({

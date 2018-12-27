@@ -11,7 +11,7 @@ export class Home extends PageComponent<data> {
 
     constructor(props: any) {
         super(props);
-        this.endpoint = "/assets/data/home.json";
+        this.datafilename = "home";
     }
 
     render() {

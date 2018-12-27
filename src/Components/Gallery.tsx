@@ -6,7 +6,7 @@ import { PageComponent } from './Shared/Page';
 export class Gallery extends PageComponent<string> {
     constructor(props: any) {
         super(props);
-        this.endpoint = "/assets/data/gallery.json";
+        this.datafilename = "gallery";
     }
 
     render() {
