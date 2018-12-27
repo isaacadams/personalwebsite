@@ -1,14 +1,15 @@
 @import './colors.less';
+@import './style.less';
 
 .info {
-    width: 70%;
+    #desktop.set-prop(width, 70%, 30%);
     text-align: center;
     .center.rel();
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
     padding-bottom: 5%;
 
     .title {
-        font-size: 1.5em;
+        #desktop.set-prop(font-size, 1.5em, 2.25em);
         word-spacing: 1px;
         color: @colors[header-light];
     }
@@ -17,7 +18,7 @@
     }
 
     .message {
-        font-size: 1em;
+        #desktop.set-prop(font-size, 1em, 1.25em);
         text-wrap: normal;
         line-height: 1.5;
     }

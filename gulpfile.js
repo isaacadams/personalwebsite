@@ -33,14 +33,22 @@ gulp.task('data', gulp.series('data.pictures', 'data.home'));
 
 
 function css() {
-
-    var lessFiles = gulp.src('./src/styles/style.less')
+    let styles = settings.paths.source + '/styles';
+    let output = settings.paths.publish + '/assets/styles';
+    var lessFiles = gulp.src(styles + '/style.less')
         .pipe(less());
+    
+    let testLess = gulp.src(styles + '/test.less')
+        .pipe(less());
+
+    merge(testLess)
+        .pipe(concat('test.css'))
+        .pipe(gulp.dest(output));
 
     return merge(lessFiles)
         .pipe(concat('styles.min.css'))
         .pipe(minify())
-        .pipe(gulp.dest('./dist/assets/styles'));
+        .pipe(gulp.dest(output));
 }
 
 //gulp.task('build', gulp.series(css, bundle));

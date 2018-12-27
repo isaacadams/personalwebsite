@@ -1,3 +1,37 @@
+
+/*
+    Usage: 
+        .mixin(@a) {
+            color: @a;
+            @condition: if(lightness(@a) < 50%, true);
+            .if(@condition, {background-color: white;}, {background-color: black;});
+        }
+
+        .class1 { .mixin(#ddd) }
+        .class2 { .mixin(#555) }
+
+    Output:
+        .class1 {
+          color: #ddd;
+          background-color: black;
+        }
+        .class2 {
+          color: #555;
+          background-color: white;
+        }
+*/
+
+.if(@condition, @then, @else) {
+    & when (@condition) {
+        @then();
+    }
+
+    & when not (@condition) {
+        @else();
+    }
+}
+
+
 .center-horizontal() {
     left: 50%;
     transform: translateX(-50%);

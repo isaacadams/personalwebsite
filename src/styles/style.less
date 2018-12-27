@@ -10,56 +10,29 @@
 
 @import './button.less';
 
-//@color-main: #446eb2;
-//@color-main: #f9f9f9;
+#desktop() {
+    /*.set-mixin(@mixin, @default, @desktop) {
+       .@{mixin}(@default);
 
-#gallery.setImage(250px);
-
-nav {
-    .routes {
-        display: none;
-    }
-
-    #mobilenav {
-        display: block;
-    }
-}
-
-@media only screen and (min-width: 768px) {
-
-    nav {
-        .routes {
-            display: block;
+        @media only screen and (min-width: 768px) {
+            .@{mixin}(@desktop);
         }
-
-        #mobilenav {
-            display: none;
-        }
-    }
-
-    .sidebar {
-        display: none !important;
-    }
-    #gallery.setImage(500px);
-
-    .info {
-        width: 30%;
-
-        .title {
-            font-size: 2.25em;
-            word-spacing: 1px;
-        }
-
-        .sub {
-        }
-
-        .message {
-            font-size: 1.25em;
-        }
-    }
+    }*/    
     
-}
+    .set-prop(@prop, @default, @desktop) {
+        @{prop}: @default;
 
+        @media only screen and (min-width: 768px) {
+            @{prop}: @desktop;
+        }
+    }
+
+    .set-rules(@rules) {
+        @media only screen and (min-width: 768px) {
+            @rules();
+        }
+    }
+}
 
 a {
     :active {

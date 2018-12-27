@@ -8,3 +8,5 @@ node_modules/
 /dist/assets/js/vendors.js
 /dist/fonts
 /dist/assets/data/gallery.json
+/src/styles/test.less
+/dist/assets/styles/test.css

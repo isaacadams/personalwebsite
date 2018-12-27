@@ -3,7 +3,6 @@
 
 header {
     margin-bottom: 7%;
-    background-repeat: no-repeat;
     background-size: cover;
     background-color: transparent;
     background-position: 50% 10%;
@@ -25,23 +24,30 @@ header {
     }*/
 }
 
-.defaults(@prop) {
-    @{prop}: 5%;
-    position: fixed;
-    background-color: @colors[back-dark];
+#navbar() {
+    .defaults(@prop, @default-display) {
+        @desktop-display: none;
+        @desktop-display: if(@default-display = none, block);
+        
+        ul {
+            font-size: 18px;
+            text-transform: uppercase;
+            font-weight: 500;
+            letter-spacing: 3px;
+            #desktop.set-prop(display, @default-display, @desktop-display);
+        }
+
+        @{prop}: 5%;
+        position: fixed;
+        background-color: @colors[back-dark];
+    }
 }
 
 nav {    
-    .defaults(height);
+    #navbar.defaults(height, none);
     padding-top: 1%;
     padding-bottom: 1%;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    overflow: hidden;
-    position: sticky;
     width: 100%;
-    z-index: 1;
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
@@ -75,19 +81,22 @@ ul {
 }
 
 .routes {
-    font-size: 18;
-    text-transform: uppercase;
-    font-weight: 500px;
-    letter-spacing: 3px;
+    
 }
 
 #mobilenav {
     padding-left: 5%;
+    display: block;
+    #desktop.set-prop(display, block, none);
 }
 
 #sidebar {
-    .defaults(top);
+    #navbar.defaults(top, block);
     display: none;
+
+    #desktop.set-rules({
+        display: none !important;
+    });
 
     ul {
         padding-inline-start: 20px;

@@ -5,11 +5,13 @@
     width: 90%;
     .center.rel();
     text-align: center;
-    .setImage(@size) {
-        img {
-            .box(@size);
-            padding: 10px;
-            object-fit: cover;
-        }
+    img {
+        .box(250px);
+        padding: 10px;
+        object-fit: cover;
+
+        #desktop.set-rules({
+            .box(500px);
+        });
     }
 }
