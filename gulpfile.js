@@ -81,7 +81,7 @@ gulp.task('build', function () {
 
 
 
-gulp.task('app', gulp.series('data', 'vendors', 'build'));
+gulp.task('app', gulp.series('css', 'data', 'vendors', 'build'));
 
 gulp.task('watch', function () {
     gulp.watch(['./src/**/*.{js,jsx,ts,tsx}'], gulp.parallel('build'));
