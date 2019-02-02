@@ -4,11 +4,8 @@ node_modules/
 /.firebase
 /.firebaserc
 /firebase.json
-/dist/assets/js/bundle.js
-/dist/assets/js/vendors.js
-/dist/fonts
-/dist/assets/data/gallery.json
 /src/styles/test.less
-/dist/assets/styles/test.css
-/dist/assets/styles/styles.min.css
-/dist/assets/data/projects.json
+
+/dist/assets/data
+/dist/assets/js
+/dist/assets/styles
