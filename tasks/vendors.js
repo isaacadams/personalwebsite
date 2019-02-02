@@ -28,10 +28,9 @@ function CreatePack(name, glob, destination = '') {
 //List of dependencies that we want to reference in the frontend
 let dependencies = [
     CreatePack('bootstrap', '**/*'),
+    CreatePack('font-awesome', '{fonts,css}/*', 'dist/assets/styles/font-awesome'),
     CreatePack('jquery', 'dist/*'),
     CreatePack('popper.js', 'dist/umd/*'),
-    CreatePack('font-awesome', '**/*'),
-    CreatePack('font-awesome', 'fonts/*', 'dist/fonts'),
     CreatePack('jquery-ajax-unobtrusive', 'dist/*'),
     CreatePack('jquery-validation', 'dist/*'),
     CreatePack('jquery-validation-unobtrusive', 'dist/*')
