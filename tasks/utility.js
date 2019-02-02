@@ -1,3 +1,7 @@
+/*
+ * general javascript utilities 
+ */
+
 let fs = require('fs'),
     path = require('path'),
     progress = require('progress-stream');
