@@ -1,6 +1,7 @@
 "use strict";
 
 var gulp = require('gulp'),
+    rimraf = require('gulp-rimraf'),
     fs = require("fs"),
     browserify = require("browserify"),
     tsify = require("tsify"),
@@ -13,17 +14,14 @@ var gulp = require('gulp'),
     minify = require('gulp-minify-css');
 
 let { getJsonFile, ensureDirectoriesExist, createFile, bundler } = require('./tasks/utility');
-let settings = require('./tasks/settings');
+let { paths } = require('./tasks/settings');
 
 Array.prototype.contains = function (item) {
     return this.indexOf(item) > -1;
 };
 
-let vendors = require('./tasks/vendors');
-gulp.task('vendors.clean', vendors.clean);
-gulp.task('vendors.get', vendors.get);
-gulp.task('vendors.bundle', vendors.bundle);
-gulp.task('vendors', gulp.series('vendors.clean', 'vendors.get', 'vendors.bundle'));
+let { vendors } = require('./tasks/vendors');
+gulp.task('vendors', vendors);
 
 
 let data = require('./tasks/data');
@@ -32,10 +30,19 @@ gulp.task('data.projects', data.projects);
 gulp.task('data.pictures', data.pictures);
 gulp.task('data', gulp.series('data.home', 'data.projects', 'data.pictures'));
 
+function clean() {
+    return gulp.src(paths.publish.generated, { allowEmpty: true })
+        .on('error', function (err) { console.log('vendors.clean ERROR\n' + err); })
+        .on('end', function () { console.log('vendors.clean: COMPLETE'); })
+        .pipe(rimraf());
+}
+
+gulp.task('clean', clean);
 
 function css() {
-    let styles = settings.paths.source + '/styles';
-    let output = settings.paths.publish + '/assets/styles';
+    let styles = paths.source + '/styles';
+    let output = paths.publish.styles;
+
     var lessFiles = gulp.src(styles + '/style.less')
         .pipe(less());
     
@@ -52,13 +59,12 @@ function css() {
         .pipe(gulp.dest(output));
 }
 
-//gulp.task('build', gulp.series(css, bundle));
 gulp.task('css', css);
 
 let app = {
     //entry extension can be .jsx, .js, .ts, or .tsx
-    entry: settings.paths.source + '/index.tsx',
-    publish: settings.paths.publish + '/assets/js/bundle.js',
+    entry: paths.source + '/index.tsx',
+    publish: paths.publish.scripts + '/bundle.js',
     tsconfig: './tsconfig.json'
 };
 
@@ -80,9 +86,7 @@ gulp.task('build', function () {
     return bundler(b, app.publish);
 });
 
-
-
-gulp.task('app', gulp.series('css', 'data', 'vendors', 'build'));
+gulp.task('app', gulp.series('clean', 'css', 'data', 'vendors', 'build'));
 
 gulp.task('watch', function () {
     gulp.watch(['./src/**/*.{js,jsx,ts,tsx}'], gulp.parallel('build'));

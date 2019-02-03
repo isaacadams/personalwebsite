@@ -1,11 +1,10 @@
+# custom
+/src/styles/test.less
+/dist/generated
+
+# standard
 .vs/
 node_modules/
-*/**/vendors/
 /.firebase
 /.firebaserc
 /firebase.json
-/src/styles/test.less
-
-/dist/assets/data
-/dist/assets/js
-/dist/assets/styles
