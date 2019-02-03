@@ -20,8 +20,6 @@ export class Projects extends PageComponent<data> {
         if (element)
             return element;
 
-
-
         return (
             <div>
                 {this.state.data.map((val: data, index) =>

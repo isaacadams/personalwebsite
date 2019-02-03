@@ -39,7 +39,7 @@ export class PageComponent<TData> extends React.Component<any, state<TData>> {
         if (!this.state.data) {
             // Note that you can return false it you want nothing to be put in the dom
             // This is also your chance to render a spinner or something...
-            return <div>The responsive it not here yet!</div>;
+            return <div>Page is under construction.</div>;
         }
         else if (this.state.data.length === 0) {
             // Gives you the opportunity to handle the case where the ajax request

@@ -28,7 +28,8 @@ let data = require('./tasks/data');
 gulp.task('data.home', data.home);
 gulp.task('data.projects', data.projects);
 gulp.task('data.pictures', data.pictures);
-gulp.task('data', gulp.series('data.home', 'data.projects', 'data.pictures'));
+
+gulp.task('data', gulp.series('data.home', /*'data.projects',*/ 'data.pictures'));
 
 function clean() {
     return gulp.src(paths.publish.generated, { allowEmpty: true })
