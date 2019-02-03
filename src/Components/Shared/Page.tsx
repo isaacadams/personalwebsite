@@ -19,7 +19,7 @@ export class PageComponent<TData> extends React.Component<any, state<TData>> {
     }
 
     LoadData(): void {
-        var endpoint = "/assets/data/" + this.datafilename + ".json";
+        var endpoint = "/generated/data/" + this.datafilename + ".json";
         let self = this;
 
         $.ajax({

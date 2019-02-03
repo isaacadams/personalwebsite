@@ -1,13 +1,13 @@
 let fs = require('fs');
 let { getJsonFile, ensureDirectoriesExist, createFile, bundler } = require('./utility');
 
-
-let publishFolder = require('./settings').paths.publish;
-let dataFolder = publishFolder + '/assets/data/';
+let { paths } = require('./settings');
+let imgsFolder = paths.publish.images;
+let dataFolder = paths.publish.data;
 
 function createFileObject(name) {
     return {
-        path: dataFolder + name,
+        path: dataFolder + '/' + name,
         data: []
     };
 }
@@ -16,10 +16,12 @@ let e = module.exports;
 
 e.pictures = function (cb) {
     let file = createFileObject('gallery.json');
+    let main_pictures_folder = '/gallery';
+    let local_gallery = imgsFolder + main_pictures_folder;
+    let http_gallery = imgsFolder.replace(paths.publish.path, '') + main_pictures_folder;
 
-    let gallery = '/assets/imgs/gallery';
-    fs.readdirSync(publishFolder + gallery).forEach(filename => {
-        file.data.push(gallery + '/' + filename);
+    fs.readdirSync(local_gallery).forEach(filename => {
+        file.data.push(http_gallery + '/' + filename);
     });
 
     return write(file, cb);
