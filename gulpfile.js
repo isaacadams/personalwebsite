@@ -23,6 +23,8 @@ Array.prototype.contains = function (item) {
 let { vendors } = require('./tasks/vendors');
 gulp.task('vendors', vendors);
 
+let { createIndexHtmlFile } = require('./tasks/index');
+gulp.task('createIndexHtmlFile', createIndexHtmlFile);
 
 let data = require('./tasks/data');
 gulp.task('data.home', data.home);
@@ -86,7 +88,7 @@ gulp.task('build', function () {
     return bundler(b, app.publish);
 });
 
-gulp.task('app', gulp.series('clean', 'css', 'data', 'vendors', 'build'));
+gulp.task('app', gulp.series('clean', 'css', 'data', 'createIndexHtmlFile', 'vendors', 'build'));
 
 gulp.task('watch', function () {
     gulp.watch(['./src/**/*.{js,jsx,ts,tsx}'], gulp.parallel('build'));
