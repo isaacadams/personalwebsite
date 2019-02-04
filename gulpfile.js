@@ -29,7 +29,7 @@ gulp.task('data.home', data.home);
 gulp.task('data.projects', data.projects);
 gulp.task('data.pictures', data.pictures);
 
-gulp.task('data', gulp.series('data.home', /*'data.projects',*/ 'data.pictures'));
+gulp.task('data', gulp.series('data.home', 'data.projects', 'data.pictures'));
 
 function clean() {
     return gulp.src(paths.publish.generated, { allowEmpty: true })
@@ -44,7 +44,7 @@ function css() {
     let styles = paths.source + '/styles';
     let output = paths.publish.styles;
 
-    var lessFiles = gulp.src(styles + '/style.less')
+    var lessFiles = gulp.src(styles + '/**/*.less')
         .pipe(less());
     
     let testLess = gulp.src(styles + '/test.less')
@@ -76,11 +76,10 @@ gulp.task('build', function () {
     });
 
     b.plugin(tsify, getJsonFile(app.tsconfig).compilerOptions);
-    b.transform(babelify,
-        {
-            presets: ['env', 'react']
-        }
-    );
+    b.transform(babelify, {
+        presets: ['env', 'react']
+    });
+
     b.plugin(b_uglify);
     b.plugin(b_minify, { map: false });
     

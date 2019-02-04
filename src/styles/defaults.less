@@ -1,4 +1,4 @@
-@import './colors.less';
+@import 'colors';
 
 ::-webkit-scrollbar {
     display: none;
@@ -15,4 +15,17 @@ body {
     background-repeat: no-repeat;
     background-position: left top;
     background-color: @colors[back-light];
+}
+
+a {
+    :active {
+        color: none;
+    }
+
+    &:hover {
+        color: darken(@colors[back-light], 20%);
+    }
+
+    text-decoration: none;
+    color: @colors[back-light];
 }
