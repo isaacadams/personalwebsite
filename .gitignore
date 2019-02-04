@@ -1,6 +1,7 @@
 # custom
 /src/styles/test.less
 /dist/generated
+/dist/index.html
 
 # standard
 .vs/
