@@ -18,7 +18,7 @@ e.pictures = function (cb) {
     let file = createFileObject('gallery.json');
     let main_pictures_folder = '/gallery';
     let local_gallery = imgsFolder + main_pictures_folder;
-    let http_gallery = imgsFolder.replace(paths.publish.path, '') + main_pictures_folder;
+    let http_gallery = imgsFolder.rel() + main_pictures_folder;
 
     fs.readdirSync(local_gallery).forEach(filename => {
         file.data.push(http_gallery + '/' + filename);

@@ -23,11 +23,14 @@ Array.prototype.contains = function (item) {
 let { vendors } = require('./tasks/vendors');
 gulp.task('vendors', vendors);
 
+let { createIndexHtmlFile } = require('./tasks/index');
+gulp.task('createIndexHtmlFile', createIndexHtmlFile);
 
 let data = require('./tasks/data');
 gulp.task('data.home', data.home);
 gulp.task('data.projects', data.projects);
 gulp.task('data.pictures', data.pictures);
+
 gulp.task('data', gulp.series('data.home', 'data.projects', 'data.pictures'));
 
 function clean() {
@@ -43,7 +46,7 @@ function css() {
     let styles = paths.source + '/styles';
     let output = paths.publish.styles;
 
-    var lessFiles = gulp.src(styles + '/style.less')
+    var lessFiles = gulp.src(styles + '/**/*.less')
         .pipe(less());
     
     let testLess = gulp.src(styles + '/test.less')
@@ -75,18 +78,17 @@ gulp.task('build', function () {
     });
 
     b.plugin(tsify, getJsonFile(app.tsconfig).compilerOptions);
-    b.transform(babelify,
-        {
-            presets: ['env', 'react']
-        }
-    );
+    b.transform(babelify, {
+        presets: ['env', 'react']
+    });
+
     b.plugin(b_uglify);
     b.plugin(b_minify, { map: false });
     
     return bundler(b, app.publish);
 });
 
-gulp.task('app', gulp.series('clean', 'css', 'data', 'vendors', 'build'));
+gulp.task('app', gulp.series('clean', 'css', 'data', 'createIndexHtmlFile', 'vendors', 'build'));
 
 gulp.task('watch', function () {
     gulp.watch(['./src/**/*.{js,jsx,ts,tsx}'], gulp.parallel('build'));

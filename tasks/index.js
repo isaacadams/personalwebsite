@@ -1,29 +1,38 @@
 //task that builds the index.html page
-let gulp = require('gulp'),
-    merge = require('merge-stream'),
-    browserify = require("browserify"),
-    babelify = require('babelify'),
-    rimraf = require('gulp-rimraf'),
-    lessify = require('lessify'),
-    cssify = require('cssify'),
-    b_minify = require('minifyify'),
-    b_uglify = require('uglifyify'),
-    fs = require('fs'),
-    path = require('path'),
-    progress = require('progress-stream');
 
-let { getJsonFile, ensureDirectoriesExist, createFile, bundler } = require('./tasks/utility');
-let settings = require('./tasks/settings');
+let { getJsonFile, ensureDirectoriesExist, createFile, bundler } = require('./utility');
+let { paths } = require('./settings');
 
-
+let fs = require('fs');
 
 let e = module.exports;
 
-e.createIndex = function () {
+e.createIndexHtmlFile = function (cb) {
 
 
-    document.createDocumentFragment();
-    head = document.createElement('head');
+    let create = fs.createWriteStream(`${paths.publish.path}/index.html`);
+    
+    create.write(
+`<head>
+    <meta name="viewport" content="width=device-width">
 
+    <script src="${paths.publish.scripts.rel()}/vendors.js"></script>
 
+    <link href="${paths.publish.styles.rel()}/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="${paths.publish.styles.rel()}/styles.min.css" rel="stylesheet" />
+</head>
+
+<body>    
+    <div id="app">
+    </div>
+</body>
+
+<footer>
+    <script src="${paths.publish.scripts.rel()}/bundle.js"></script>
+</footer>`
+    );
+
+    create.close();
+
+    return cb();
 };

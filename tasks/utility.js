@@ -3,8 +3,7 @@
  */
 
 let fs = require('fs'),
-    path = require('path'),
-    progress = require('progress-stream');
+    path = require('path');
 
 let e = module.exports;
 
@@ -30,11 +29,11 @@ e.createFile = (pathToFile) => {
 e.bundler = function (b, outputPath) {
     console.log('Building...');
 
-    let str = progress({
-        time: 100
-    }, async function (progress) {        
-        await process.stdout.write(Math.round(progress.percentage) + '%');
-    });
+    //let str = progress({
+    //    time: 100
+    //}, async function (progress) {        
+    //    await process.stdout.write(Math.round(progress.percentage) + '%');
+    //});
 
     async function bundleLogger(err, buff) {
         if(err)
