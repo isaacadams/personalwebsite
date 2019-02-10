@@ -1,5 +1,5 @@
 let fs = require('fs');
-let { getJsonFile, ensureDirectoriesExist, createFile, bundler } = require('./utility');
+let { getJsonFile, ensureDirectoriesExist, createFile, bundler } = require('@isaacadams/nodejs-utils');
 
 let { paths } = require('./settings');
 let imgsFolder = paths.publish.images;

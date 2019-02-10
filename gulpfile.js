@@ -13,7 +13,8 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     minify = require('gulp-minify-css');
 
-let { getJsonFile, ensureDirectoriesExist, createFile, bundler } = require('./tasks/utility');
+let { getJsonFile, ensureDirectoriesExist, createFile, bundler } = require('@isaacadams/nodejs-utils');
+
 let { paths } = require('./tasks/settings');
 
 Array.prototype.contains = function (item) {
@@ -45,18 +46,9 @@ gulp.task('clean', clean);
 function css() {
     let styles = paths.source + '/styles';
     let output = paths.publish.styles;
-
-    var lessFiles = gulp.src(styles + '/**/*.less')
-        .pipe(less());
-    
-    let testLess = gulp.src(styles + '/test.less')
-        .pipe(less());
-
-    merge(testLess)
-        .pipe(concat('test.css'))
-        .pipe(gulp.dest(output));
-
-    return merge(lessFiles)
+        
+    return gulp.src(styles + '/**/*.less')
+        .pipe(less())
         .pipe(concat('styles.min.css'))
         .pipe(minify())
         .pipe(gulp.dest(output));
@@ -93,5 +85,4 @@ gulp.task('app', gulp.series('clean', 'css', 'data', 'createIndexHtmlFile', 'ven
 gulp.task('watch', function () {
     gulp.watch(['./src/**/*.{js,jsx,ts,tsx}'], gulp.parallel('build'));
     gulp.watch(['./src/**/*.{css,less}'], gulp.parallel('css'));
-    //gulp.watch(['./dist/assets/imgs/**/*.{.jpg,.png,.jpeg}'], gulp.parallel('data'));
 });

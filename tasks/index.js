@@ -1,6 +1,5 @@
 //task that builds the index.html page
 
-let { getJsonFile, ensureDirectoriesExist, createFile, bundler } = require('./utility');
 let { paths } = require('./settings');
 
 let fs = require('fs');
