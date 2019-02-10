@@ -13,8 +13,7 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     minify = require('gulp-minify-css');
 
-let { getJsonFile, ensureDirectoriesExist, createFile, bundler } = require('@isaacadams/nodejs-utils');
-
+let { getJsonFile, createFile } = require('@isaacadams/nodejs-utils');
 let { paths } = require('./tasks/settings');
 
 Array.prototype.contains = function (item) {
@@ -34,27 +33,24 @@ gulp.task('data.pictures', data.pictures);
 
 gulp.task('data', gulp.series('data.home', 'data.projects', 'data.pictures'));
 
-function clean() {
+gulp.task('clean', function () {
     return gulp.src(paths.publish.generated, { allowEmpty: true })
-        .on('error', function (err) { console.log('vendors.clean ERROR\n' + err); })
-        .on('end', function () { console.log('vendors.clean: COMPLETE'); })
+        .on('error', function (err) { console.log('clean ERROR\n' + err); })
+        .on('end', function () { console.log('clean: COMPLETE'); })
         .pipe(rimraf());
-}
+});
 
-gulp.task('clean', clean);
 
-function css() {
+gulp.task('css', function () {
     let styles = paths.source + '/styles';
     let output = paths.publish.styles;
-        
+
     return gulp.src(styles + '/**/*.less')
         .pipe(less())
         .pipe(concat('styles.min.css'))
         .pipe(minify())
         .pipe(gulp.dest(output));
-}
-
-gulp.task('css', css);
+});
 
 let app = {
     //entry extension can be .jsx, .js, .ts, or .tsx
@@ -77,7 +73,8 @@ gulp.task('build', function () {
     b.plugin(b_uglify);
     b.plugin(b_minify, { map: false });
     
-    return bundler(b, app.publish);
+    return b.bundle()
+        .pipe(createFile(app.publish));
 });
 
 gulp.task('app', gulp.series('clean', 'css', 'data', 'createIndexHtmlFile', 'vendors', 'build'));
