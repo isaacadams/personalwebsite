@@ -20,6 +20,7 @@
     "popper.js": "1.14.4"
   },
   "devDependencies": {
+    "gameofwar": "2.2.0",
     "@isaacadams/nodejs-utils": "0.1.0",
     "babel-core": "^6.26.0",
     "babel-preset-env": "1.7.0",

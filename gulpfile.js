@@ -61,6 +61,9 @@ let app = {
 
 gulp.task('build', function () {
 
+    let gameofwar = require('gameofwar');
+    gameofwar.CreateApp('dist/generated/js');
+
     let b = browserify({
         entries: [app.entry]
     });
@@ -76,6 +79,8 @@ gulp.task('build', function () {
     return b.bundle()
         .pipe(createFile(app.publish));
 });
+
+
 
 gulp.task('app', gulp.series('clean', 'css', 'data', 'createIndexHtmlFile', 'vendors', 'build'));
 

@@ -28,6 +28,7 @@ e.createIndexHtmlFile = function (cb) {
 
 <footer>
     <script src="${paths.publish.scripts.rel()}/bundle.js"></script>
+    <script src="${paths.publish.scripts.rel()}/gameofwar/index.js" type="text/js"></script>
 </footer>`
     );
 

@@ -1,18 +1,25 @@
 import * as React from 'react';
 import * as $ from 'jquery';
+import { match as IMatch } from 'react-router-dom';
 
-interface state<TData> {
+interface IState<TData> {
     data: TData[]
 }
 
-export class PageComponent<TData> extends React.Component<any, state<TData>> {
+interface IProps {
+    match: IMatch;
+}
+
+export class PageComponent<TData> extends React.Component<IProps, IState<TData>> {
     datafilename: string;
-    constructor(props: any) {
+    match: IMatch;
+    constructor(props: IProps) {
         super(props);
+        this.match = props.match;
         this.state = this.getInitialState();        
     }
 
-    getInitialState(): state<TData> {
+    getInitialState(): IState<TData> {
         return {
             data: undefined
         };

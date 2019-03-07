@@ -97,7 +97,6 @@ export class CustomRouter extends React.Component<any, state> {
     }
 
     render() {
-        
         return (
             <BrowserRouter>
                 <div>
