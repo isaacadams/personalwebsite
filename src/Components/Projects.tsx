@@ -2,6 +2,7 @@ import * as React from 'react';
 import { PageComponent } from './Shared/Page';
 import { Link, Route } from 'react-router-dom';
 import { GameOfWar } from './Projects/gameofwar';
+import { NONAME } from 'dns';
 
 interface data {
     title: string,
@@ -25,10 +26,19 @@ export class Projects extends PageComponent<data> {
             return element;
 
         let url = this.match.url;
+        let atts = 
+        {
+            align: "center"
+        };
 
         return (
-            <div>
-                <Route path={`${url}/gameofwar`} component={GameOfWar} />
+            <p {...atts}>
+                <iframe 
+                    src="https://cards-gameofwar.web.app/" 
+                    width="100%" 
+                    height="100%"
+                />
+                {/* <Route path={`${url}/gameofwar`} component={GameOfWar} />
                 <Route
                     exact
                     path={url}
@@ -42,11 +52,8 @@ export class Projects extends PageComponent<data> {
                                 </div>
                             )}
                         </div>}
-                />
-
-
-                
-            </div>
+                /> */}
+            </p>
         );
     }
 }

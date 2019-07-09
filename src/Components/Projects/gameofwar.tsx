@@ -9,8 +9,8 @@ export class GameOfWar extends React.Component<any, any> {
     render() {
         return (
             <div>
-                <div id="import_gameofwar">
-                </div>
+                <iframe 
+                src="https://cards-gameofwar.web.app/"  />
             </div>
         );
     }
