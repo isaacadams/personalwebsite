@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as $ from 'jquery';
 import { match as IMatch } from 'react-router-dom';
 
 interface IState<TData> {
@@ -28,12 +27,16 @@ export class PageComponent<TData> extends React.Component<IProps, IState<TData>>
     LoadData(): void {
         var endpoint = "/generated/data/" + this.datafilename + ".json";
         let self = this;
-
-        $.ajax({
-            url: endpoint,
-            success: function (data) {
-                self.setState({ data: data });
+        fetch(endpoint, {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json, text/html',
+                'Content-Type': 'application/json'
             }
+        }).then(r => {
+            return r.json();           
+        }).then(data => {
+            self.setState({ data: data });
         });
     }
 
