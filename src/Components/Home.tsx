@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as $ from 'jquery';
 import { PageComponent } from './Shared/Page';
 
 interface data {
