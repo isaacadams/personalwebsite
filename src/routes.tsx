@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as $ from 'jquery';
-import { Link, Switch, Route, BrowserRouter, Redirect } from 'react-router-dom';
+import { Link, Switch, Route, } from 'react-router-dom';
 import { Home } from './Components/Home';
 import { Projects } from './Components/Projects';
 import { Gallery } from './Components/Gallery';
@@ -98,31 +98,29 @@ export class CustomRouter extends React.Component<any, state> {
 
     render() {
         return (
-            <BrowserRouter>
-                <div>
-                    <nav>
-                        <a id="mobilenav" className="fa fa-bars" onClick={this.mobilenavOnClickHandler} ></a>
-                        {routes.dom}
-                    </nav>
-                    <div id="sidebar">
-                        {routes.dom}
-                    </div>
-                    <header>
-                    </header>
-                    <main>                    
-                        <Switch>
-                            {routes.data.map((route, i) => (
-                                <Route
-                                    key={i}
-                                    path={route.path}
-                                    component={route.component}
-                                    exact={route.home}
-                                />
-                            ))}
-                        </Switch>
-                    </main>
+            <div>
+                <nav>
+                    <a id="mobilenav" className="fa fa-bars" onClick={this.mobilenavOnClickHandler} ></a>
+                    {routes.dom}
+                </nav>
+                <div id="sidebar">
+                    {routes.dom}
                 </div>
-            </BrowserRouter>
+                <header>
+                </header>
+                <main>                    
+                    <Switch>
+                        {routes.data.map((route, i) => (
+                            <Route
+                                key={i}
+                                path={route.path}
+                                component={route.component}
+                                exact={route.home}
+                            />
+                        ))}
+                    </Switch>
+                </main>
+            </div>
         )
     }    
 };
