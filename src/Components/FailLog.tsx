@@ -17,10 +17,10 @@ export class FailLog extends PageComponent<ILog> {
             return element;
         
         return (
-            <div className="container">
+            <div className="container mt-4">
                 {this.state.data.map((val, index) =>
                     <div key={index} className="row py-2">
-                        <div className="col-1">{val.date}</div>
+                        <div className="col-2">{val.date}</div>
                         <div className="col">{val.message}</div>
                     </div>
                 )}
