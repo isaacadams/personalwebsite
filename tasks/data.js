@@ -65,6 +65,26 @@ e.projects = function (cb) {
     return write(file, cb);
 };
 
+e.fails = function (cb) {
+    let file = createFileObject('fails.json');
+
+    function create(date, message) {
+        return {
+            date: date,
+            message: message
+        };
+    }
+
+    file.data = [
+        create('11/16/2019', 'failed to do something lorem epsum lroasn knsndk askndknen askjndje gpbinb js djndfnds l nsjndf asjnfjas'),
+        create('11/16/2019', 'failed to do something lorem epsum lroasn knsndk askndknen askjndje gpbinb js djndfnds l nsjndf asjnfjas'),
+        create('11/16/2019', 'failed to do something lorem epsum lroasn knsndk askndknen askjndje gpbinb js djndfnds l nsjndf asjnfjas'),
+        create('11/16/2019', 'failed to do something lorem epsum lroasn knsndk askndknen askjndje gpbinb js djndfnds l nsjndf asjnfjas')
+    ];
+
+    return write(file, cb);
+};
+
 function write(file, cb) {
     ensureDirectoriesExist(file.path);
     return fs.writeFile(file.path, JSON.stringify(file.data), 'utf8', cb);

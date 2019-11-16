@@ -1,5 +1,6 @@
 import { RouteBuilder } from './RouteBuilder';
 import { Home } from '../Components/Home';
+import { FailLog } from '../Components/FailLog';
 import { Projects } from '../Components/Projects';
 import { Gallery } from '../Components/Gallery';
 
@@ -26,6 +27,7 @@ const routeDefinitions = new RouteBuilder()
     .add("Home", "/", Home, o => {
         o.exact = true;
     })
+    .add("fail.log", "/fails", FailLog)
     .add("Projects", "/projects", Projects)
     .add("Gallery", "/gallery", Gallery)
     .build();
