@@ -21,9 +21,7 @@ Array.prototype.contains = function (item) {
     return this.indexOf(item) > -1;
 };
 
-let { vendors } = require('./tasks/vendors');
-gulp.task('vendors', vendors);
-gulp.task('vendors.styles', function(cb) {
+gulp.task('vendors', function(cb) {
     let opts = {
         html: "index.html",
         output: "dist/generated/styles"
@@ -96,7 +94,7 @@ gulp.task('build', function () {
 
 
 
-gulp.task('app', gulp.series('clean', 'css', 'data', 'createIndexHtmlFile', 'vendors', 'vendors.styles', 'build'));
+gulp.task('app', gulp.series('clean', 'css', 'data', 'createIndexHtmlFile', 'vendors', 'build'));
 
 gulp.task('watch', function () {
     gulp.watch(['./src/**/*.{js,jsx,ts,tsx}'], gulp.parallel('build'));
