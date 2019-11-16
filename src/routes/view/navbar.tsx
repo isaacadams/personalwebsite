@@ -28,7 +28,7 @@ export default class Navbar extends React.Component<any, IState> {
     render() {
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-transparent">
-                <a className="navbar-brand" href="/">SSH Viewer</a>
+                <a className="navbar-brand" href="/">Isaac Adams</a>
                 <button className={`navbar-toggler ${(this.state.showing ? "" : "collapsed")}`} 
                         onClick={this.handleTogglerClick} 
                         type="button" 
