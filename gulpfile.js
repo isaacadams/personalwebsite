@@ -11,7 +11,8 @@ var gulp = require('gulp'),
     less = require('gulp-less'),
     merge = require('merge-stream'),
     concat = require('gulp-concat'),
-    minify = require('gulp-minify-css');
+    minify = require('gulp-minify-css'),
+    webvendor = require('@isaacadams/webvendor');
 
 let { getJsonFile, createFile } = require('@isaacadams/nodejs-utils');
 let { paths } = require('./tasks/settings');
@@ -22,6 +23,19 @@ Array.prototype.contains = function (item) {
 
 let { vendors } = require('./tasks/vendors');
 gulp.task('vendors', vendors);
+gulp.task('vendors.styles', function(cb) {
+    let opts = {
+        html: "index.html",
+        output: "dist/generated/styles"
+    }
+
+    webvendor(opts)
+        .addBootstrap()
+        .addFontAwesome()
+        .deploy();
+
+    return cb();
+});
 
 let { createIndexHtmlFile } = require('./tasks/index');
 gulp.task('createIndexHtmlFile', createIndexHtmlFile);
