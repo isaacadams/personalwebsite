@@ -20,7 +20,7 @@ module.exports.vendors = function () {
 
     //collect and concat the scripts together
     streams.push(
-        gulp.src(['node_modules/{jquery,popper.js,jquery-validation-unobtrusive,jquery-unobtrusive,jquery-ajax-unobtrusive}/dist/*.js','!**/*.{min,slim}.js'])
+        gulp.src(['node_modules/{popper.js}/dist/*.js','!**/*.{min,slim}.js'])
             .pipe(babel({
                 presets: ['@babel/env']
             }))
