@@ -6,12 +6,10 @@ import Navbar from './view/navbar';
 export const Main = () => (
     <div>
         <Router>
-            <div>
+            <div className="container">
                 <Navbar />
-                <div className="container">
-                    <Routes />
-                </div> 
-            </div>           
+                <Routes />
+            </div>            
         </Router>
     </div>
 );
