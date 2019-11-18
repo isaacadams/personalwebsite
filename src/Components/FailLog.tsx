@@ -20,13 +20,15 @@ export class FailLog extends PageComponent<ILog> {
         return (
             <div className="container my-4">
                 <div className="row pb-3">
-                    <h3 className="col-lg-auto col-12">
+                    <h3 className="col-12">
                         What is this?
                     </h3>
                     <div className="col lead">
-                        Here is where you can find a log that I frequently update concerning tasks I failed to complete.
-                        I feel that this keeps me humble and motivated to keep pushing forward. 
-                        It also helps remind me what I have been working on or what I have left to do.
+                        A place where I log mistakes or tasks that I failed to complete.
+                        <br />
+                        My philosophy is that success is made from the accumulation of mistakes you made on they way there.
+                        <br />
+                        So this acts as a journal of sorts, documenting my path to success.
                     </div>
                 </div>
                 {this.state.data.map((val, index) =>
