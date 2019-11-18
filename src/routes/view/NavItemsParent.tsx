@@ -3,6 +3,8 @@ import { NavItem } from './NavItem';
 import { NavDropdownItem } from './NavDropdownItem';
 import { routeDefinitions } from '../RouteDefinitions';
 
+
+
 export class NavItemsParent extends React.Component<any, any> {
     projectDropdown: any[];
     mainNavItems: any[];
@@ -16,11 +18,11 @@ export class NavItemsParent extends React.Component<any, any> {
         
         let self = this;
         this.mainNavItems = routeDefinitions.asArray().reduce(function (accum, r, i, arr) {
-            if(r.name !== "Projects")
+            /* if(r.name !== "Projects")
                 accum.push(createRouteLink(r));
             else
-                self.projectDropdown = [createRouteLink(r)];
-
+                self.projectDropdown = [createRouteLink(r)]; */
+            accum.push(createRouteLink(r));
             return accum;
         }, []);
     }
@@ -41,7 +43,7 @@ export class NavItemsParent extends React.Component<any, any> {
                         active={this.state.active === r.href} 
                     />
                 )}
-                <NavDropdownItem links={this.projectDropdown} name="Projects" />
+                {/* <NavDropdownItem links={this.projectDropdown} name="Projects" /> */}
             </ul>
         );
     }
