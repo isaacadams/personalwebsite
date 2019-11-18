@@ -3,33 +3,32 @@ import { Home } from '../Components/Home';
 import { FailLog } from '../Components/FailLog';
 import { Projects } from '../Components/Projects';
 import { Gallery } from '../Components/Gallery';
+import { RouteModels } from './RouteModels';
 
-/* function CreateRoute(name: string, component: any, icon: string, home = false) {
-    return {
-        path: "/" + (home ? "" : name),
-        name: name,
-        component: component,
-        home: home,
-        icon: icon
-    };
+class RouteConfiguration {
+    Home: RouteModels.Definition;
+    FailLog: RouteModels.Definition;
+    Projects: RouteModels.Definition;
+    Gallery: RouteModels.Definition;
+    private _configArray: RouteModels.Definition[];
+
+    constructor() {
+        this.Home = RouteBuilder.define("Home", "/", Home, o => {
+            o.exact = true;
+        });
+
+        this.FailLog = RouteBuilder.define("fail.log", "/fails", FailLog);
+        this.Projects = RouteBuilder.define("Projects", "/projects", Projects);
+        this.Gallery = RouteBuilder.define("Gallery", "/gallery", Gallery);
+
+        this._configArray = Object.keys(this).map(k => this[k]);
+    }
+
+    asArray(): RouteModels.Definition[] {
+        return this._configArray;    
+    }
 }
 
-const routes = {
-    dom: undefined,
-    data: [
-        CreateRoute("home", Home, 'home', true),
-        CreateRoute("projects", Projects, 'laptop'),
-        CreateRoute("gallery", Gallery, 'camera')
-    ]
-}; */
-
-const routeDefinitions = new RouteBuilder()
-    .add("Home", "/", Home, o => {
-        o.exact = true;
-    })
-    .add("fail.log", "/fails", FailLog)
-    .add("Projects", "/projects", Projects)
-    .add("Gallery", "/gallery", Gallery)
-    .build();
+const routeDefinitions = new RouteConfiguration();
 
 export { routeDefinitions };

@@ -15,7 +15,7 @@ export class NavItemsParent extends React.Component<any, any> {
         this.setActiveLink = this.setActiveLink.bind(this);
         
         let self = this;
-        this.mainNavItems = routeDefinitions.reduce(function (accum, r, i, arr) {
+        this.mainNavItems = routeDefinitions.asArray().reduce(function (accum, r, i, arr) {
             if(r.name !== "Projects")
                 accum.push(createRouteLink(r));
             else
