@@ -38,7 +38,6 @@ export class Projects extends PageComponent<data> {
                             image="https://jenkins.io/images/logos/jenkins/jenkins.svg" 
                             message="I host maintain my own jenkins server which is used to build all of my public and private projects" />
                     </div>
-                    
                 </div>                
             </div>
         );
