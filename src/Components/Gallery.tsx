@@ -13,9 +13,17 @@ export class Gallery extends PageComponent<string> {
         if (element)
             return element;
 
+        let imgCss: any = {
+            "objectFit": "cover"
+        };
+
         return (
-            <div id="gallery">
-                {this.state.data.map((value: string, index: number) => <img key={index} src={value} />)}
+            <div className="container">
+                <div className="row">
+                    {this.state.data.map((value: string, index: number) => 
+                        <img className="col-lg-4 col-3 py-3" style={imgCss} key={index} src={value} />
+                    )}
+                </div>                
             </div>
         );
     }
