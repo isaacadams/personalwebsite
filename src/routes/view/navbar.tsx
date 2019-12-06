@@ -39,7 +39,7 @@ export default class Navbar extends React.Component<any, IState> {
                         aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
-                <div className={`collapse navbar-collapse ${(this.state.showing ? "show" : "")}`} id="navbarText">
+                <div className={`collapse navbar-collapse d-flex ${(this.state.showing ? "show" : "")}`} id="navbarText">
                     <NavItemsParent />
                     {/* <form className="form-inline">
                         <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />

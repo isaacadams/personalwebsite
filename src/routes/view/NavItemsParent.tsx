@@ -33,7 +33,7 @@ export class NavItemsParent extends React.Component<any, any> {
     }
     render() {
         return (
-            <ul className="navbar-nav mr-auto">
+            <ul className="navbar-nav list-inline mx-auto justify-content-center">
                 {this.mainNavItems.map((r, i) => 
                     <NavItem 
                         key={i}
