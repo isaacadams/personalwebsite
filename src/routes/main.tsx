@@ -4,12 +4,13 @@ import { Routes } from './routes';
 import Navbar from './view/navbar';
 
 export const Main = () => (
-    <div>
-        <Router>
-            <div className="container">
+    <Router>
+        <div>
+            <section className="mt-5 py-5">&nbsp;</section>
+            <div className="container mt-5">
                 <Navbar />
                 <Routes />
             </div>            
-        </Router>
-    </div>
+        </div>            
+    </Router>
 );
