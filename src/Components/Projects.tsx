@@ -27,7 +27,7 @@ export class Projects extends PageComponent<data> {
         return (
             <div className="container mt-3">
                 <div className="row justify-content-center">
-                    <div className="col-auto">
+                    <div className="col-auto mb-4">
                         <ProjectCard 
                             name="Game of War" 
                             website="https://cards-gameofwar.web.app/"
@@ -35,7 +35,7 @@ export class Projects extends PageComponent<data> {
                             image="assets/imgs/hide/cards.svg" 
                             message="I created a simulation of the classic card game called 'Game of War' using react" />
                     </div>
-                    <div className="col-auto">
+                    <div className="col-auto mb-4">
                         <ProjectCard 
                             name="Jenkins" 
                             website="https://lightsail.isaacadams.me/jenkins/" 
