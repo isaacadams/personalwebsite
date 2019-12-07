@@ -8,8 +8,15 @@ export const Main = () => (
         <div>
             <section className="py-5">&nbsp;</section>
             <div className="container mt-5">
-                <Navbar />
-                <Routes />
+                <div className="row">
+                    <Navbar />
+                </div>
+                <div className="row">
+                    <section className="col-1"></section>
+                    <section className="col">
+                        <Routes />
+                    </section>
+                </div>                
             </div>            
         </div>            
     </Router>
