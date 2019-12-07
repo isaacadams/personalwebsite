@@ -17,7 +17,7 @@ class RouteConfiguration {
             o.exact = true;
         });
 
-        this.FailLog = RouteBuilder.define("fail.log", "/fails", FailLog);
+        /* this.FailLog = RouteBuilder.define("fail.log", "/fails", FailLog); */
         this.Projects = RouteBuilder.define("Projects", "/projects", Projects);
         this.Gallery = RouteBuilder.define("Gallery", "/gallery", Gallery);
 
