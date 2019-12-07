@@ -31,14 +31,16 @@ export class Projects extends PageComponent<data> {
                     <div className="col-auto">
                         <ProjectCard 
                             name="Game of War" 
-                            link="https://cards-gameofwar.web.app/"
+                            website="https://cards-gameofwar.web.app/"
+                            github="https://github.com/isaacadams/GameOfWar"
                             image="assets/imgs/hide/cards.svg" 
                             message="I created a simulation of the classic card game called 'Game of War' using react" />
                     </div>
                     <div className="col-auto">
                         <ProjectCard 
                             name="Jenkins" 
-                            link="https://lightsail.isaacadams.me/jenkins/" 
+                            website="https://lightsail.isaacadams.me/jenkins/" 
+                            github="https://github.com/isaacadams/naruto"
                             image="https://jenkins.io/images/logos/jenkins/jenkins.svg" 
                             message="I host maintain my own jenkins server which is used to build all of my public and private projects" />
                     </div>

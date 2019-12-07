@@ -1,7 +1,8 @@
 import * as React from 'react';
 
 interface IProps {
-    link: string;
+    website: string;
+    github: string;
     name: string;
     message: string;
     image: string;
@@ -20,7 +21,10 @@ export class ProjectCard extends React.Component<IProps, any> {
                 <div className="card-body">
                     <h5 className="card-title">{this.props.name}</h5>
                     <p className="card-text">{this.props.message}</p>
-                    <a href={this.props.link} className="btn btn-outline-primary stretched-link">Website</a>
+                    <div className="d-flex justify-content-between">
+                        <a href={this.props.website} className="btn  btn-outline-info">Website</a>
+                        <a href={this.props.github} className="btn btn-secondary"><span className="fa fa-github"></span> GitHub</a>
+                    </div>
                 </div> 
             </div>            
         );
