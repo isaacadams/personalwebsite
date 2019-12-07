@@ -6,8 +6,8 @@ import Navbar from './view/navbar';
 export const Main = () => (
     <Router>
         <div>
-            <section className="py-5">&nbsp;</section>
-            <div className="container mt-5">
+            <section className="d-none d-lg-block py-5">&nbsp;</section>
+            <div className="container mt-lg-5">
                 <div className="row">
                     <Navbar />
                 </div>
