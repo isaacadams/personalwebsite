@@ -23,11 +23,10 @@ export class Projects extends PageComponent<data> {
         let element: JSX.Element = super.render();
         if (element)
             return element;
-
        
         return (
-            <div className="container">
-                <div className="row">
+            <div className="container mt-3">
+                <div className="row justify-content-center">
                     <div className="col-auto">
                         <ProjectCard 
                             name="Game of War" 
