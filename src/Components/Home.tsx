@@ -26,10 +26,10 @@ export class Home extends PageComponent<data> {
                 <div className="container px-5">
                     {this.state.data.map(d => 
                         <div className="row pt-5 align-items-center">              
-                            <h3 className="col-2 text-right m-0">
+                            <h3 className="col-12 col-lg-2 text-lg-right m-lg-0">
                                 {d.title}
                             </h3>
-                            <span className="col-6">
+                            <span className="col-12 col-lg-6">
                                 {d.message}
                             </span>
                         </div>
