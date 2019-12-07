@@ -22,8 +22,7 @@ export class Home extends PageComponent<data> {
             return element;
 
         return (
-            <div>
-                <div className="container px-5">
+            <div className="container-lg px-lg-5">
                     {this.state.data.map(d => 
                         <div className="row pt-5 align-items-center">              
                             <h3 className="col-12 col-lg-2 text-lg-right m-lg-0">
@@ -33,10 +32,9 @@ export class Home extends PageComponent<data> {
                                 {d.message}
                             </span>
                         </div>
-                    )}                
-                </div>
+                    )}                    
                 {/* <Projects match={null} />
-                <Gallery match={null} /> */}
+                <Gallery match={null} /> */}                
             </div>
         );
     }

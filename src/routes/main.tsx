@@ -12,12 +12,13 @@ export const Main = () => (
                     <Navbar />
                 </div>
                 <div className="row">
-                    <section className="col-1"></section>
+                    <section className="col-lg-1"></section>
                     <section className="col">
                         <Routes />
                     </section>
                 </div>                
-            </div>            
+            </div>      
+            <section className="py-5">&nbsp;</section>      
         </div>            
     </Router>
 );
