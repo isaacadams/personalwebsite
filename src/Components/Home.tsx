@@ -25,11 +25,11 @@ export class Home extends PageComponent<data> {
             <div>
                 <div className="container px-5">
                     {this.state.data.map(d => 
-                        <div className="row pt-4 align-items-center">                
+                        <div className="row pt-5 align-items-center">              
                             <h3 className="col-2 text-right m-0">
                                 {d.title}
                             </h3>
-                            <span className="col-5">
+                            <span className="col-6">
                                 {d.message}
                             </span>
                         </div>
