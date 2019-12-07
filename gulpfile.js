@@ -58,8 +58,17 @@ gulp.task('css', function () {
     let styles = paths.source + '/styles';
     let output = paths.publish.styles;
 
-    return gulp.src(styles + '/**/*.less')
-        .pipe(less())
+    let streams = [];
+
+    streams.push(
+        gulp.src(styles + '/**/*.less').pipe(less())
+    );
+
+    streams.push(
+        gulp.src('**/*/react-animation/dist/keyframes.css')
+    );
+
+    return merge(streams)
         .pipe(concat('styles.min.css'))
         .pipe(minify())
         .pipe(gulp.dest(output));

@@ -17,6 +17,7 @@
     "font-awesome": "4.7.0"
   },
   "devDependencies": {
+    "react-animation": "1.2.2",
     "@isaacadams/webvendor": "^0.4.0",
     "gameofwar": "2.2.0",
     "@isaacadams/nodejs-utils": "0.2.0",

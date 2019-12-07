@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { animations } from 'react-animation'
 import { NavItemsParent } from './NavItemsParent';
 
 interface IState {
@@ -39,7 +40,7 @@ export default class Navbar extends React.Component<any, IState> {
                         aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
-                <div className={`collapse navbar-collapse ${(this.state.showing ? "d-flex" : "d-none")}`} id="navbarText">
+                <div className={`collapse navbar-collapse ${(this.state.showing ? "d-flex" : "d-none")}`} id="navbarText" style={{animation: animations.slideIn}}>
                     <NavItemsParent />
                     {/* <form className="form-inline">
                         <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
