@@ -16,12 +16,12 @@ export class Gallery extends PageComponent<string> {
         let imgCss: any = {
             "objectFit": "cover"
         };
-
+//hello
         return (
             <div className="container">
                 <div className="row">
                     {this.state.data.map((value: string, index: number) => 
-                        <img className="col-lg-4 col-3 py-3" style={imgCss} key={index} src={value} />
+                        <img className="col-lg-4 col-12 py-3" style={imgCss} key={index} src={value} />
                     )}
                 </div>                
             </div>
