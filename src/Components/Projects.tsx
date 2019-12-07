@@ -29,7 +29,11 @@ export class Projects extends PageComponent<data> {
             <div className="container">
                 <div className="row">
                     <div className="col-auto">
-                        <ProjectCard name="Game of War" link="https://cards-gameofwar.web.app/" image="" message="Hello World" />
+                        <ProjectCard 
+                            name="Game of War" 
+                            link="https://cards-gameofwar.web.app/"
+                            image="assets/imgs/hide/cards.svg" 
+                            message="I created a simulation of the classic card game called 'Game of War' using react" />
                     </div>
                     <div className="col-auto">
                         <ProjectCard 
