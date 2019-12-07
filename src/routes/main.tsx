@@ -12,7 +12,6 @@ export const Main = () => (
                     <Navbar />
                 </div>
                 <div className="row">
-                    <section className="col-lg-1"></section>
                     <section className="col">
                         <Routes />
                     </section>
