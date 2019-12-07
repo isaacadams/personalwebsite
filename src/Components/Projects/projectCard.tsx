@@ -20,7 +20,7 @@ export class ProjectCard extends React.Component<IProps, any> {
                 <div className="card-body">
                     <h5 className="card-title">{this.props.name}</h5>
                     <p className="card-text">{this.props.message}</p>
-                    <a href={this.props.link} className="btn btn-outline-primary stretched-link">See Project</a>
+                    <a href={this.props.link} className="btn btn-outline-primary stretched-link">Website</a>
                 </div> 
             </div>            
         );
