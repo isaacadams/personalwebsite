@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { PageComponent } from './Shared/Page';
 import { Link, Route } from 'react-router-dom';
-import { GameOfWar } from './Projects/gameofwar';
-import { NONAME } from 'dns';
+import { ProjectCard } from './Projects/projectCard';
 
 interface data {
     title: string,
@@ -24,36 +23,28 @@ export class Projects extends PageComponent<data> {
         let element: JSX.Element = super.render();
         if (element)
             return element;
-
-        let url = this.match.url;
-        let atts = 
-        {
-            align: "center"
-        };
-
+       
         return (
-            <p {...atts}>
-                <iframe 
-                    src="https://cards-gameofwar.web.app/" 
-                    width="100%" 
-                    height="100%"
-                />
-                {/* <Route path={`${url}/gameofwar`} component={GameOfWar} />
-                <Route
-                    exact
-                    path={url}
-                    render={() =>
-                        <div>
-                            {this.state.data.map((val: data, index) =>
-                                <div key={index} className="card">
-                                    <img src="{val.image}" />
-                                    <Link to={`${url}/gameofwar`}><h2 className="title">{val.title}</h2></Link>
-                                    <p className="message">{val.description}</p>
-                                </div>
-                            )}
-                        </div>}
-                /> */}
-            </p>
+            <div className="container mt-3">
+                <div className="row justify-content-center">
+                    <div className="col-auto">
+                        <ProjectCard 
+                            name="Game of War" 
+                            website="https://cards-gameofwar.web.app/"
+                            github="https://github.com/isaacadams/GameOfWar"
+                            image="assets/imgs/hide/cards.svg" 
+                            message="I created a simulation of the classic card game called 'Game of War' using react" />
+                    </div>
+                    <div className="col-auto">
+                        <ProjectCard 
+                            name="Jenkins" 
+                            website="https://lightsail.isaacadams.me/jenkins/" 
+                            github="https://github.com/isaacadams/naruto"
+                            image="https://jenkins.io/images/logos/jenkins/jenkins.svg" 
+                            message="I host maintain my own jenkins server which is used to build all of my public and private projects" />
+                    </div>
+                </div>                
+            </div>
         );
     }
 }

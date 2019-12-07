@@ -11,7 +11,8 @@ var gulp = require('gulp'),
     less = require('gulp-less'),
     merge = require('merge-stream'),
     concat = require('gulp-concat'),
-    minify = require('gulp-minify-css');
+    minify = require('gulp-minify-css'),
+    webvendor = require('@isaacadams/webvendor');
 
 let { getJsonFile, createFile } = require('@isaacadams/nodejs-utils');
 let { paths } = require('./tasks/settings');
@@ -20,18 +21,30 @@ Array.prototype.contains = function (item) {
     return this.indexOf(item) > -1;
 };
 
-let { vendors } = require('./tasks/vendors');
-gulp.task('vendors', vendors);
+gulp.task('vendors', function(cb) {
+    let opts = {
+        html: "index.html",
+        output: "dist/generated/styles"
+    }
+
+    webvendor(opts)
+        .addBootstrap()
+        .addFontAwesome()
+        .deploy();
+
+    return cb();
+});
 
 let { createIndexHtmlFile } = require('./tasks/index');
 gulp.task('createIndexHtmlFile', createIndexHtmlFile);
 
 let data = require('./tasks/data');
 gulp.task('data.home', data.home);
+gulp.task('data.fails', data.fails);
 gulp.task('data.projects', data.projects);
 gulp.task('data.pictures', data.pictures);
 
-gulp.task('data', gulp.series('data.home', 'data.projects', 'data.pictures'));
+gulp.task('data', gulp.series('data.home', 'data.fails', 'data.projects', 'data.pictures'));
 
 gulp.task('clean', function () {
     return gulp.src(paths.publish.generated, { allowEmpty: true })

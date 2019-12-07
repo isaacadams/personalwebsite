@@ -38,9 +38,10 @@ e.home = function (cb) {
     }
 
     file.data = [
-        createBlock('who i am', "I am a web developer based in Malvern, PA. My passion is software development and helping create applications that solve practical problems."),
-        createBlock('what i can do', "I create \"mobile first\" web sites and applications. I was previously hired to create a web application that collected health insurance information from an API. See other work I have done in my projects page."),
-        createBlock('how i can help', "Need helping creating or fixing your website? Need a web or mobile application solution to your business problems? Send me a message and let's talk about how I can help meet your needs."),
+        createBlock('Who?', "Isaac Adams is a human being 🤖 who has been progra... oops, umm *sniff*, eh hem *shuffles feet*, I mean -- has a natural affinity for computers and understands them really well for some reason."),
+        createBlock('Work.', "He currently works at eMoney Advisor as a software engineer ⚙️ doing full stack development 💻 using .NET core, SQL, and react."),
+        createBlock('Fun.', "He codes for fun 🎉, duh. Did you really think he does anything else? 🕹️👨‍👩‍👧‍👦"),
+        createBlock('Weird.', "☕🍵 Everyday he consumes 1-3 cups of coffee, 1-3 cups of tea, and 40-80 ozs of water. He spends most of the day in the bathroom. 😬"),
     ];
 
     return write(file, cb);
@@ -60,6 +61,26 @@ e.projects = function (cb) {
 
     file.data = [
         createProject('Game of War','A web based simulation of the classic card game of war','/assets/imgs/projects/not_found')
+    ];
+
+    return write(file, cb);
+};
+
+e.fails = function (cb) {
+    let file = createFileObject('fails.json');
+
+    function create(date, message) {
+        return {
+            date: date,
+            message: message
+        };
+    }
+
+    file.data = [
+        create('11/16/2019', 'failed to do something lorem epsum lroasn knsndk askndknen askjndje gpbinb js djndfnds l nsjndf asjnfjas'),
+        create('11/16/2019', 'failed to do something lorem epsum lroasn knsndk askndknen askjndje gpbinb js djndfnds l nsjndf asjnfjas'),
+        create('11/16/2019', 'failed to do something lorem epsum lroasn knsndk askndknen askjndje gpbinb js djndfnds l nsjndf asjnfjas'),
+        create('11/16/2019', 'failed to do something lorem epsum lroasn knsndk askndknen askjndje gpbinb js djndfnds l nsjndf asjnfjas')
     ];
 
     return write(file, cb);

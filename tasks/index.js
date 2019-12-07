@@ -15,10 +15,10 @@ e.createIndexHtmlFile = function (cb) {
 `<head>
     <meta name="viewport" content="width=device-width">
 
-    <script src="${paths.publish.scripts.rel()}/vendors.js"></script>
-
-    <link href="${paths.publish.styles.rel()}/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
     <link href="${paths.publish.styles.rel()}/styles.min.css" rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" href="${paths.publish.styles.rel()}/bootstrap/bootstrap.min.css" />
+    <script src="${paths.publish.styles.rel()}/bootstrap/bootstrap.bundle.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="${paths.publish.styles.rel()}/font-awesome/fonts/font-awesome.min.css" />
 </head>
 
 <body>    

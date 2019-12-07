@@ -7,21 +7,19 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "gulp app",
     "serve": "http-server ./dist -p 1000 -o -c-1",
-    "deploy": "npm run build && firebase deploy"
+    "deploy": "npm run build && firebase deploy",
+    "develop" : "start gulp watch && start npm run serve"
   },
   "author": "Isaac Adams",
   "license": "ISC",
   "dependencies": {
-    "font-awesome": "4.7.0",
-    "jquery": "3.3.1",
-    "jquery-ajax-unobtrusive": "3.2.6",
-    "jquery-validation": "1.18.0",
-    "jquery-validation-unobtrusive": "3.2.11",
-    "popper.js": "1.14.4"
+    "bootstrap": "^4.3.1",
+    "font-awesome": "4.7.0"
   },
   "devDependencies": {
+    "@isaacadams/webvendor": "^0.4.0",
     "gameofwar": "2.2.0",
-    "@isaacadams/nodejs-utils": "0.1.0",
+    "@isaacadams/nodejs-utils": "0.2.0",
     "babel-core": "^6.26.0",
     "babel-preset-env": "1.7.0",
     "babel-preset-react": "^6.24.1",
@@ -45,6 +43,7 @@
     "gulp-minify-css": "^1.2.4",
     "gulp-rimraf": "0.2.2",
     "gulp-uglify": "3.0.1",
+    "gulp-terser": "1.1.7",
     "merge-stream": "^1.0.1",
     "rimraf": "2.6.2",
     "browserify": "^16.2.2",
