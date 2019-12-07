@@ -38,9 +38,10 @@ e.home = function (cb) {
     }
 
     file.data = [
-        createBlock('Who?', "<b>Isaac Adams</b> is a human being who can't stop coding."),
+        createBlock('Who?', "Isaac Adams is a human being who has been progra.. errr, eh hem, I mean, has natural affinity for programming and never seems to have time for anything else."),
         createBlock('Work.', "He currently works at eMoney Advisor as a software engineer doing full stack development using .NET core, SQL, and react."),
-        createBlock('Fun.', "Everyday he consumes 1-3 cups of coffee, 1-3 cups of tea, and 40-80 ozs of water. He spends most of the day in the bathroom."),
+        createBlock('Fun.', "He codes for fun, duh. Did you really think he does anything else?"),
+        createBlock('Weird.', "Everyday he consumes 1-3 cups of coffee, 1-3 cups of tea, and 40-80 ozs of water. He spends most of the day in the bathroom."),
     ];
 
     return write(file, cb);
