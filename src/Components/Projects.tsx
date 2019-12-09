@@ -25,7 +25,7 @@ export class Projects extends PageComponent<data> {
             return element;
        
         return (
-            <div className="container mt-3">
+            <div className="mt-3">
                 <div className="row justify-content-center">
                     <div className="col-auto mb-4">
                         <ProjectCard 
