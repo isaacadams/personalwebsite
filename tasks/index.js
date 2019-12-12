@@ -13,7 +13,7 @@ e.createIndexHtmlFile = function (cb) {
     
     create.write(
 `<head>
-    <meta name="viewport" content="width=device-width">
+    <meta id="view" name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" /> 
 
     <link href="${paths.publish.styles.rel()}/styles.min.css" rel="stylesheet" />
     <link type="text/css" rel="stylesheet" href="${paths.publish.styles.rel()}/bootstrap/bootstrap.min.css" />
