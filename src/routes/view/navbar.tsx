@@ -40,7 +40,7 @@ export default class Navbar extends React.Component<any, IState> {
                         aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
-                <div className={`navbar-collapse collapse ${(this.state.showing ? "d-flex show" : "")}`} id="navbarText" style={{animation: animations.slideIn}}>
+                <div className={`navbar-collapse collapse ${(this.state.showing ? "show" : "")}`} style={{animation: animations.slideIn}}>
                     <NavItemsParent />
                     {/* <form className="form-inline">
                         <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
