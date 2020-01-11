@@ -82,10 +82,6 @@ let app = {
 };
 
 gulp.task('build', function () {
-
-    let gameofwar = require('gameofwar');
-    gameofwar.CreateApp('dist/generated/js');
-
     let b = browserify({
         entries: [app.entry]
     });
