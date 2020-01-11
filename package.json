@@ -19,7 +19,6 @@
   "devDependencies": {
     "react-animation": "1.2.2",
     "@isaacadams/webvendor": "^0.4.0",
-    "gameofwar": "2.2.0",
     "@isaacadams/nodejs-utils": "0.2.0",
     "babel-core": "^6.26.0",
     "babel-preset-env": "1.7.0",
