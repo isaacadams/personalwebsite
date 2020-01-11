@@ -5,6 +5,7 @@ import { Projects } from '../Components/Projects';
 import { Gallery } from '../Components/Gallery';
 import { RouteModels } from './RouteModels';
 import { Landing } from '../Components/Landing';
+import { BibleStudy } from '../Components/BibleStudy';
 
 class RouteConfiguration {
     /* Home: RouteModels.Definition;
@@ -28,6 +29,7 @@ class RouteConfiguration {
             o.exact = true;
         });
 
+        this.BibleStudy = RouteBuilder.define("biblestudy", "/study", BibleStudy);
 
         this._configArray = Object.keys(this).map(k => this[k]);
     }
