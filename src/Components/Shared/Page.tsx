@@ -1,20 +1,16 @@
 import * as React from 'react';
-import { match as IMatch } from 'react-router-dom';
 
 interface IState<TData> {
     data: TData[]
 }
 
 interface IProps {
-    match: IMatch;
 }
 
 export class PageComponent<TData> extends React.Component<IProps, IState<TData>> {
     datafilename: string;
-    match: IMatch;
     constructor(props: IProps) {
         super(props);
-        this.match = props.match;
         this.state = this.getInitialState();        
     }
 
