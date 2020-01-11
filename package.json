@@ -8,7 +8,7 @@
     "build": "gulp app",
     "serve": "http-server ./dist -p 1000 -o -c-1",
     "deploy": "npm run build && firebase deploy",
-    "develop": "start gulp watch && start npm run serve"
+    "develop": "start gulp watch | npm run build && start npm run serve"
   },
   "author": "Isaac Adams",
   "license": "ISC",
