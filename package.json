@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "gulp app",
-    "serve": "http-server ./dist -p 1000 -o -c-1",
+    "serve": "http-server ./dist -p 1000 -o -c-1 --proxy http://localhost:1000?",
     "deploy": "npm run build && firebase deploy",
     "develop": "start gulp watch | npm run build && start npm run serve"
   },
