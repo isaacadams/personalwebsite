@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import { routeDefinitions } from './RouteDefinitions';
 
 class Routes extends React.Component {
@@ -18,9 +18,10 @@ class Routes extends React.Component {
                         exact={r.opts.exact}
                         component={p => <r.component {...p} />} />
                 ))}
-                <Route path="/*">
+                {/* <Route path="/*">
                     <span>ERROR 404</span>
-                </Route>
+                </Route> */}
+                <Redirect from='/*' to='/' />
             </Switch>
         )
     }
