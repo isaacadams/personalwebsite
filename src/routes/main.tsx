@@ -5,19 +5,26 @@ import Navbar from './view/navbar';
 
 export const Main = () => (
     <Router>
-        <div>
-            <section className="d-none d-lg-block py-5">&nbsp;</section>
-            <div className="container mt-lg-5">
-                <div className="row">
+        <div className="container mt-lg-5">
+            <section className="row py-5">&nbsp;</section>
+            <div className="row">
+                <section className="col-12">
                     <Navbar />
+                </section>
+                <section className="col-12">
+                    <Routes />
+                </section>     
+
+                {/* <hr />
+                <section className="row">
+                    <Projects />
                 </div>
-                <div className="row">
-                    <section className="col">
-                        <Routes />
-                    </section>
-                </div>                
+                <hr />
+                <section className="row">
+                    <Gallery />
+                </div>  */}          
             </div>      
-            <section className="py-5">&nbsp;</section>      
+            <section className="row py-5">&nbsp;</section>      
         </div>            
     </Router>
 );
