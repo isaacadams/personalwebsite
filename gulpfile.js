@@ -2,16 +2,10 @@
 
 var gulp = require('gulp'),
     rimraf = require('gulp-rimraf'),
-    fs = require("fs"),
-    browserify = require("browserify"),
-    tsify = require("tsify"),
-    babelify = require('babelify'),
-    b_minify = require('minifyify'),
-    b_uglify = require('uglifyify'),
     less = require('gulp-less'),
     merge = require('merge-stream'),
     concat = require('gulp-concat'),
-    minify = require('gulp-minify-css'),
+    cleanCss = require('gulp-clean-css'),
     webvendor = require('@isaacadams/webvendor');
 
 let { getJsonFile, createFile } = require('@isaacadams/nodejs-utils');
@@ -53,7 +47,6 @@ gulp.task('clean', function () {
         .pipe(rimraf());
 });
 
-
 gulp.task('css', function () {
     let styles = paths.source + '/styles';
     let output = paths.publish.styles;
@@ -70,39 +63,13 @@ gulp.task('css', function () {
 
     return merge(streams)
         .pipe(concat('styles.min.css'))
-        .pipe(minify())
+        .pipe(cleanCss())
         .pipe(gulp.dest(output));
 });
 
-let app = {
-    //entry extension can be .jsx, .js, .ts, or .tsx
-    entry: paths.source + '/index.tsx',
-    publish: paths.publish.scripts + '/bundle.js',
-    tsconfig: './tsconfig.json'
-};
-
-gulp.task('build', function () {
-    let b = browserify({
-        entries: [app.entry]
-    });
-
-    b.plugin(tsify, getJsonFile(app.tsconfig).compilerOptions);
-    b.transform(babelify, {
-        presets: ['env', 'react']
-    });
-
-    b.plugin(b_uglify);
-    b.plugin(b_minify, { map: false });
-    
-    return b.bundle()
-        .pipe(createFile(app.publish));
-});
-
-
-
-gulp.task('app', gulp.series('clean', 'css', 'data', 'createIndexHtmlFile', 'vendors', 'build'));
+gulp.task('app', gulp.series('clean', gulp.parallel('css', 'createIndexHtmlFile', 'vendors'), 'data'));
 
 gulp.task('watch', function () {
-    gulp.watch(['./src/**/*.{js,jsx,ts,tsx}'], gulp.parallel('build'));
+    //gulp.watch(['./src/**/*.{js,jsx,ts,tsx}'], gulp.parallel('build'));
     gulp.watch(['./src/**/*.{css,less}'], gulp.parallel('css'));
 });
