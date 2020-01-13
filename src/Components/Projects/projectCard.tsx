@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 interface IProps {
     website: string;
@@ -27,7 +28,10 @@ export class ProjectCard extends React.Component<IProps, any> {
                     <span className="d-block small mb-3">{this.props.tags.map(t => `#${t} `)}</span>
                     <div className="d-flex justify-content-between">
                         <a href={this.props.website} className="btn  btn-outline-info">Website</a>
-                        <a href={this.props.github} className="btn btn-secondary"><span className="fa fa-github"></span> GitHub</a>
+                        <a href={this.props.github} className="btn btn-secondary">
+                            <FontAwesomeIcon icon={["fab", "github"]} />
+                            <span className="ml-1">GitHub</span>
+                        </a>
                     </div>
                 </div> 
             </div>            
