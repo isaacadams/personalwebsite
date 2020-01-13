@@ -5,8 +5,7 @@ var gulp = require('gulp'),
     less = require('gulp-less'),
     merge = require('merge-stream'),
     concat = require('gulp-concat'),
-    cleanCss = require('gulp-clean-css'),
-    webvendor = require('@isaacadams/webvendor');
+    cleanCss = require('gulp-clean-css');
 
 let { getJsonFile, createFile } = require('@isaacadams/nodejs-utils');
 let { paths } = require('./tasks/settings');
@@ -14,20 +13,6 @@ let { paths } = require('./tasks/settings');
 Array.prototype.contains = function (item) {
     return this.indexOf(item) > -1;
 };
-
-gulp.task('vendors', function(cb) {
-    let opts = {
-        html: "index.html",
-        output: "dist/generated/styles"
-    }
-
-    webvendor(opts)
-        .addBootstrap()
-        .addFontAwesome()
-        .deploy();
-
-    return cb();
-});
 
 let { createIndexHtmlFile } = require('./tasks/index');
 gulp.task('createIndexHtmlFile', createIndexHtmlFile);
@@ -67,7 +52,7 @@ gulp.task('css', function () {
         .pipe(gulp.dest(output));
 });
 
-gulp.task('app', gulp.series('clean', gulp.parallel('css', 'createIndexHtmlFile', 'vendors'), 'data'));
+gulp.task('app', gulp.series('clean', gulp.parallel('css', 'createIndexHtmlFile'), 'data'));
 
 gulp.task('watch', function () {
     //gulp.watch(['./src/**/*.{js,jsx,ts,tsx}'], gulp.parallel('build'));
