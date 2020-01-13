@@ -28,13 +28,12 @@ export class BibleStudy extends NavPageComponent {
         this.people = ["Rob Troop", "Jingle Bells", "Elisha Stigora", "Liam Stigora", "Patrick Magargee", "Cole Magargee", "Will Ordini", "Judah Knaub", "Zach Pearl", "Chad Lohmann", "Ryle Mellinger"];
         this.details = [
             new Detail("What", "a bible study on Colossians"),
-            new Detail("Where", "see schedule below for rotating locations"),
             new Detail("When", "every other wednesday @ 6:30-8 PM starting on Jan 22nd")
         ];
 
         this.schedule = [
-            new Schedule("Jan 22nd", "Zach Pearl's"),
-            new Schedule("Feb 5th", "??"),
+            new Schedule("Jan 22nd", "1650 Erb Dr Aston, PA 19014 (Zach Pearl)"),
+            new Schedule("Feb 5th", "Stigoras ??"),
             new Schedule("Feb 19th", "??"),
             new Schedule("Mar 4th", "??")
         ];
