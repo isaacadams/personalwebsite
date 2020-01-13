@@ -7,7 +7,6 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     cleanCss = require('gulp-clean-css');
 
-let { getJsonFile, createFile } = require('@isaacadams/nodejs-utils');
 let { paths } = require('./tasks/settings');
 
 Array.prototype.contains = function (item) {
