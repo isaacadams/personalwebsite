@@ -2,7 +2,7 @@ import { NavPageComponent } from "./Shared/NavPageComponent";
 import { Gallery } from "./Gallery";
 import { Projects } from "./Projects";
 import { Home } from "./Home";
-import React from "react";
+import * as React from "react";
 
 export class Landing extends NavPageComponent {
     constructor(props: any) {
