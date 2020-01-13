@@ -9,7 +9,7 @@ let e = module.exports;
 e.createIndexHtmlFile = function (cb) {
 
 
-    let create = fs.createWriteStream(`${paths.publish.path}/index.html`);
+    let create = fs.createWriteStream(`${paths.source}/index.html`);
     let node_modules = '../node_modules';
 
     create.write(
