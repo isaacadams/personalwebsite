@@ -44,8 +44,8 @@ export class BibleStudy extends NavPageComponent {
             <div className="row">
                 <div className="col-12 py-2">
                         <h4>Details</h4>
-                        {this.details.map(d => 
-                            <div className="row py-2">
+                        {this.details.map((d, i) => 
+                            <div key={i} className="row py-2">
                                 <span className="col-12 col-lg-2">{d.question}?</span>
                                 <span className="col">{d.message}</span>
                             </div>
@@ -53,8 +53,8 @@ export class BibleStudy extends NavPageComponent {
                 </div>
                 <div className="col-12 py-2">
                     <h4>Schedule</h4>
-                    {this.schedule.map(d => 
-                        <div className="row py-2">
+                    {this.schedule.map((d, i) => 
+                        <div key={i} className="row py-2">
                             <span className="col-12 col-lg-2">{d.date}</span>
                             <span className="col">@ {d.location}</span>
                         </div>
@@ -63,7 +63,7 @@ export class BibleStudy extends NavPageComponent {
                 <div className="col-12 py-2">
                     <h4>Roster</h4>
                     <ul>
-                        {this.people.map(name => <li>{name}</li>)}
+                        {this.people.map((name, i) => <li key={i}>{name}</li>)}
                     </ul>
                 </div>
             </div>
