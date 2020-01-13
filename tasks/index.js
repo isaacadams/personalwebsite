@@ -18,7 +18,6 @@ e.createIndexHtmlFile = function (cb) {
 
     <!-- <link href="${paths.publish.styles.rel()}/styles.min.css" rel="stylesheet" /> -->
     <link href="${node_modules}/bootstrap/dist/css/bootstrap.css" type="text/css" rel="stylesheet" />
-    <link href="${node_modules}/font-awesome/css/font-awesome.css" type="text/css" rel="stylesheet" />
     <script src="${node_modules}/bootstrap/dist/js/bootstrap.bundle.js"></script>
 </head>
 
