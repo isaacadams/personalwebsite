@@ -6,6 +6,7 @@ import { Gallery } from '../Components/Gallery';
 import { RouteModels } from './RouteModels';
 import { Landing } from '../Components/Landing';
 import { BibleStudy } from '../Components/BibleStudy';
+import { Calculator } from '../Components/Calculator';
 
 class RouteConfiguration {
     /* Home: RouteModels.Definition;
@@ -14,6 +15,7 @@ class RouteConfiguration {
     Gallery: RouteModels.Definition; */
     Landing: RouteModels.Definition;
     BibleStudy: RouteModels.Definition;
+    Calculator: RouteModels.Definition;
     private _configArray: RouteModels.Definition[];
 
     constructor() {
@@ -30,6 +32,7 @@ class RouteConfiguration {
         });
 
         this.BibleStudy = RouteBuilder.define("biblestudy", "/study", BibleStudy);
+        this.Calculator = RouteBuilder.define("calculator", "/calculator", Calculator);
 
         this._configArray = Object.keys(this).map(k => this[k]);
     }
