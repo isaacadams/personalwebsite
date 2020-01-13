@@ -46,8 +46,8 @@ abstract class Input extends React.Component<{ name: string, initial: any, updat
 
     render() {        
         return <div className="row py-2">
-            <label className="col-2 control-label">{this.props.name}</label>
-            <NumberFormat className="col-10 form-control" name={this.props.name} value={this.state.value} {...this.FormatOptions} onValueChange={v => this.onValueChange(v)} />
+            <label className="col-12 col-lg-2 control-label">{this.props.name}</label>
+            <NumberFormat className="col-12 col-lg-10 form-control" name={this.props.name} value={this.state.value} {...this.FormatOptions} onValueChange={v => this.onValueChange(v)} />
         </div>
     }      
 }
