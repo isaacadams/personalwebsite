@@ -38,10 +38,16 @@ abstract class Input extends React.Component<{ name: string, initial: any, updat
         this.state = { value: this.props.initial };
     }
 
+    onValueChange(values) {
+        let { value } = values;
+        this.setState({value: value});
+        this.props.update(value);
+    }
+
     render() {        
         return <div className="row py-2">
             <label className="col-2 control-label">{this.props.name}</label>
-            <NumberFormat className="col-10 form-control" name={this.props.name} value={this.state.value} {...this.FormatOptions} />
+            <NumberFormat className="col-10 form-control" name={this.props.name} value={this.state.value} {...this.FormatOptions} onValueChange={v => this.onValueChange(v)} />
         </div>
     }      
 }
@@ -61,12 +67,7 @@ class Currency extends Input {
 
         this.FormatOptions = {
             thousandSeparator: true,
-            prefix: '$',
-            onValueChange: (values) => {
-                const { value } = values;
-                this.setState({value: value});
-                this.props.update(value);
-            }
+            prefix: '$'
         };
     }   
 }
@@ -79,13 +80,14 @@ class Percent extends Input {
         this.state = { value: this.props.initial * 100 };
 
         this.FormatOptions = {
-            suffix: '%',
-            onValueChange: (values) => {
-                const { floatValue } = values;       
-                this.setState({value: floatValue});
-                this.props.update(floatValue / 100);
-            }
+            suffix: '%'
         };
+    }
+
+    onValueChange(values) {
+        let { floatValue } = values;       
+        this.setState({value: floatValue});
+        this.props.update(floatValue / 100);
     }
 }
 
@@ -97,7 +99,9 @@ class Percent extends Input {
  * @returns the accrued value of investment at the end
  */
 function CompoundInterest(p: number, r: number, n: number, t: number): number {
-    let pm = Math.pow(1 + r/n, n*t);
+    let pm = Math.pow(1 + r/n, n * t);
+    console.log(t);
+    console.log(pm);
     let final = p * pm;
     return final;
 }
