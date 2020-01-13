@@ -14,7 +14,7 @@ export function useData(filename) {
                 'Content-Type': 'application/json'
             }
         }).then(r => {
-            console.log(r);
+            //console.log(r);
             return r.json();           
         }).then(data => {
             setData(data);
