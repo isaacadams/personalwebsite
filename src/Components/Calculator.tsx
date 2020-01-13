@@ -100,8 +100,6 @@ class Percent extends Input {
  */
 function CompoundInterest(p: number, r: number, n: number, t: number): number {
     let pm = Math.pow(1 + r/n, n * t);
-    console.log(t);
-    console.log(pm);
     let final = p * pm;
     return final;
 }
