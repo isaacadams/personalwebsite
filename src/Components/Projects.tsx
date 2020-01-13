@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { PageComponent } from './Shared/Page';
-import { Link, Route } from 'react-router-dom';
+import { useData } from './Shared/useData';
 import { ProjectCard } from './Projects/projectCard';
 
 interface data {
@@ -10,20 +9,15 @@ interface data {
     link: string
 }
 
-export class Projects extends PageComponent<data> {
-
+export class Projects extends React.Component<{}, {}> {
+    
     constructor(props: any) {
         super(props);
-        
-        this.datafilename = "projects";
     }
 
     render() {
+        //let data = useData("projects");
 
-        let element: JSX.Element = super.render();
-        if (element)
-            return element;
-       
         return (
             <div className="mt-3 row justify-content-center">
                 <div className="col-auto mb-4">
@@ -44,7 +38,7 @@ export class Projects extends PageComponent<data> {
                         message="I host and maintain my own jenkins server which is used to build all of my public and private projects"
                         tags={["docker", "linux", "lightsail", "nginx"]} />
                 </div>
-            </div>
+            </div>            
         );
     }
 }
