@@ -10,15 +10,16 @@ e.createIndexHtmlFile = function (cb) {
 
 
     let create = fs.createWriteStream(`${paths.publish.path}/index.html`);
-    
+    let node_modules = '../node_modules';
+
     create.write(
 `<head>
     <meta id="view" name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" /> 
 
-    <link href="${paths.publish.styles.rel()}/styles.min.css" rel="stylesheet" />
-    <link type="text/css" rel="stylesheet" href="${paths.publish.styles.rel()}/bootstrap/bootstrap.min.css" />
-    <script src="${paths.publish.styles.rel()}/bootstrap/bootstrap.bundle.min.js"></script>
-    <link type="text/css" rel="stylesheet" href="${paths.publish.styles.rel()}/font-awesome/fonts/font-awesome.min.css" />
+    <!-- <link href="${paths.publish.styles.rel()}/styles.min.css" rel="stylesheet" /> -->
+    <link href="${node_modules}/bootstrap/dist/css/bootstrap.css" type="text/css" rel="stylesheet" />
+    <link href="${node_modules}/font-awesome/css/font-awesome.css" type="text/css" rel="stylesheet" />
+    <script src="${node_modules}/bootstrap/dist/js/bootstrap.bundle.js"></script>
 </head>
 
 <body>    
@@ -27,7 +28,7 @@ e.createIndexHtmlFile = function (cb) {
 </body>
 
 <footer>
-    <script src="${paths.publish.scripts.rel()}/bundle.js"></script>
+    <script src="index.tsx"></script>
 </footer>`
     );
 
