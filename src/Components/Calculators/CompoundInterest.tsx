@@ -19,12 +19,13 @@ function CompoundInterest(p: number, r: number, n: number, t: number, pmt: numbe
     return a + s;
 }
 
-function CompoundInterestView(props) {
+function CompoundInterestView({ p, r, n, t, pmt, ...props }) {
     
-    let final = CompoundInterest(props.p, props.r, props.n, props.t, props.pmt);
+    let final = CompoundInterest(p, r, n, t, pmt);
     
     return (
         <NumberFormat 
+            className={props.className}
             value={final} 
             displayType={'text'} 
             thousandSeparator={true} 
