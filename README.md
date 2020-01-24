@@ -1,4 +1,6 @@
 # my website
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fisaacadams%2Fpersonalwebsite.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fisaacadams%2Fpersonalwebsite?ref=badge_shield)
+
 
 this is a self explanatory project
 
@@ -17,3 +19,6 @@ this is a self explanatory project
 - goes along with the concept that failure is the precursor to success
 - text entries of daily struggles / failures
 - feed format w/ date
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fisaacadams%2Fpersonalwebsite.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fisaacadams%2Fpersonalwebsite?ref=badge_large)
