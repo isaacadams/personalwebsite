@@ -29,21 +29,14 @@ export abstract class Input extends React.Component<{
         let { value, name, ...atts } = remaining;
 
         return (
-            <div className="container">
-                <div className="row py-2">
-                    <label className="col-12 col-lg-2 control-label">
-                        {name}
-                    </label>
-                    <NumberFormat 
-                        {...this.FormatOptions}
-                        {...atts}
-                        value={this.formatValue(value)}
-                        name={name}
-                        className="col-12 col-lg-10 form-control" 
-                        onValueChange={v => this.onValueChange(v, name, update)}
-                    />
-                </div>
-            </div>
+            <NumberFormat 
+                {...this.FormatOptions}
+                {...atts}
+                value={this.formatValue(value)}
+                name={name}
+                className="form-control" 
+                onValueChange={v => this.onValueChange(v, name, update)}
+            />
         );
     }
 }

@@ -55,8 +55,8 @@ export function LoanPaymentCalculator(props) {
                 <Number value={state.years} name="years" update={(n, v) => Update("years", v)} />
             </div>                
             <div className="row mt-4">
-                <span className="col-2">Loan Payment</span>
-                <LoanPaymentView className="col" 
+                <span className="col-3">Loan Payment</span>
+                <LoanPaymentView className="col-4" 
                     presentValue={state.LoanAmount} 
                     rate={state.rate} 
                     periods={state.years} />

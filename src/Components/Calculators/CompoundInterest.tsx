@@ -46,15 +46,27 @@ export function CompoundInterestCalculator(props) {
     return (
         <div className="container">
             <div className="row">
-                <Currency update={Update} value={state.principal} name="principal" />
-                <Currency update={Update} value={state.contributions} name="contributions" />
-                <Percent update={Update} value={state.rate} name="rate" />
-                <Number update={Update} value={state.compound} name="compound" />
-                <Number update={Update} value={state.time} name="time" />
+                <div className="col-12">
+                    <InputLabel name="Principal">
+                        <Currency update={Update} value={state.principal} name="principal" />
+                    </InputLabel>
+                    <InputLabel name="Contributions (per unit of time)">
+                        <Currency update={Update} value={state.contributions} name="contributions" />
+                    </InputLabel>
+                    <InputLabel name="Rate">
+                        <Percent update={Update} value={state.rate} name="rate" />
+                    </InputLabel>
+                    <InputLabel name="Compound (per unit of time)">
+                        <Number update={Update} value={state.compound} name="compound" />
+                    </InputLabel>
+                    <InputLabel name="Time (years)">
+                        <Number update={Update} value={state.time} name="time" />
+                    </InputLabel>
+                </div>                
             </div>                
             <div className="row mt-4">
-                <span className="col-2">Future Value</span>
-                <CompoundInterestView className="col" 
+                <span className="col-3">Future Value</span>
+                <CompoundInterestView className="col-4" 
                     p={state.principal} 
                     r={state.rate} 
                     n={state.compound} 
@@ -64,11 +76,19 @@ export function CompoundInterestCalculator(props) {
         </div>
     );
 
-    function Update(name: any, value: any) {
-        
+    function Update(name: any, value: any) {        
         setState({
             ...state,
             [name]: value
         });
     }
+}
+
+function InputLabel({ name, children, ...atts}) {
+    return (
+        <div {...atts}>
+            <label>{name}</label>
+            {children}
+        </div>
+    );
 }
