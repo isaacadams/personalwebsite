@@ -4,14 +4,18 @@ export class Percent extends Input {
     FormatOptions: any;
     constructor(props) {
         super(props);
-        this.state = { value: this.props.initial * 100 };
+
         this.FormatOptions = {
             suffix: '%'
         };
     }
-    onValueChange(values) {
+
+    onValueChange(values, name, update) {
         let { floatValue } = values;
-        this.setState({ value: floatValue });
-        this.props.update(floatValue / 100);
+        update(name, floatValue / 100);
+    }
+
+    formatValue(v) {
+        return v * 100;
     }
 }

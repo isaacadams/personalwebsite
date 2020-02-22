@@ -25,7 +25,7 @@ export class BibleStudy extends NavPageComponent {
     people: string[];
     constructor(props: any) {
         super(props);
-        this.people = ["Rob Troop", "Jingle Bells", "Elisha Stigora", "Liam Stigora", "Patrick Magargee", "Cole Magargee", "Will Ordini", "Judah Knaub", "Zach Pearl", "Chad Lohmann", "Ryle Mellinger"];
+        this.people = ["Rob Troop", "Elisha Stigora", "Liam Stigora", "Patrick Magargee", "Cole Magargee", "Will Ordini", "Judah Knaub", "Zach Pearl", "Chad Lohmann", "Ryle Mellinger"];
         this.details = [
             new Detail("What", "a bible study on Colossians"),
             new Detail("When", "every other wednesday @ 6:30-8 PM starting on Jan 22nd")

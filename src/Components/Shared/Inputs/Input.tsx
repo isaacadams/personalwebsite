@@ -4,8 +4,8 @@ import React from "react";
 
 export abstract class Input extends React.Component<{
     name: string;
-    initial: any;
-    update: (value: any) => void;
+    value: any;
+    update: (name: string, value: any) => void;
 }, {
     value: any;
 }> {
@@ -13,28 +13,37 @@ export abstract class Input extends React.Component<{
     
     constructor(props) {
         super(props);
-        this.state = { value: this.props.initial };
     }
     
-    onValueChange(values) {
+    onValueChange(values, name, update) {
         let { value } = values;
-        this.setState({ value: value });
-        this.props.update(value);
+        update(name, value);
+    }
+
+    formatValue(v) {
+        return v;
     }
 
     render() {
-        return <div className="container">
-            <div className="row py-2">
-                <label className="col-12 col-lg-2 control-label">
-                    {this.props.name}
-                </label>
-                <NumberFormat 
-                    className="col-12 col-lg-10 form-control" 
-                    name={this.props.name} 
-                    value={this.state.value} 
-                    {...this.FormatOptions} 
-                    onValueChange={v => this.onValueChange(v)} />
+        let { update, children, ...remaining } = this.props;
+        let { value, name, ...atts } = remaining;
+
+        return (
+            <div className="container">
+                <div className="row py-2">
+                    <label className="col-12 col-lg-2 control-label">
+                        {name}
+                    </label>
+                    <NumberFormat 
+                        {...this.FormatOptions}
+                        {...atts}
+                        value={this.formatValue(value)}
+                        name={name}
+                        className="col-12 col-lg-10 form-control" 
+                        onValueChange={v => this.onValueChange(v, name, update)}
+                    />
+                </div>
             </div>
-        </div>;
+        );
     }
 }

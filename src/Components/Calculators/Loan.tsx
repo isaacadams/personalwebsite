@@ -50,9 +50,9 @@ export function LoanPaymentCalculator(props) {
     return (
         <div className="container">
             <div className="row">
-                <Currency initial={state.LoanAmount} name="LoanAmount" update={(v) => Update("LoanAmount", v)} />
-                <Percent initial={state.rate} name="rate" update={(v) => Update("rate", v)} />
-                <Number initial={state.years} name="years" update={(v) => Update("years", v)} />
+                <Currency value={state.LoanAmount} name="LoanAmount" update={(n, v) => Update("LoanAmount", v)} />
+                <Percent value={state.rate} name="rate" update={(n, v) => Update("rate", v)} />
+                <Number value={state.years} name="years" update={(n, v) => Update("years", v)} />
             </div>                
             <div className="row mt-4">
                 <span className="col-2">Loan Payment</span>

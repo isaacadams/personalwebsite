@@ -43,15 +43,14 @@ export function CompoundInterestCalculator(props) {
         compound: 1,
         time: 30,
     });
-
     return (
         <div className="container">
             <div className="row">
-                <Currency initial={state.principal} name="principal" update={(v) => Update("principal", v)} />
-                <Currency initial={state.contributions} name="contributions" update={(v) => Update("contributions", v)} />
-                <Percent initial={state.rate} name="rate" update={(v) => Update("rate", v)} />
-                <Number initial={state.compound} name="compound" update={(v) => Update("compound", v)} />
-                <Number initial={state.time} name="time" update={(v) => Update("time", v)} />
+                <Currency update={Update} value={state.principal} name="principal" />
+                <Currency update={Update} value={state.contributions} name="contributions" />
+                <Percent update={Update} value={state.rate} name="rate" />
+                <Number update={Update} value={state.compound} name="compound" />
+                <Number update={Update} value={state.time} name="time" />
             </div>                
             <div className="row mt-4">
                 <span className="col-2">Future Value</span>
@@ -65,7 +64,8 @@ export function CompoundInterestCalculator(props) {
         </div>
     );
 
-    function Update(name, value) {
+    function Update(name: any, value: any) {
+        
         setState({
             ...state,
             [name]: value
