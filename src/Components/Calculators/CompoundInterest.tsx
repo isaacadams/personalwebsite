@@ -86,9 +86,11 @@ export function CompoundInterestCalculator(props) {
 
 function InputLabel({ name, children, ...atts}) {
     return (
-        <div {...atts}>
+        <div className="d-flex" {...atts}>
             <label>{name}</label>
+            <div style={{ width: "7rem" }}>
             {children}
+            </div>
         </div>
     );
 }
