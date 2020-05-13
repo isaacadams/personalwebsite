@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 interface IProps {
-    website: string;
+    website?: string;
     github: string;
     name: string;
     message: string;
@@ -17,6 +17,7 @@ export class ProjectCard extends React.Component<IProps, any> {
     }
 
     render() {
+        console.log(this.props.website);
         return (
             <div className="card" style={{ width: "20rem" }}>
                 <img className="card-img-top p-2" src={this.props.image} style={{ height: "16rem"}} />        
@@ -27,7 +28,7 @@ export class ProjectCard extends React.Component<IProps, any> {
                     </p>
                     <span className="d-block small mb-3">{this.props.tags.map(t => `#${t} `)}</span>
                     <div className="d-flex justify-content-between">
-                        <a href={this.props.website} className="btn  btn-outline-info">Website</a>
+                        {this.props.website === undefined ? <div></div> : <a href={this.props.website} className="btn  btn-outline-info">Website</a>}
                         <a href={this.props.github} className="btn btn-secondary">
                             <FontAwesomeIcon icon={["fab", "github"]} />
                             <span className="ml-1">GitHub</span>

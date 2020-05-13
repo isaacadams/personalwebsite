@@ -32,10 +32,10 @@ export class Projects extends React.Component<{}, {}> {
                 <div className="col-auto mb-4">
                     <ProjectCard 
                         name="Jenkins" 
-                        website="https://lightsail.isaacadams.me/jenkins/" 
+                        //website="https://lightsail.isaacadams.me/jenkins/" 
                         github="https://github.com/isaacadams/naruto"
                         image="https://jenkins.io/images/logos/jenkins/jenkins.svg" 
-                        message="I host and maintain my own jenkins server which is used to build all of my public and private projects"
+                        message="I used to host and maintain my own jenkins server but decided to take it down and switch to using free platforms like TravisCI"
                         tags={["docker", "linux", "lightsail", "nginx"]} />
                 </div>
             </div>            
