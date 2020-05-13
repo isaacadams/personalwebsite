@@ -43,6 +43,7 @@
     "react-number-format": "^4.4.1",
     "react-router-dom": "5.2.0",
     "rimraf": "3.0.2",
-    "typescript": "^3.9.2"
+    "typescript": "^3.9.2",
+    "firebase-tools": "^8.2.0"
   }
 }
