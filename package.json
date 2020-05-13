@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "start gulp watch",
     "build": "gulp app",
-    "deploy": "npm run build && firebase deploy",
+    "deploy": "npm run build && parcel build ./src/index.html && firebase deploy",
     "start": "npm run build && parcel ./src/index.html"
   },
   "author": "Isaac Adams",
