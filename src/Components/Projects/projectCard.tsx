@@ -17,7 +17,6 @@ export class ProjectCard extends React.Component<IProps, any> {
     }
 
     render() {
-        console.log(this.props.website);
         return (
             <div className="card" style={{ width: "20rem" }}>
                 <img className="card-img-top p-2" src={this.props.image} style={{ height: "16rem"}} />        
