@@ -1,13 +1,5 @@
 import * as React from 'react';
-import { useData } from './Shared/useData';
 import { ProjectCard } from './Projects/projectCard';
-
-interface data {
-    title: string,
-    description: string,
-    image: string,
-    link: string
-}
 
 export class Projects extends React.Component<{}, {}> {
     
@@ -16,8 +8,6 @@ export class Projects extends React.Component<{}, {}> {
     }
 
     render() {
-        //let data = useData("projects");
-
         return (
             <div className="mt-3 row justify-content-center">
                 <div className="col-auto mb-4">
