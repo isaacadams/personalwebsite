@@ -12,6 +12,11 @@ this is a self explanatory project
 
 ## Ideas
 
+commit activity log
+- pull public commits from github
+- display them in a list on subpage
+- add filter
+
 .failure log
 - had this interesting today of a "failure log"
 - goes along with the concept that failure is the precursor to success
