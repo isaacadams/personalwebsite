@@ -1,7 +1,7 @@
 let fs = require('fs');
-let { getJsonFile, ensureDirectoriesExist, createFile, bundler } = require('@isaacadams/nodejs-utils');
-
+let { ensureDirectoriesExist } = require('@isaacadams/nodejs-utils');
 let { paths } = require('./settings');
+
 let imgsFolder = paths.publish.images;
 let dataFolder = paths.publish.data;
 
@@ -47,25 +47,6 @@ e.home = function (cb) {
     return write(file, cb);
 };
 
-
-e.projects = function (cb) {
-    let file = createFileObject('projects.json');
-
-    function createProject(title, description, image) {
-        return {
-            title: title,
-            description: description,
-            image: image
-        };
-    }
-
-    file.data = [
-        createProject('Game of War','A web based simulation of the classic card game of war','/assets/imgs/projects/not_found')
-    ];
-
-    return write(file, cb);
-};
-
 e.fails = function (cb) {
     let file = createFileObject('fails.json');
 
@@ -90,10 +71,3 @@ function write(file, cb) {
     ensureDirectoriesExist(file.path);
     return fs.writeFile(file.path, JSON.stringify(file.data), 'utf8', cb);
 }
-
-
-//let projects = [
-//    'Created a web based simulation of the card game War! using react',
-//    'Built an API that retrieves and stores healthcare information',
-//    ''
-//];
