@@ -19,10 +19,9 @@ gulp.task('createIndexHtmlFile', createIndexHtmlFile);
 let data = require('./tasks/data');
 gulp.task('data.home', data.home);
 gulp.task('data.fails', data.fails);
-gulp.task('data.projects', data.projects);
 gulp.task('data.pictures', data.pictures);
 
-gulp.task('data', gulp.series('data.home', 'data.fails', 'data.projects', 'data.pictures'));
+gulp.task('data', gulp.series('data.home', 'data.fails', 'data.pictures'));
 
 gulp.task('clean', function () {
     return gulp.src(paths.publish.generated, { allowEmpty: true })
