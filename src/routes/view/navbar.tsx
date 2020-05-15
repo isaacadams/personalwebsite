@@ -29,7 +29,7 @@ export default class Navbar extends React.Component<any, IState> {
     render() {
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-transparent">
-                <a className="navbar-brand" href="/">Isaac Adams</a>
+                {/* <a className="navbar-brand" href="/">put a cool logo here?</a> */}
                 <button className={`navbar-toggler ${(this.state.showing ? "" : "collapsed")}`} 
                         onClick={this.handleTogglerClick} 
                         type="button" 
@@ -42,10 +42,6 @@ export default class Navbar extends React.Component<any, IState> {
                 </button>
                 <div className={`navbar-collapse collapse ${(this.state.showing ? "show" : "")}`} style={{animation: animations.slideIn}}>
                     <NavItemsParent />
-                    {/* <form className="form-inline">
-                        <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </form> */}
                 </div>
             </nav>
         );
