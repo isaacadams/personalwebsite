@@ -5,26 +5,29 @@ export function useData(filename) {
     let [data, setData] = useState({});
 
     useEffect(() => {
-
-        let endpoint = "/generated/data/" + filename + ".json";
-        fetch(endpoint, {
-            method: 'GET',
-            headers: {
-                Accept: 'application/json, text/html',
-                'Content-Type': 'application/json'
-            }
-        }).then(r => {
-            //console.log(r);
-            return r.json();           
-        }).then(d => {
+        getData(filename)
+        .then(d => {
             setData({
                 ...data,
-                [filename]: d
+                [filename]: d.data
             });
         });
     }, [filename]);
 
     return data[filename];
+}
+
+export function getData(filename) {
+    let endpoint = "/generated/data/" + filename + ".json";
+    return fetch(endpoint, {
+        method: 'GET',
+        headers: {
+            Accept: 'application/json, text/html',
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(r => r.json())
+    .then(data => ({ name: filename, data }));
 }
 
 {/* <div className="container text-center">
