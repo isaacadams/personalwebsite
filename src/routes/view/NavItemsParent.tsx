@@ -3,54 +3,39 @@ import { NavItem } from './NavItem';
 import { NavDropdownItem } from './NavDropdownItem';
 import { routeDefinitions } from '../RouteDefinitions';
 import { RouteModels } from '../RouteModels';
+import { useLocation } from 'react-router-dom';
 
-
-export class NavItemsParent extends React.Component<any, any> {
-    projectDropdown: any[];
-    mainNavItems: any[];
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            active: "/"
-        };
-        this.setActiveLink = this.setActiveLink.bind(this);
+const routes = routeDefinitions.asArray().reduce(function (accum, r, i, arr) {
+    /* if(r.name !== "Projects")
+        accum.push(createRouteLink(r));
+    else
+        self.projectDropdown = [createRouteLink(r)]; */
         
-        this.mainNavItems = routeDefinitions.asArray().reduce(function (accum, r, i, arr) {
-            /* if(r.name !== "Projects")
-                accum.push(createRouteLink(r));
-            else
-                self.projectDropdown = [createRouteLink(r)]; */
-            accum.push(createRouteLink(r));
-            return accum;
-        }, []);
-    }
-    setActiveLink(href: string) {
-        this.setState({
-            active: href
-        });
-    }
-    render() {
-        return (
-            <ul className="navbar-nav list-inline mx-auto justify-content-center">
-                {this.mainNavItems.map((r, i) => 
-                    <NavItem 
-                        key={i}
-                        href={r.href} 
-                        text={r.name} 
-                        notifyParent={this.setActiveLink} 
-                        active={this.state.active === r.href} 
-                    />
-                )}
-                {/* <NavDropdownItem links={this.projectDropdown} name="Projects" /> */}
-            </ul>
-        );
-    }
-}
+    accum.push(createRouteLink(r));
+    return accum;
+}, []);
 
 function createRouteLink({name, path}: RouteModels.Definition) {
     return {
         name,
         href: path
     };
+}
+
+export function NavItemsParent(props){
+    let location = useLocation();
+
+    return(
+        <ul className="navbar-nav list-inline mx-auto justify-content-center">
+            {routes.map((r, i) => 
+                <NavItem 
+                    key={i}
+                    href={r.href} 
+                    text={r.name} 
+                    active={location.pathname === r.href} 
+                />
+            )}
+            {/* <NavDropdownItem links={this.projectDropdown} name="Projects" /> */}
+        </ul>
+    );
 }
