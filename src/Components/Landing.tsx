@@ -3,6 +3,29 @@ import { Gallery } from "./Gallery";
 import { Projects } from "./Projects";
 import { Home } from "./Home";
 import * as React from "react";
+import { useData } from "./Shared/useData";
+
+function LandingContent(props) {
+    let homeData = useData("home");
+    let galleryData = useData("gallery");
+
+    return (
+        <div className="row">   
+            <section className="col-12">
+                <h2>Isaac Adams</h2>
+                <Home data={homeData} />
+            </section>
+            <hr className="col-12 py-2" />
+            <section className="col-12">
+                <Projects />
+            </section>
+            <hr className="col-12 py-2" />
+            <section className="col-12">
+                <Gallery data={galleryData} />
+            </section>        
+        </div> 
+    );
+}
 
 export class Landing extends NavPageComponent {
     constructor(props: any) {
@@ -10,27 +33,6 @@ export class Landing extends NavPageComponent {
     }
 
     render() {        
-        return (
-            <div className="row">
-                {/* <section className="col-12">
-                    <Navbar />
-                </section>
-                <section className="col-12">
-                    <Routes />
-                </section> */}   
-                <section className="col-12">
-                    <h2>Isaac Adams</h2>
-                    <Home />
-                </section>
-                <hr className="col-12 py-2" />
-                <section className="col-12">
-                    <Projects />
-                </section>
-                <hr className="col-12 py-2" />
-                <section className="col-12">
-                    <Gallery />
-                </section>        
-            </div> 
-        );
+        return <LandingContent />;
     }
 }

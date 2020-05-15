@@ -1,13 +1,12 @@
 import * as React from 'react';
-import { useData } from './Shared/useData';
 
-interface data {
+interface IHome {
     title: string,
     message: string
 }
 
-export function Home(props) {
-    let data = useData("home");
+export function Home({ data }: { data: IHome[] }) {
+    if(!data) return <div>Loading...</div>
 
     return (
         <div className="container-lg px-lg-5 pb-2">

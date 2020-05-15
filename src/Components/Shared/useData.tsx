@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 export function useData(filename) {
     
-    let [data, setData] = useState([]);
+    let [data, setData] = useState({});
 
     useEffect(() => {
 
@@ -16,12 +16,15 @@ export function useData(filename) {
         }).then(r => {
             //console.log(r);
             return r.json();           
-        }).then(data => {
-            setData(data);
+        }).then(d => {
+            setData({
+                ...data,
+                [filename]: d
+            });
         });
     }, [filename]);
 
-    return data;
+    return data[filename];
 }
 
 {/* <div className="container text-center">

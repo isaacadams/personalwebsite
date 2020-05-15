@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { useData } from './Shared/useData';
 
-export function Gallery(props) {
-    let data = useData("gallery");
+export function Gallery({ data }) {
+
+    if(!data) return <div>Loading...</div>
     
     let imgCss: any = {
         "objectFit": "cover"
