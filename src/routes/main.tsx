@@ -4,6 +4,7 @@ import { Routes } from './Routes';
 import Navbar from './view/Navbar';
 import { getData } from '../Components/Shared/useData';
 import { useEffect, useState, createContext } from 'react';
+import { Footer } from '../Footer';
 
 export const LandingPageContext = createContext({});
 
@@ -15,8 +16,7 @@ export function Main () {
     });
 
     useEffect(() => {
-        Promise
-        .all([getData("home"), getData("gallery")])
+        Promise.all([getData("home"), getData("gallery")])
         .then(results => {
             let updatedData = results.reduce((p, c, i, a) => {
                 return {
@@ -27,15 +27,16 @@ export function Main () {
             setData(updatedData);
         });
     }, []);
-
+    
     return (
         <Router>
             <LandingPageContext.Provider value={data}>
                 <div className="container mt-lg-5">
-                    <Navbar />
+                    {process.env.NODE_ENV === "development" && <Navbar />}
                     <section className="row py-lg-5">&nbsp;</section>
                     <Routes />     
                     <section className="row py-5">&nbsp;</section>      
+                    <Footer />
                 </div>      
             </LandingPageContext.Provider>      
         </Router>
