@@ -19,7 +19,7 @@ export function useData(filename) {
         }).then(data => {
             setData(data);
         });
-    }, []);
+    }, [filename]);
 
     return data;
 }
