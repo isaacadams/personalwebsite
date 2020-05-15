@@ -1,7 +1,6 @@
 import { RouteBuilder } from './RouteBuilder';
 import { RouteModels } from './RouteModels';
 import { Landing } from '../Components/Landing';
-import { BibleStudy } from '../Components/BibleStudy';
 import { Calculator } from '../Components/Calculator';
 import {ResumePage} from '../Components/Resume';
 import SignInPage from '../firebase/SignInPage';
@@ -20,7 +19,6 @@ class RouteConfiguration {
             o.exact = true;
         });
 
-        this.BibleStudy = RouteBuilder.define("biblestudy", "/study", BibleStudy);
         this.Calculator = RouteBuilder.define("calculator", "/calculator", Calculator);
         this.Resume = RouteBuilder.define("resume", "/resume", ResumePage);
         this.SignIn = RouteBuilder.define("signin", "/signin", SignInPage);
