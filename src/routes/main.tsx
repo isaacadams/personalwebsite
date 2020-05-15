@@ -1,12 +1,9 @@
 import * as React from 'react';
 import { BrowserRouter as Router } from "react-router-dom";
-import { Routes } from './routes';
-import Navbar from './view/navbar';
+import { Routes } from './Routes';
+import Navbar from './view/Navbar';
 
 export function Main () {
-
-    
-
     return (
         <Router>
             <div className="container mt-lg-5">
