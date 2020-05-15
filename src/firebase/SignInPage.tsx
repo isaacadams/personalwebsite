@@ -2,6 +2,28 @@ import * as React from 'react';
 import { WrappedComponentProps } from 'react-with-firebase-auth';
 import createWithAuth from './createWithAuth';
 
+function ShowLogin({signIn}) {
+  return (
+    <React.Fragment>
+      <h1>Log in</h1>
+      <button className="btn btn-primary" onClick={signIn}>Sign in with Google</button>
+    </React.Fragment>
+  );
+}
+
+function ShowLogout({name, signOut}) {
+
+  return (
+    <React.Fragment>
+      <h1>Hello, {name}</h1>
+      <button className="btn btn-primary" onClick={signOut}>Sign out</button>
+    </React.Fragment>
+  );
+}
+
+let ShowLoading = () => (<h2>Loading..</h2>);
+
+
 const SignInPage = ({
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
@@ -19,18 +41,12 @@ const SignInPage = ({
     <React.Fragment>
       {
         user
-          ? <h1>Hello, {user.displayName}</h1>
-          : <h1>Log in</h1>
+          ? <ShowLogout name={user.displayName} signOut={signOut} />
+          : <ShowLogin signIn={signInWithGoogle} />
       }
   
       {
-        user
-          ? <button className="btn btn-primary" onClick={signOut}>Sign out</button>
-          : <button className="btn btn-primary" onClick={signInWithGoogle}>Sign in with Google</button>
-      }
-  
-      {
-        loading && <h2>Loading..</h2>
+        loading && <ShowLoading />
       }
     </React.Fragment>
   );
