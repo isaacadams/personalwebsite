@@ -2,7 +2,7 @@ import * as React from 'react';
 import { NavItem } from './NavItem';
 import { NavDropdownItem } from './NavDropdownItem';
 import { routeDefinitions } from '../RouteDefinitions';
-
+import { RouteModels } from '../RouteModels';
 
 
 export class NavItemsParent extends React.Component<any, any> {
@@ -16,7 +16,6 @@ export class NavItemsParent extends React.Component<any, any> {
         };
         this.setActiveLink = this.setActiveLink.bind(this);
         
-        let self = this;
         this.mainNavItems = routeDefinitions.asArray().reduce(function (accum, r, i, arr) {
             /* if(r.name !== "Projects")
                 accum.push(createRouteLink(r));
@@ -49,9 +48,9 @@ export class NavItemsParent extends React.Component<any, any> {
     }
 }
 
-function createRouteLink(route) {
+function createRouteLink({name, path}: RouteModels.Definition) {
     return {
-        name: route.name,
-        href: route.path
+        name,
+        href: path
     };
 }
