@@ -33,7 +33,7 @@ export function Main () {
         <Router>
             <LandingPageContext.Provider value={data}>
                 <div className="container mt-lg-5">
-                    {meta.isDevelopment && <Navbar />}
+                    <Navbar />
                     <section className="row py-lg-3">&nbsp;</section>
                     <Routes />     
                     <section className="row py-5">&nbsp;</section>      
