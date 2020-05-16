@@ -3,6 +3,7 @@ import createWithAuth from '../firebase/createWithAuth';
 import { WrappedComponentProps } from 'react-with-firebase-auth';
 import BlogPostRepository, { BlogPost } from '../firebase/BlogPost';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { ShowLoading } from './Shared/ShowLoading';
 
 function Blog({user, error, loading }: WrappedComponentProps) {
     
@@ -14,15 +15,17 @@ function Blog({user, error, loading }: WrappedComponentProps) {
     React.useEffect(() => {
         refreshPosts();
     }, [user]);
+    
+    if(loading) return <ShowLoading />;
 
     return (
         <div className="row">
             <div></div>
-            <div className="col-6">
-                {user && <AddBlogPost uid={user.uid} refreshPosts={refreshPosts} />}
+            <div className="col-12">
+                {user && <AddBlogPost user={user} refreshPosts={refreshPosts} />}
             </div>
-            <div className="col-6">
-                <button className="btn btn-outline-dark" onClick={() => blogPostRepo.readUserPosts(user.uid).then(r => setPosts(r))}>Read</button>
+            <div className="col-12">
+                {(!posts || posts.length < 1) && <ShowLoading />}
                 {posts.map((p, i) => 
                     <div className="pt-4" key={i}>
                         <BlogPostView {...p} />
@@ -36,7 +39,7 @@ function Blog({user, error, loading }: WrappedComponentProps) {
     }
 }
 
-function AddBlogPost({ uid, refreshPosts }) {
+function AddBlogPost({ user, refreshPosts }: {user: firebase.User, refreshPosts: () => void}) {
     let [content, setContent] = React.useState("");
     let blogPostRepo = new BlogPostRepository();
 
@@ -52,7 +55,7 @@ function AddBlogPost({ uid, refreshPosts }) {
     );
 
     function onAdd(e) {
-        blogPostRepo.writeNewPost({ uid, author: "Isaac Adams", title: "testing", body: content }).finally(refreshPosts);
+        blogPostRepo.writeNewPost({ uid: user.uid, author: user.displayName, title: "testing", body: content }).finally(refreshPosts);
         setContent("");
     }
 }
@@ -62,7 +65,8 @@ function BlogPostView({title, body, author}: BlogPost) {
         <div>
             <h3>{title}</h3>
             <p>{body}</p>
-            <small>written by {author}</small>
+            <button className="btn btn-outline-info">Continue Reading...</button>
+            {/* <small>written by {author}</small> */}
         </div>
     );
 }

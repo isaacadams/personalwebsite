@@ -2,6 +2,7 @@ import * as React from 'react';
 import { WrappedComponentProps } from 'react-with-firebase-auth';
 import createWithAuth from './createWithAuth';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { ShowLoading } from '../Components/Shared/ShowLoading';
 
 function ShowLogin({signIn}) {
   return (
@@ -35,9 +36,6 @@ function Layout({ header, clickFunction, buttonContent }) {
     </div>
   );
 }
-
-let ShowLoading = () => (<h2>Loading..</h2>);
-
 
 const SignInPage = ({
     signInWithEmailAndPassword,
