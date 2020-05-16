@@ -5,7 +5,7 @@ import { NavItemsParent } from './NavItemsParent';
 function NavBarView({showing, handleTogglerClick}) {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-transparent">
-            {/* <a className="navbar-brand" href="/">put a cool logo here?</a> */}
+            <a className="navbar-brand" href="/">Isaac Adams</a>
             <button className={`navbar-toggler ${(showing ? "" : "collapsed")}`} 
                     onClick={handleTogglerClick} 
                     type="button" 

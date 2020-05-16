@@ -10,7 +10,6 @@ export function Landing(props) {
     return (
         <div className="row">   
             <section className="col-12">
-                <h2>Isaac Adams</h2>
                 <Home data={data["home"]} />
             </section>
             <hr className="col-12 py-2" />

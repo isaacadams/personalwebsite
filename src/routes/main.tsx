@@ -34,7 +34,7 @@ export function Main () {
             <LandingPageContext.Provider value={data}>
                 <div className="container mt-lg-5">
                     {meta.isDevelopment && <Navbar />}
-                    <section className="row py-lg-5">&nbsp;</section>
+                    <section className="row py-lg-3">&nbsp;</section>
                     <Routes />     
                     <section className="row py-5">&nbsp;</section>      
                     <Footer />
