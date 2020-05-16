@@ -2,23 +2,24 @@ import * as React from 'react';
 import createWithAuth from '../firebase/createWithAuth';
 import { WrappedComponentProps } from 'react-with-firebase-auth';
 import BlogPostRepository, { BlogPost } from '../firebase/BlogPost';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Blog({user, error, loading }: WrappedComponentProps) {
-    let [content, setContent] = React.useState("");
+    
     let [posts, setPosts] = React.useState<BlogPost[]>([]);
 
     //console.log("Hello Worlds");
     let blogPostRepo = new BlogPostRepository();
 
     React.useEffect(() => {
-        if(user) blogPostRepo.readUserPosts(user.uid).then(r => setPosts(r));
+        refreshPosts();
     }, [user]);
 
     return (
         <div className="row">
+            <div></div>
             <div className="col-6">
-                <button className="btn btn-outline-dark" onClick={() => blogPostRepo.writeNewPost({ uid: user.uid, author: "Isaac Adams", title: "testing", body: content })}>Post</button>
-                <textarea value={content} onChange={e => setContent(e.currentTarget.value)} />
+                {user && <AddBlogPost uid={user.uid} refreshPosts={refreshPosts} />}
             </div>
             <div className="col-6">
                 <button className="btn btn-outline-dark" onClick={() => blogPostRepo.readUserPosts(user.uid).then(r => setPosts(r))}>Read</button>
@@ -29,6 +30,31 @@ function Blog({user, error, loading }: WrappedComponentProps) {
             </div>
         </div>
     );
+
+    function refreshPosts(){
+        if(user) blogPostRepo.readUserPosts(user.uid).then(r => setPosts(r));
+    }
+}
+
+function AddBlogPost({ uid, refreshPosts }) {
+    let [content, setContent] = React.useState("");
+    let blogPostRepo = new BlogPostRepository();
+
+    return (
+        <div className="row">
+            <div className="col-12 d-flex flex-column">
+                <textarea value={content} onChange={e => setContent(e.currentTarget.value)} />
+                <div className="pt-3 d-flex justify-content-end">
+                    <button className="btn btn-outline-dark fa-plus" onClick={onAdd}><FontAwesomeIcon icon={["fas", "plus"]} /> Create Post</button>
+                </div>
+            </div>
+        </div>
+    );
+
+    function onAdd(e) {
+        blogPostRepo.writeNewPost({ uid, author: "Isaac Adams", title: "testing", body: content }).finally(refreshPosts);
+        setContent("");
+    }
 }
 
 function BlogPostView({title, body, author}: BlogPost) {
