@@ -39,8 +39,8 @@ e.home = function (cb) {
 
     file.data = [
         createBlock('Who?', "Isaac Adams is a human being 🤖 who has been programmed to... oops, umm *sniff*, eh hem ... he has a NATURAL affinity for computers and somehow manages to understand them at a deeper level."),
-        createBlock('Work.', "He currently works at eMoney Advisor as a software engineer ⚙️ doing full stack development 💻 using .NET core, SQL, and react."),
-        createBlock('Fun.', "He codes for fun 🎉, duh. What else would he spend his time doing? 🕹️👨‍👩‍👧‍👦"),
+        createBlock('Work.', "💻 He currently works at eMoney Advisor as a software engineer doing full stack development using .NET core, SQL, and react."),
+        createBlock('Fun.', "He codes for fun, duh. What else would he spend his time doing? 🕹️👨‍👩‍👧‍👦"),
         createBlock('Weird.', "☕🍵 Everyday he consumes 1-3 cups of coffee, 1-3 cups of tea, and 40-80 ozs of water. He spends most of the day in the bathroom. 😬"),
     ];
 
