@@ -34,11 +34,6 @@ export function writeNewPost(uid, username, title, body) {
   return database.ref().update(updates);
 }
 
-function addWithNewKey(table, data, addToUpdate) {
-  var key = database.ref().child(table).push().key;
-  addToUpdate[`/${table}/${key}`] = data;
-  return { table, key, data };
-}
 
 export function readUserPosts(uid) {
   return read('user-posts/' + uid)
@@ -46,7 +41,13 @@ export function readUserPosts(uid) {
     .then(postKeys => {
       let promises = postKeys.map(key => read('posts/' + key));
       return Promise.all(promises);
-    }); //.then(results => console.log(results));
+    });
+}
+
+function addWithNewKey(table, data, addToUpdate) {
+  var key = database.ref().child(table).push().key;
+  addToUpdate[`/${table}/${key}`] = data;
+  return { table, key, data };
 }
 
 function read(table){
