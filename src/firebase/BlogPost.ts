@@ -2,14 +2,14 @@ import firebase from './firebase';
 import { read, addWithNewKey } from './database';
 const database = firebase.database;
 
-class BlogPost {
+export class BlogPost {
     author: string;
     uid: string;
     body: string;
     title: string
 }
 
-export class BlogPostRepository {
+export default class BlogPostRepository {
     
     writeNewPost(post: BlogPost) {
         var updates = {};
