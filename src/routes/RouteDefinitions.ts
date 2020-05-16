@@ -5,6 +5,8 @@ import { Calculator } from '../Components/Calculator';
 import {ResumePage} from '../Components/Resume';
 import SignInPage from '../firebase/SignInPage';
 import Blog from '../Components/Blog';
+import TestingSuite from '../Components/TestingSuite';
+import meta from '../meta';
 
 class RouteConfiguration {
     Landing: RouteModels.Definition;
@@ -14,6 +16,7 @@ class RouteConfiguration {
     SignIn: RouteModels.Definition;
     Blog: RouteModels.Definition;
     private _configArray: RouteModels.Definition[];
+    TestingSuite: RouteModels.Definition;
 
     constructor() {
 
@@ -25,8 +28,8 @@ class RouteConfiguration {
         this.Resume = RouteBuilder.define("resume", "/resume", ResumePage);
         this.Blog = RouteBuilder.define("blog", "/blog", Blog);
         this.SignIn = RouteBuilder.define("signin", "/signin", SignInPage);
-
-        this._configArray = Object.keys(this).map(k => this[k]);
+        this.TestingSuite = RouteBuilder.define("test", "/test", TestingSuite);
+        this._configArray = Object.keys(this).map(k => this[k]).filter(route => meta.isDevelopment || (!meta.isDevelopment && route !== this.TestingSuite));
     }
 
     asArray(): RouteModels.Definition[] {
