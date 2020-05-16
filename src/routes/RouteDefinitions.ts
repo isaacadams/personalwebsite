@@ -29,11 +29,17 @@ class RouteConfiguration {
         this.Blog = RouteBuilder.define("blog", "/blog", Blog);
         this.SignIn = RouteBuilder.define("signin", "/signin", SignInPage);
         this.TestingSuite = RouteBuilder.define("test", "/test", TestingSuite);
-        this._configArray = Object.keys(this).map(k => this[k]).filter(route => meta.isDevelopment || (!meta.isDevelopment && route !== this.TestingSuite));
+        this._configArray = Object.keys(this).map(k => this[k]).filter(route => this.canShowInProduction(route));
     }
 
     asArray(): RouteModels.Definition[] {
         return this._configArray;    
+    }
+
+    canShowInProduction(route: RouteModels.Definition){
+        if(meta.isDevelopment) return true;
+
+        return ![this.TestingSuite, this.Blog, this.Resume, this.Calculator].includes(route);
     }
 }
 
