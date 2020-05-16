@@ -10,6 +10,13 @@ function Blog({
   }: WrappedComponentProps) {
     let [content, setContent] = React.useState("");
     let [posts, setPosts] = React.useState([]);
+    
+    //console.log("Hello Worlds");
+    
+    React.useEffect(() => {
+        if(user) readUserPosts(user.uid).then(r => setPosts(r));
+    }, [user]);
+
     return (
         <div className="row">
             <div className="col-6">
