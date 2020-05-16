@@ -1,19 +1,13 @@
-//import * as firebase from 'firebase';
-let firebase = require('firebase');
-// Set the configuration for your app
-// TODO: Replace with your project's config object
-var config = {
-  apiKey: "AIzaSyAlEXLc7WKV5r3RP8HZpVJXz4eu7grOo-M",
-  authDomain: "isaacadams-9baf0.firebaseapp.com",
-  databaseURL: "https://isaacadams-9baf0.firebaseio.com",
-  storageBucket: "isaacadams-9baf0.appspot.com"
-};
-let app = firebase.initializeApp(config);
+import myFirebase from './firebase';
 
-app.auth()
+
+
+export function GetSignInMethods() {
+  myFirebase.app.auth()
   .fetchSignInMethodsForEmail('isaac.d.adams@gmail.com')
   .then(r => console.log(r))
   .catch(e => console.log(e));
+}
 
 
 // Get a reference to the database service

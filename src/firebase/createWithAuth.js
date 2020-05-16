@@ -1,16 +1,9 @@
 import withFirebaseAuth from 'react-with-firebase-auth';
-import * as firebase from 'firebase/app';
 import 'firebase/auth';
-import {config} from './config';
 
-const app = firebase.initializeApp(config);
-
-const firebaseAppAuth = app.auth();
-const providers = {
-    googleProvider: new firebase.auth.GoogleAuthProvider(),
-};
-
+import myFirebase from './firebase';
+const firebaseAppAuth = myFirebase.app.auth();
 export default withFirebaseAuth({
-    providers,
+    providers: myFirebase.providers,
     firebaseAppAuth,
 });
