@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {GetSignInMethods, writeNewPost, readUserPosts} from '../firebase/database';
 import createWithAuth from '../firebase/createWithAuth';
 import { WrappedComponentProps } from 'react-with-firebase-auth';
+import { BlogPostRepository } from '../firebase/BlogPost';
 
 function Blog({user, error, loading }: WrappedComponentProps) {
     let [content, setContent] = React.useState("");
@@ -10,17 +10,17 @@ function Blog({user, error, loading }: WrappedComponentProps) {
     //console.log("Hello Worlds");
 
     React.useEffect(() => {
-        if(user) readUserPosts(user.uid).then(r => setPosts(r));
+        if(user) new BlogPostRepository().readUserPosts(user.uid).then(r => setPosts(r));
     }, [user]);
 
     return (
         <div className="row">
             <div className="col-6">
-                <button className="btn btn-outline-dark" onClick={() => writeNewPost(user.uid, "Isaac Adams", "testing", content)}>Post</button>
+                <button className="btn btn-outline-dark" onClick={() => new BlogPostRepository().writeNewPost({ uid: user.uid, author: "Isaac Adams", title: "testing", body: content })}>Post</button>
                 <textarea value={content} onChange={e => setContent(e.currentTarget.value)} />
             </div>
             <div className="col-6">
-                <button className="btn btn-outline-dark" onClick={() => readUserPosts(user.uid).then(r => setPosts(r))}>Read</button>
+                <button className="btn btn-outline-dark" onClick={() => new BlogPostRepository().readUserPosts(user.uid).then(r => setPosts(r))}>Read</button>
                 {posts.map((p, i) => <div key={i}>
                     <BlogPostView {...p} />
                 </div>)}

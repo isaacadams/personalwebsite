@@ -10,47 +10,21 @@ export function GetSignInMethods() {
 
 export function writeUserData(userId, name, email, imageUrl) {
   database.ref('users/' + userId).set({
-    username: name,
-    email: email,
-    profile_picture : imageUrl
+      username: name,
+      email: email,
+      profile_picture : imageUrl
   })
   .then(r => console.log(r))
   .catch(e => console.log(e));
 }
 
-export function writeNewPost(uid, username, title, body) {
-  // A post entry.
-  var postData = {
-    author: username,
-    uid: uid,
-    body: body,
-    title: title
-  };
-  
-  var updates = {};
-  let metaPostData = addWithNewKey('posts', postData, updates);
-  addWithNewKey('user-posts/' + uid, metaPostData.key, updates);
-
-  return database.ref().update(updates);
-}
-
-
-export function readUserPosts(uid) {
-  return read('user-posts/' + uid)
-    .then(r => Object.values(r))
-    .then(postKeys => {
-      let promises = postKeys.map(key => read('posts/' + key));
-      return Promise.all(promises);
-    });
-}
-
-function addWithNewKey(table, data, addToUpdate) {
+export function addWithNewKey(table, data, addToUpdate) {
   var key = database.ref().child(table).push().key;
   addToUpdate[`/${table}/${key}`] = data;
   return { table, key, data };
 }
 
-function read(table){
+export function read(table){
   return database.ref(table).once('value').then(snapshot => snapshot.val());
 }
 
