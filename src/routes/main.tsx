@@ -5,6 +5,7 @@ import Navbar from './view/Navbar';
 import { getData } from '../Components/Shared/useData';
 import { useEffect, useState, createContext } from 'react';
 import { Footer } from '../Footer';
+import meta from '../meta';
 
 export const LandingPageContext = createContext({});
 
@@ -32,7 +33,7 @@ export function Main () {
         <Router>
             <LandingPageContext.Provider value={data}>
                 <div className="container mt-lg-5">
-                    {process.env.NODE_ENV === "development" && <Navbar />}
+                    {meta.isDevelopment && <Navbar />}
                     <section className="row py-lg-5">&nbsp;</section>
                     <Routes />     
                     <section className="row py-5">&nbsp;</section>      
