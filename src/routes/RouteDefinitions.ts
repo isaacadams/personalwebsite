@@ -4,6 +4,7 @@ import { Landing } from '../Components/Landing';
 import { Calculator } from '../Components/Calculator';
 import {ResumePage} from '../Components/Resume';
 import SignInPage from '../firebase/SignInPage';
+import { Blog } from '../Components/Blog';
 
 class RouteConfiguration {
     Landing: RouteModels.Definition;
@@ -11,6 +12,7 @@ class RouteConfiguration {
     Calculator: RouteModels.Definition;
     Resume: RouteModels.Definition;
     SignIn: RouteModels.Definition;
+    Blog: RouteModels.Definition;
     private _configArray: RouteModels.Definition[];
 
     constructor() {
@@ -21,6 +23,7 @@ class RouteConfiguration {
 
         this.Calculator = RouteBuilder.define("calculator", "/calculator", Calculator);
         this.Resume = RouteBuilder.define("resume", "/resume", ResumePage);
+        this.Blog = RouteBuilder.define("blog", "/blog", Blog);
         this.SignIn = RouteBuilder.define("signin", "/signin", SignInPage);
 
         this._configArray = Object.keys(this).map(k => this[k]);
