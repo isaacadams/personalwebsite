@@ -1,3 +1,4 @@
+import '@isaacadams/extensions';
 import firebase from './firebase';
 import { read, addWithNewKey } from './database';
 const database = firebase.database;
@@ -12,6 +13,8 @@ export class BlogPost {
 export default class BlogPostRepository {
     
     writeNewPost(post: BlogPost) {
+        if(!post.body || post.body.isNullOrWhitespace()) return Promise.reject("invalid post");
+
         var updates = {};
         let metaPostData = addWithNewKey('posts', post, updates);
         addWithNewKey('user-posts/' + post.uid, metaPostData.key, updates);
@@ -20,6 +23,8 @@ export default class BlogPostRepository {
 
     async readUserPosts(uid: string) {
         const r = await read('user-posts/' + uid);
+        if(!r) return Promise.reject("there were no records");
+
         const promises = Object.values(r).map(key => read('posts/' + key));
         return Promise.all(promises);
     }
