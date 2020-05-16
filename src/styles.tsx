@@ -2,7 +2,7 @@
 
 import { library, dom } from "@fortawesome/fontawesome-svg-core";
 import { faCheck, faSpinner } from "@fortawesome/free-solid-svg-icons";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faGoogle } from "@fortawesome/free-brands-svg-icons";
 
-library.add(faCheck, faSpinner, faGithub);
+library.add(faCheck, faSpinner, faGithub, faGoogle);
 dom.watch();
