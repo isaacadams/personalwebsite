@@ -4,7 +4,7 @@ import { Landing } from '../Components/Landing';
 import { Calculator } from '../Components/Calculator';
 import {ResumePage} from '../Components/Resume';
 import SignInPage from '../firebase/SignInPage';
-import { Blog } from '../Components/Blog';
+import Blog from '../Components/Blog';
 
 class RouteConfiguration {
     Landing: RouteModels.Definition;
