@@ -5,20 +5,34 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function ShowLogin({signIn}) {
   return (
-    <React.Fragment>
-      <h1>Log in</h1>
-      <button className="btn btn-outline-dark" onClick={signIn}><FontAwesomeIcon icon={["fab", "google"]} className="mr-2" /> Sign in with Google</button>
-    </React.Fragment>
+    <Layout 
+      header={`Log in`} 
+      clickFunction={signIn} 
+      buttonContent={
+        <React.Fragment>
+          <FontAwesomeIcon icon={["fab", "google"]} className="mr-2" /> Sign in with Google
+        </React.Fragment>
+      } 
+    />
   );
 }
 
 function ShowLogout({name, signOut}) {
-
   return (
-    <React.Fragment>
-      <h1>Hello, {name}</h1>
-      <button className="btn btn-outline-dark" onClick={signOut}>Sign out</button>
-    </React.Fragment>
+    <Layout 
+      header={`Hello, ${name}`} 
+      clickFunction={signOut} 
+      buttonContent={"Sign out"} 
+    />
+  );
+}
+
+function Layout({ header, clickFunction, buttonContent }) {
+  return (
+    <div className="d-flex flex-column align-items-center">
+      <h1>{header}</h1>
+      <button className="btn btn-outline-dark" onClick={clickFunction}>{buttonContent}</button>
+    </div>
   );
 }
 
@@ -41,9 +55,9 @@ const SignInPage = ({
   }: WrappedComponentProps) => (
     <div className="d-flex justify-content-center">
       {
-        user
+        !loading && (user
           ? <ShowLogout name={user.displayName} signOut={signOut} />
-          : <ShowLogin signIn={signInWithGoogle} />
+          : <ShowLogin signIn={signInWithGoogle} />)
       }
       {
         loading && <ShowLoading />
