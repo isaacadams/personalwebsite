@@ -1,12 +1,14 @@
-import firebase from './firebase';
-const database = firebase.database;
+import * as firebase from 'firebase/app';
+import 'firebase/database';
+import myFirebase from './firebase';
+const database = myFirebase.database;
 
-export function GetSignInMethods() {
+/* export function GetSignInMethods() {
   auth
   .fetchSignInMethodsForEmail('isaac.d.adams@gmail.com')
   .then(r => console.log(r))
   .catch(e => console.log(e));
-}
+} */
 
 export function writeUserData(userId, name, email, imageUrl) {
   database.ref('users/' + userId).set({
@@ -24,8 +26,8 @@ export function addWithNewKey(table, data, addToUpdate) {
   return { table, key, data };
 }
 
-export function read(table){
-  return database.ref(table).once('value').then(snapshot => snapshot.val());
+export function read(table, eventType: firebase.database.EventType = 'value'){
+  return database.ref(table).once(eventType).then(snapshot => snapshot.val());
 }
 
   
