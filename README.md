@@ -3,6 +3,11 @@
 this is a self explanatory project
 
 ## To Do
+- [x] fix resume css
+- [ ] namespace bootstrap css
+- [ ] make resume viewable in prod app
+- [ ] create settings button for signing in / writing post
+- [ ] make blog posts viewable in prod app
 - remove clutter in dist folder
    - organize pictures and json data into a public/ folder
    - adjust API calls accordinlgy
