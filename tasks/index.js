@@ -8,27 +8,24 @@ let e = module.exports;
 
 e.createIndexHtmlFile = function (cb) {
 
-
     let create = fs.createWriteStream(`${paths.source}/index.html`);
     let node_modules = '../node_modules';
 
     create.write(
-`<head>
-    <meta id="view" name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" /> 
+`<!DOCTYPE html>
+<html>
+    <head>
+        <meta id="view" name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"> 
+    </head>
 
-    <!-- <link href="${paths.publish.styles.rel()}/styles.min.css" rel="stylesheet" /> -->
-    <link href="${node_modules}/bootstrap/dist/css/bootstrap.css" type="text/css" rel="stylesheet" />
-    <script src="${node_modules}/bootstrap/dist/js/bootstrap.bundle.js"></script>
-</head>
+    <body>    
+        <div id="app"></div>
+    </body>
 
-<body>    
-    <div id="app">
-    </div>
-</body>
-
-<footer>
-    <script src="index.tsx"></script>
-</footer>`
+    <footer>
+        <script src="index.tsx"></script>
+    </footer>
+</html>`
     );
 
     create.close();
