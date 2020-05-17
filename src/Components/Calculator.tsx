@@ -10,7 +10,7 @@ export class Calculator extends NavPageComponent {
     }
     render() {
         return (
-            <div className="container">
+            <div className="bootstrap-styles">
                 <div className="row">
                     <CompoundInterestCalculator />
                     <LoanPaymentCalculator />

@@ -1,15 +1,15 @@
-import * as React from 'react';
+import React, { useEffect, useState, createContext } from 'react';
 import { BrowserRouter as Router } from "react-router-dom";
 import { Routes } from './Routes';
 import Navbar from './view/Navbar';
 import { getData } from '../Components/Shared/useData';
-import { useEffect, useState, createContext } from 'react';
 import { Footer } from '../Footer';
 import meta from '../meta';
+import { Container, WhitespaceRow, Row, BootstrappedRow } from './StyleComponents';
 
 export const LandingPageContext = createContext({});
 
-export function Main () {
+export function App () {
 
     let [data, setData] = useState({
         home: null,
@@ -32,14 +32,22 @@ export function Main () {
     return (
         <Router>
             <LandingPageContext.Provider value={data}>
-                <div className="container mt-lg-5">
-                    <Navbar />
-                    <section className="row py-lg-3">&nbsp;</section>
-                    <Routes />     
-                    <section className="row py-5">&nbsp;</section>      
-                    <Footer />
-                </div>      
+                <Container>
+                    <WhitespaceRow height="75px" />
+                    <BootstrappedRow>
+                        <Navbar />
+                    </BootstrappedRow>
+                    <WhitespaceRow height="25px" />
+                    <Row>
+                        <Routes />
+                    </Row>
+                    <WhitespaceRow height="75px" />
+                    <BootstrappedRow>
+                        <Footer />
+                    </BootstrappedRow>
+                </Container> 
             </LandingPageContext.Provider>      
         </Router>
     );
 }
+

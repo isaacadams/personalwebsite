@@ -4,22 +4,24 @@ import { NavItemsParent } from './NavItemsParent';
 
 function NavBarView({showing, handleTogglerClick}) {
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-transparent">
-            <a className="navbar-brand" href="/">Isaac Adams</a>
-            <button className={`navbar-toggler ${(showing ? "" : "collapsed")}`} 
-                    onClick={handleTogglerClick} 
-                    type="button" 
-                    data-toggle="collapse" 
-                    data-target="#navbarText" 
-                    aria-controls="navbarText" 
-                    aria-expanded={showing ? "true": "false"} 
-                    aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className={`navbar-collapse collapse ${(showing ? "show" : "")}`} style={{animation: animations.slideIn}}>
-                <NavItemsParent />
-            </div>
-        </nav>
+        <div className="col-12">
+            <nav className="navbar navbar-expand-lg navbar-light bg-transparent">
+                <a className="navbar-brand" href="/">Isaac Adams</a>
+                <button className={`navbar-toggler ${(showing ? "" : "collapsed")}`} 
+                        onClick={handleTogglerClick} 
+                        type="button" 
+                        data-toggle="collapse" 
+                        data-target="#navbarText" 
+                        aria-controls="navbarText" 
+                        aria-expanded={showing ? "true": "false"} 
+                        aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className={`navbar-collapse collapse ${(showing ? "show" : "")}`} style={{animation: animations.slideIn}}>
+                    <NavItemsParent />
+                </div>
+            </nav>
+        </div>
     );
 }
 

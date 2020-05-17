@@ -1,8 +1,7 @@
 import './styles';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Main } from './routes/Main';
+import { App } from './routes/App';
 import './base.scss';
-ReactDOM.render(<div className="bootstrap-styles">
-    <Main />
-</div>, document.getElementById('app'));
+
+ReactDOM.render(<App />, document.getElementById('app'));

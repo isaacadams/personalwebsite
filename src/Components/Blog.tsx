@@ -19,17 +19,19 @@ function Blog({user, error, loading }: WrappedComponentProps) {
     if(loading) return <ShowLoading />;
 
     return (
-        <div className="row">
-            <div></div>
-            <div className="col-12">
-                {user && <AddBlogPost user={user} refreshPosts={refreshPosts} />}
-            </div>
-            <div className="col-12">
-                {(!posts || posts.length < 1) && <ShowLoading />}
-                {posts.map((p, i) => 
-                    <div className="pt-4" key={i}>
-                        <BlogPostView {...p} />
-                    </div>)}
+        <div className="bootstrap-styles">
+            <div className="row">
+                <div></div>
+                <div className="col-12">
+                    {user && <AddBlogPost user={user} refreshPosts={refreshPosts} />}
+                </div>
+                <div className="col-12">
+                    {(!posts || posts.length < 1) && <ShowLoading />}
+                    {posts.map((p, i) => 
+                        <div className="pt-4" key={i}>
+                            <BlogPostView {...p} />
+                        </div>)}
+                </div>
             </div>
         </div>
     );

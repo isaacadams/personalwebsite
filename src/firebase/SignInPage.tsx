@@ -51,15 +51,17 @@ const SignInPage = ({
     error,
     loading,
   }: WrappedComponentProps) => (
-    <div className="d-flex justify-content-center">
-      {
-        !loading && (user
-          ? <ShowLogout name={user.displayName} signOut={signOut} />
-          : <ShowLogin signIn={signInWithGoogle} />)
-      }
-      {
-        loading && <ShowLoading />
-      }
+    <div className="bootstrap-styles">
+      <div className="d-flex justify-content-center">
+        {
+          !loading && (user
+            ? <ShowLogout name={user.displayName} signOut={signOut} />
+            : <ShowLogin signIn={signInWithGoogle} />)
+        }
+        {
+          loading && <ShowLoading />
+        }
+      </div>
     </div>
   );
 
