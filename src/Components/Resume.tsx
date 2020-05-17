@@ -1,12 +1,10 @@
 import * as React from 'react';
 import Resume from '@isaacadams/resume';
-//import '@isaacadams/resume/package/Resume.css';
-import './Resume.less';
+import '@isaacadams/resume/package/Resume.css';
 
 export function ResumePage (props) {
     return (
-        <div className="resume-page">
-            Hello Worlds
+        <div>
             <Resume />
         </div>
     );
