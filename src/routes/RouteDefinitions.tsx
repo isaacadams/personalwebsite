@@ -19,7 +19,6 @@ class RouteConfiguration {
     TestingSuite: RouteModels.Definition;
 
     constructor() {
-
         this.Landing = RouteBuilder.define("home", "/", Landing, o => {
             o.exact = true;
         });
