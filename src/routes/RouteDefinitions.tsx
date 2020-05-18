@@ -38,7 +38,7 @@ class RouteConfiguration {
     canShowInProduction(route: RouteModels.Definition){
         if(meta.isDevelopment) return true;
 
-        return ![this.TestingSuite, this.Blog, this.Resume, this.Calculator].includes(route);
+        return ![this.TestingSuite, this.Blog, this.Calculator, this.SignIn].includes(route);
     }
 }
 
