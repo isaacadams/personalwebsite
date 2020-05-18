@@ -4,8 +4,9 @@ this is a self explanatory project
 
 ## To Do
 - [x] fix resume css
-- [ ] namespace bootstrap css
-- [ ] make resume viewable in prod app
+- [x] namespace bootstrap css
+- [x] make resume viewable in prod app
+- [ ] make website deploy to prod when merged into master branch
 - [ ] create settings button for signing in / writing post
 - [ ] make blog posts viewable in prod app
 - remove clutter in dist folder
