@@ -6,7 +6,9 @@ export function Footer() {
     return (
         <div className="col-12">
             <div className="row pb-5 d-flex justify-content-center">
-                <hr className="col-12 py-2" />
+                <div className="col-12">
+                    <hr className="py-2" />
+                </div>
                 <span className="w-75 justify-content-around d-flex">
                     <div className="d-flex align-items-center">{meta.owner}</div>
                     <div className="d-flex align-items-center">{meta.version}</div>

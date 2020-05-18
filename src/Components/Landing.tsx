@@ -13,11 +13,15 @@ export function Landing(props) {
                 <section className="col-12">
                     <Home data={data["home"]} />
                 </section>
-                <hr className="col-12 py-2" />
+                <div className="col-12">
+                    <hr className="py-2" />
+                </div>
                 <section className="col-12">
                     <Projects />
                 </section>
-                <hr className="col-12 py-2" />
+                <div className="col-12">
+                    <hr className="py-2" />
+                </div>
                 <section className="col-12">
                     <Gallery data={data["gallery"]} />
                 </section>        
