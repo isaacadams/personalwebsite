@@ -4,7 +4,7 @@ import '@isaacadams/resume/package/Resume.css';
 
 export function ResumePage (props) {
     return (
-        <div>
+        <div className="max-width x-scroll">
             <Resume />
         </div>
     );

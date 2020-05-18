@@ -8,15 +8,27 @@
     @import '../node_modules/bootstrap/scss/bootstrap.scss';
 }
 
+.x-scroll {
+    overflow-x: auto;
+}
+
 @media (min-width: 320px) {
     .max-width {
         max-width: 315px;
+    }
+
+    .x-scroll {
+        display: flex;
     }
 }
 
 @media (min-width: 576px) {
     .max-width {
         max-width: 540px;
+    }
+
+    .x-scroll {
+        display: unset;
     }
 }
 
