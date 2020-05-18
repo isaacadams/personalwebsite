@@ -4,6 +4,10 @@ export function WhitespaceRow({height}) {
     return (<section style={{...row, height}}>&nbsp;</section>)
 }
 
+export function YSpacer({height}) {
+    return (<section style={{height}}>&nbsp;</section>)
+}
+
 export const addBootstrapToComponent = (WrappedComponent) => {
     return (function BootstrappedComponent(props) {        
         let {className, ...atts} = props;
@@ -27,11 +31,6 @@ export function Row(props) {
     );
 }
 
-let row: React.CSSProperties = {
-    display: "flex",
-    flexWrap: "wrap"
-}
-
 export function Container(props) {
     return (
         <div className="max-width" style={container}>
@@ -47,3 +46,13 @@ let container: React.CSSProperties = {
     marginRight: "auto",
     marginLeft: "auto"
 }
+
+let row: React.CSSProperties = {
+    display: "flex",
+    flexWrap: "wrap",
+    flexDirection: "column"
+}
+
+let col = (): React.CSSProperties => ({
+
+});

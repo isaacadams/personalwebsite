@@ -5,7 +5,7 @@ import Navbar from './view/Navbar';
 import { getData } from '../Components/Shared/useData';
 import { Footer } from '../Footer';
 import meta from '../meta';
-import { Container, WhitespaceRow, Row, BootstrappedRow } from './StyleComponents';
+import { Container, WhitespaceRow, Row, BootstrappedRow, YSpacer } from './StyleComponents';
 
 export const LandingPageContext = createContext({});
 
@@ -33,18 +33,20 @@ export function App () {
         <Router>
             <LandingPageContext.Provider value={data}>
                 <Container>
-                    <WhitespaceRow height="75px" />
-                    <BootstrappedRow>
-                        <Navbar />
-                    </BootstrappedRow>
-                    <WhitespaceRow height="25px" />
                     <Row>
-                        <Routes />
+                        <YSpacer height="75px" />
+                        <div className="bootstrap-styles">
+                            <Navbar />
+                        </div>
+                        <YSpacer height="25px" />
+                        <div>
+                            <Routes />
+                        </div>
+                        <YSpacer height="75px" />
+                        <div className="bootstrap-styles">
+                            <Footer />
+                        </div>
                     </Row>
-                    <WhitespaceRow height="75px" />
-                    <BootstrappedRow>
-                        <Footer />
-                    </BootstrappedRow>
                 </Container> 
             </LandingPageContext.Provider>      
         </Router>
