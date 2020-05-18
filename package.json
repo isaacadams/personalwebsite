@@ -4,11 +4,10 @@
   "description": "A personal website for information on Isaac Adams and a place where he showcases his public work",
   "main": "site.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "start gulp watch",
     "build": "gulp app",
-    "deploy": "npm run build && parcel build ./src/index.html && firebase deploy",
-    "start": "npm run build && parcel ./src/index.html"
+    "deploy": "npm run prod && firebase deploy",
+    "start": "npm run build && parcel ./src/index.html",
+    "prod": "npm run build && parcel build ./src/index.html"
   },
   "author": "Isaac Adams",
   "license": "ISC",
