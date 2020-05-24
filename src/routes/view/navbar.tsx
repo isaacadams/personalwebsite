@@ -4,7 +4,7 @@ import { NavItemsParent } from './NavItemsParent';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import meta from '../../meta';
 import { Menu } from 'grommet';
-import { routeDefinitions } from '../RouteDefinitions';
+import RouteDefinitions from '../RouteDefinitions';
 import { useHistory } from 'react-router-dom';
 
 function NavBarView({showing, handleTogglerClick}) {
@@ -32,8 +32,8 @@ function NavBarView({showing, handleTogglerClick}) {
                         icon={false}
                         label={<FontAwesomeIcon icon={["fas", "cog"]} />}
                         items={[
-                            { label: routeDefinitions.Blog.name, onClick: () => { history.push(routeDefinitions.Blog.path) } },
-                            { label: routeDefinitions.SignIn.name, onClick: () => { history.push(routeDefinitions.SignIn.path) } },
+                            { label: RouteDefinitions.Blog.name, onClick: () => { history.push(RouteDefinitions.Blog.path) } },
+                            { label: RouteDefinitions.SignIn.name, onClick: () => { history.push(RouteDefinitions.SignIn.path) } },
                         ]}
                     />
                 </div>

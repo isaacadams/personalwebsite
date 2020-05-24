@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { NavItem } from './NavItem';
 import { NavDropdownItem } from './NavDropdownItem';
-import { routeDefinitions } from '../RouteDefinitions';
+import RouteDefinitions from '../RouteDefinitions';
 import { RouteModels } from '../RouteModels';
 import { useLocation } from 'react-router-dom';
 
-const routes = routeDefinitions.GetNavbarRoutes().reduce(function (accum, r, i, arr) {
+const routes = RouteDefinitions.GetNavbarRoutes().reduce(function (accum, r, i, arr) {
     /* if(r.name !== "Projects")
         accum.push(createRouteLink(r));
     else

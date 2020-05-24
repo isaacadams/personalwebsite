@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Switch, Route, Redirect } from "react-router-dom";
-import { routeDefinitions } from './RouteDefinitions';
+import RouteDefinitions from './RouteDefinitions';
 
 class Routes extends React.Component {
 
@@ -11,7 +11,7 @@ class Routes extends React.Component {
     render(){
         return (
             <Switch>
-                {routeDefinitions.GetAllRoutes().map((r, i) => (
+                {RouteDefinitions.GetAllRoutes().map((r, i) => (
                     <Route
                         key={i}
                         path={r.path}
@@ -43,4 +43,4 @@ function RouteWithSubRoutes(r) {
     );
 }
     
-export { Routes, routeDefinitions }
+export { Routes, RouteDefinitions }

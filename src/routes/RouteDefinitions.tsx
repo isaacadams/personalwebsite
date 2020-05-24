@@ -47,6 +47,5 @@ class RouteConfiguration {
     }
 }
 
-const routeDefinitions = new RouteConfiguration();
-
-export { routeDefinitions };
+const RouteDefinitions = new RouteConfiguration();
+export default RouteDefinitions;
