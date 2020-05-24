@@ -4,7 +4,7 @@ import { WrappedComponentProps } from 'react-with-firebase-auth';
 import BlogPostRepository, { BlogPost } from '../firebase/BlogPost';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ShowLoading } from './Shared/ShowLoading';
-import { Box, Button as GrommetButton, TextArea, Grommet } from 'grommet';
+import { Box, Button, TextArea, Grommet } from 'grommet';
 
 function Blog({user, error, loading }: WrappedComponentProps) {
     
@@ -52,7 +52,7 @@ function AddBlogPost({ user, refreshPosts }: {user: firebase.User, refreshPosts:
             <div className="col-12 d-flex flex-column">
                 <TextArea value={content} onChange={e => setContent(e.currentTarget.value)} />
                 <div className="pt-3 d-flex justify-content-end">
-                    <GrommetButton primary label="Submit" onClick={onAdd} />
+                    <Button primary label="Submit" onClick={onAdd} />
                 </div>
             </div>
         </div>
@@ -69,7 +69,7 @@ function BlogPostView({title, body, author}: BlogPost) {
         <div>
             <h3>{title}</h3>
             <p>{body}</p>
-            <button className="btn btn-outline-info">Continue Reading...</button>
+            <Button label={"Continue Reading..."} />
             {/* <small>written by {author}</small> */}
         </div>
     );
