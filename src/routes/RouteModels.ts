@@ -1,19 +1,26 @@
-export namespace RouteModels {
-    export class Options {
-        exact: boolean;
-        routes: Definition[];
-    }
+import { RouteProps } from "react-router-dom";
 
+
+export namespace RouteModels {
     export class Definition {
         name: string;
-        path: string;
-        component: any;
-        opts: Options;
-        constructor(name: string, path: string, comp: any, opts: Options = { exact: false, routes: [] }) {
+        config: RouteProps;
+        view: ViewOptions;
+        constructor(name: string, config: RouteProps = { exact: false }, view: ViewOptions = {}) {
             this.name = name;
-            this.path = path;
-            this.component = comp;
-            this.opts = opts;
+            this.config = config;
+            this.view = view;
         }
+
+        GetPathToRoute(): string {
+            let path = this.config.path;
+            if(typeof path === "string" ) return path;
+            return path[0];
+        }
+    }
+
+    export interface ViewOptions {
+        name?: string;
+        icon?: any;
     }
 }

@@ -1,27 +1,28 @@
 import { RouteModels } from './RouteModels';
+import { RouteProps } from 'react-router-dom';
+import { config } from '../../dist/src.a094dec4';
 
 export class RouteBuilder {
-    routes: RouteModels.Definition[];
-    constructor() {
-        this.routes = [];
-    }
-    add(name: string, path: string, component: any, 
-    opts: (opts: RouteModels.Options) => void = null): RouteBuilder {
-        let r = RouteBuilder.define(name, path, component, opts);
-        this.routes.push(r);
-        return this;
-    }
-    build() {
-        return this.routes;
+    route: RouteModels.Definition;
+
+    constructor(name: string) {
+        this.route = new RouteModels.Definition(name, {});
     }
 
-    static define(name: string, path: string, component: any, opts: (opts: RouteModels.Options) => void = null): RouteModels.Definition {
-        let r = new RouteModels.Definition(name, path, component);
-        if (opts) {
-            r.opts = new RouteModels.Options();
-            opts(r.opts);
-        }
+    AddRouteConfig(configureOptions: (opts: RouteProps) => void) {
+        configureOptions(this.route.config);
+    }
 
-        return r;
+    AddRouteView(configureOptions: (opts: RouteModels.ViewOptions) => void) {
+        configureOptions(this.route.view);
+    }
+
+    Build(): RouteModels.Definition { return this.route; }
+
+    static define(name: string, configure: (builder: RouteBuilder) => void): RouteModels.Definition {
+        let builder = new RouteBuilder(name);
+        configure(builder);
+        return builder.Build();
     }
 }
+

@@ -7,6 +7,7 @@ import SignInPage from '../firebase/SignInPage';
 import Blog from '../Components/Blog';
 import TestingSuite from '../Components/TestingSuite';
 import meta from '../meta';
+import * as Icon from 'grommet-icons';
 
 class RouteConfiguration {
     Landing: RouteModels.Definition;
@@ -15,19 +16,56 @@ class RouteConfiguration {
     Resume: RouteModels.Definition;
     SignIn: RouteModels.Definition;
     Blog: RouteModels.Definition;
-    private _configArray: RouteModels.Definition[];
     TestingSuite: RouteModels.Definition;
+    private _configArray: RouteModels.Definition[];
 
     constructor() {
-        this.Landing = RouteBuilder.define("home", "/", Landing, o => {
-            o.exact = true;
+        this.Landing = RouteBuilder.define("home", o => {
+            o.AddRouteConfig(props => {
+                props.path = "/";
+                props.component = Landing;
+                props.exact = true;
+            });
+
+            o.AddRouteView(props => {
+                props.icon = Icon.Home;
+            });
         });
 
-        this.Calculator = RouteBuilder.define("calculator", "/calculator", Calculator);
-        this.Resume = RouteBuilder.define("resume", "/resume", ResumePage);
-        this.Blog = RouteBuilder.define("blog", "/blog", Blog);
-        this.SignIn = RouteBuilder.define("signin", "/signin", SignInPage);
-        this.TestingSuite = RouteBuilder.define("test", "/test", TestingSuite);
+        this.Calculator = RouteBuilder.define("calculator", o => {
+            o.AddRouteConfig(props => {
+                props.path = "/calculator";
+                props.component = Calculator;
+            });
+        });
+
+        this.Resume = RouteBuilder.define("resume", o => {
+            o.AddRouteConfig(props => {
+                props.path = "/resume";
+                props.component = ResumePage;
+            });
+        });
+
+        this.Blog = RouteBuilder.define("blog", o => {
+            o.AddRouteConfig(props => {
+                props.path = "/blog";
+                props.component = Blog;
+            });
+        });
+
+        this.SignIn = RouteBuilder.define("signin", o => {
+            o.AddRouteConfig(props => {
+                props.path = "/signin";
+                props.component = SignInPage;
+            });
+        });
+
+        this.TestingSuite = RouteBuilder.define("test", o => {
+            o.AddRouteConfig(props => {
+                props.path = "/test";
+                props.component = TestingSuite;
+            });
+        });
 
         this._configArray = Object.keys(this).map(k => this[k]).filter(route => this.canShowInProduction(route));
     }

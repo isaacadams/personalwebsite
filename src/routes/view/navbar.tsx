@@ -32,8 +32,8 @@ function NavBarView({showing, handleTogglerClick}) {
                         icon={false}
                         label={<FontAwesomeIcon icon={["fas", "cog"]} />}
                         items={[
-                            { label: RouteDefinitions.Blog.name, onClick: () => { history.push(RouteDefinitions.Blog.path) } },
-                            { label: RouteDefinitions.SignIn.name, onClick: () => { history.push(RouteDefinitions.SignIn.path) } },
+                            { label: RouteDefinitions.Blog.name, onClick: () => { history.push(RouteDefinitions.Blog.GetPathToRoute()) } },
+                            { label: RouteDefinitions.SignIn.name, onClick: () => { history.push(RouteDefinitions.SignIn.GetPathToRoute()) } },
                         ]}
                     />
                 </div>

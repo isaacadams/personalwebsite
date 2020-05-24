@@ -15,10 +15,11 @@ const routes = RouteDefinitions.GetNavbarRoutes().reduce(function (accum, r, i, 
     return accum;
 }, []);
 
-function createRouteLink({name, path}: RouteModels.Definition) {
+function createRouteLink(definition: RouteModels.Definition) {
     return {
-        name,
-        href: path
+        name: definition.name,
+        href: definition.GetPathToRoute(),
+        icon: definition.view.icon
     };
 }
 
@@ -31,7 +32,12 @@ export function NavItemsParent(props){
                 <NavItem 
                     key={i}
                     href={r.href} 
-                    text={r.name} 
+                    text={
+                        <>
+                            {r.icon && <r.icon />}
+                            {r.name}
+                        </>
+                    }
                     active={location.pathname === r.href} 
                 />
             )}

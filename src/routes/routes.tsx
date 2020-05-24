@@ -14,9 +14,9 @@ class Routes extends React.Component {
                 {RouteDefinitions.GetAllRoutes().map((r, i) => (
                     <Route
                         key={i}
-                        path={r.path}
-                        exact={r.opts.exact}
-                        component={p => <r.component {...p} />} />
+                        path={r.config.path}
+                        exact={r.config.exact}
+                        component={p => <r.config.component {...p} />} />
                 ))}
                 {/* <Route path="/*">
                     <span>ERROR 404</span>
