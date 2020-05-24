@@ -5,7 +5,7 @@ import { routeDefinitions } from '../RouteDefinitions';
 import { RouteModels } from '../RouteModels';
 import { useLocation } from 'react-router-dom';
 
-const routes = routeDefinitions.asArray().reduce(function (accum, r, i, arr) {
+const routes = routeDefinitions.GetNavbarRoutes().reduce(function (accum, r, i, arr) {
     /* if(r.name !== "Projects")
         accum.push(createRouteLink(r));
     else

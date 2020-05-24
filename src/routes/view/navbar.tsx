@@ -3,8 +3,13 @@ import { animations } from 'react-animation'
 import { NavItemsParent } from './NavItemsParent';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import meta from '../../meta';
+import { Menu } from 'grommet';
+import { routeDefinitions } from '../RouteDefinitions';
+import { useHistory } from 'react-router-dom';
 
 function NavBarView({showing, handleTogglerClick}) {
+    let history = useHistory();
+
     return (
         <div className="col-12">
             <nav className="navbar navbar-expand-lg navbar-light bg-transparent">
@@ -23,7 +28,14 @@ function NavBarView({showing, handleTogglerClick}) {
                     <NavItemsParent />
                 </div>
                 <div>
-                    {meta.isDevelopment && <FontAwesomeIcon icon={["fas", "cog"]} size="2x" onClick={() => console.log("yo")} />}
+                    <Menu
+                        icon={false}
+                        label={<FontAwesomeIcon icon={["fas", "cog"]} />}
+                        items={[
+                            { label: routeDefinitions.Blog.name, onClick: () => { history.push(routeDefinitions.Blog.path) } },
+                            { label: routeDefinitions.SignIn.name, onClick: () => { history.push(routeDefinitions.SignIn.path) } },
+                        ]}
+                    />
                 </div>
             </nav>
         </div>

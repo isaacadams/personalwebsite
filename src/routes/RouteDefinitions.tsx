@@ -28,14 +28,19 @@ class RouteConfiguration {
         this.Blog = RouteBuilder.define("blog", "/blog", Blog);
         this.SignIn = RouteBuilder.define("signin", "/signin", SignInPage);
         this.TestingSuite = RouteBuilder.define("test", "/test", TestingSuite);
+
         this._configArray = Object.keys(this).map(k => this[k]).filter(route => this.canShowInProduction(route));
     }
 
-    asArray(): RouteModels.Definition[] {
+    GetAllRoutes(): RouteModels.Definition[] {
         return this._configArray;    
     }
 
-    canShowInProduction(route: RouteModels.Definition){
+    GetNavbarRoutes(): RouteModels.Definition[] {
+        return [this.Landing, this.Calculator, this.Resume, this.TestingSuite];
+    }
+
+    canShowInProduction(route: RouteModels.Definition) {
         if(meta.isDevelopment) return true;
 
         return ![this.TestingSuite, this.Blog, this.Calculator, this.SignIn].includes(route);

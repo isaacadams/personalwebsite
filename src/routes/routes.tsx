@@ -11,7 +11,7 @@ class Routes extends React.Component {
     render(){
         return (
             <Switch>
-                {routeDefinitions.asArray().map((r, i) => (
+                {routeDefinitions.GetAllRoutes().map((r, i) => (
                     <Route
                         key={i}
                         path={r.path}
