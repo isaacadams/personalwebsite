@@ -4,13 +4,11 @@ import { WrappedComponentProps } from 'react-with-firebase-auth';
 import BlogPostRepository, { BlogPost } from '../firebase/BlogPost';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ShowLoading } from './Shared/ShowLoading';
-import { Box, Button, TextArea, Grommet } from 'grommet';
+import { Box, Button, TextArea, Grommet, Markdown } from 'grommet';
 
 function Blog({user, error, loading }: WrappedComponentProps) {
     
     let [posts, setPosts] = React.useState<BlogPost[]>([]);
-
-    //console.log("Hello Worlds");
     let blogPostRepo = new BlogPostRepository();
 
     React.useEffect(() => {
@@ -66,10 +64,12 @@ function AddBlogPost({ user, refreshPosts }: {user: firebase.User, refreshPosts:
 
 function BlogPostView({title, body, author}: BlogPost) {
     return (
-        <div>
+        <div style={{ display: "flex", flexDirection: "column" }}>
             <h3>{title}</h3>
-            <p>{body}</p>
-            <Button label={"Continue Reading..."} />
+            <Markdown>{body}</Markdown>
+            <div>
+                <Button label={"Continue Reading..."} />
+            </div>
             {/* <small>written by {author}</small> */}
         </div>
     );
