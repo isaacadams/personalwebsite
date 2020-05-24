@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { animations } from 'react-animation'
 import { NavItemsParent } from './NavItemsParent';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import meta from '../../meta';
 
 function NavBarView({showing, handleTogglerClick}) {
     return (
@@ -19,6 +21,9 @@ function NavBarView({showing, handleTogglerClick}) {
                 </button>
                 <div className={`navbar-collapse collapse ${(showing ? "show" : "")}`} style={{animation: animations.slideIn}}>
                     <NavItemsParent />
+                </div>
+                <div>
+                    {meta.isDevelopment && <FontAwesomeIcon icon={["fas", "cog"]} size="2x" onClick={() => console.log("yo")} />}
                 </div>
             </nav>
         </div>

@@ -48,7 +48,7 @@ export function App () {
                         </div>
                     </Row>
                 </Container> 
-            </LandingPageContext.Provider>      
+            </LandingPageContext.Provider>
         </Router>
     );
 }
