@@ -33,10 +33,11 @@ export function NavItemsParent(props){
                     key={i}
                     href={r.href} 
                     text={
-                        <>
+                        <div style={{display: "flex", alignItems: "center"}}>
                             {r.icon && <r.icon />}
-                            {r.name}
-                        </>
+                            <div style={{width: "1rem"}}></div>
+                            <div>{r.name}</div>
+                        </div>
                     }
                     active={location.pathname === r.href} 
                 />

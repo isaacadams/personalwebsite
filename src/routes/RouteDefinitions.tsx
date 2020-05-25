@@ -37,12 +37,20 @@ class RouteConfiguration {
                 props.path = "/calculator";
                 props.component = Calculator;
             });
+
+            o.AddRouteView(props => {
+                props.icon = Icon.Calculator;
+            });
         });
 
         this.Resume = RouteBuilder.define("resume", o => {
             o.AddRouteConfig(props => {
                 props.path = "/resume";
                 props.component = ResumePage;
+            });
+
+            o.AddRouteView(props => {
+                props.icon = Icon.Article;
             });
         });
 
@@ -64,6 +72,10 @@ class RouteConfiguration {
             o.AddRouteConfig(props => {
                 props.path = "/test";
                 props.component = TestingSuite;
+            });
+
+            o.AddRouteView(props => {
+                props.icon = Icon.Test;
             });
         });
 
