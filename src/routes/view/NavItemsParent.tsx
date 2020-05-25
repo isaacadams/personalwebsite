@@ -4,6 +4,7 @@ import { NavDropdownItem } from './NavDropdownItem';
 import RouteDefinitions from '../RouteDefinitions';
 import { RouteModels } from '../RouteModels';
 import { useLocation } from 'react-router-dom';
+import { NavItemView } from './NavItemView';
 
 const routes = RouteDefinitions.GetNavbarRoutes().reduce(function (accum, r, i, arr) {
     /* if(r.name !== "Projects")
@@ -32,13 +33,7 @@ export function NavItemsParent(props){
                 <NavItem 
                     key={i}
                     href={r.href} 
-                    text={
-                        <div style={{display: "flex", alignItems: "center"}}>
-                            {r.icon && <r.icon />}
-                            <div style={{width: "1rem"}}></div>
-                            <div>{r.name}</div>
-                        </div>
-                    }
+                    text={<NavItemView name={r.name} Icon={r.icon} />}
                     active={location.pathname === r.href} 
                 />
             )}
@@ -46,3 +41,4 @@ export function NavItemsParent(props){
         </ul>
     );
 }
+

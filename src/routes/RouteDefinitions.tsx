@@ -59,12 +59,20 @@ class RouteConfiguration {
                 props.path = "/blog";
                 props.component = Blog;
             });
+
+            o.AddRouteView(props => {
+                props.icon = Icon.Blog;
+            });
         });
 
         this.SignIn = RouteBuilder.define("signin", o => {
             o.AddRouteConfig(props => {
                 props.path = "/signin";
                 props.component = SignInPage;
+            });
+
+            o.AddRouteView(props => {
+                props.icon = Icon.User;
             });
         });
 

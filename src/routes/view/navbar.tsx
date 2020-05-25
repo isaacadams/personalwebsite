@@ -6,6 +6,7 @@ import meta from '../../meta';
 import { Menu } from 'grommet';
 import RouteDefinitions from '../RouteDefinitions';
 import { useHistory } from 'react-router-dom';
+import { NavItemView } from './NavItemView';
 
 function NavBarView({showing, handleTogglerClick}) {
     let history = useHistory();
@@ -32,8 +33,8 @@ function NavBarView({showing, handleTogglerClick}) {
                         icon={false}
                         label={<FontAwesomeIcon icon={["fas", "cog"]} />}
                         items={[
-                            { label: RouteDefinitions.Blog.name, onClick: () => { history.push(RouteDefinitions.Blog.GetPathToRoute()) } },
-                            { label: RouteDefinitions.SignIn.name, onClick: () => { history.push(RouteDefinitions.SignIn.GetPathToRoute()) } },
+                            { label: <NavItemView name={RouteDefinitions.Blog.name} Icon={RouteDefinitions.Blog.view.icon} />, onClick: () => { history.push(RouteDefinitions.Blog.GetPathToRoute()) } },
+                            { label: <NavItemView name={RouteDefinitions.SignIn.name} Icon={RouteDefinitions.SignIn.view.icon} />, onClick: () => { history.push(RouteDefinitions.SignIn.GetPathToRoute()) } },
                         ]}
                     />
                 </div>
