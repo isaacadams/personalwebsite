@@ -38,7 +38,7 @@ export default class BlogPostRepository {
         return Promise.all(promises);
     }
 
-    async readPost(primaryKey: string): Promise<IBlogPostWithKey> {
+    readPost(primaryKey: string): Promise<IBlogPostWithKey> {
         let promise = read<BlogPost>('posts/' + primaryKey);
 
         if(!promise) return Promise.reject("there were no records");
