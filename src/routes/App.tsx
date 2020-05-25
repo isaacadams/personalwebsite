@@ -1,11 +1,10 @@
 import React, { useEffect, useState, createContext } from 'react';
 import { BrowserRouter as Router } from "react-router-dom";
 import { Routes } from './Routes';
-import Navbar from './view/Navbar';
 import { getData } from '../Components/Shared/useData';
 import { Footer } from '../Footer';
-import meta from '../meta';
-import { Container, WhitespaceRow, Row, BootstrappedRow, YSpacer } from './StyleComponents';
+import { Container, Row, YSpacer } from './StyleComponents';
+import { Navigation } from './view/Navigation';
 
 export const LandingPageContext = createContext({});
 
@@ -35,9 +34,7 @@ export function App () {
                 <Container>
                     <Row>
                         <YSpacer height="75px" />
-                        <div className="bootstrap-styles">
-                            <Navbar />
-                        </div>
+                        <Navigation />
                         <YSpacer height="25px" />
                         <div>
                             <Routes />
@@ -52,4 +49,3 @@ export function App () {
         </Router>
     );
 }
-
