@@ -36,11 +36,11 @@ function Blog({user, error, loading }: WrappedComponentProps) {
                                 {(!posts || posts.length < 1) && <ShowLoading />}
                                 {posts.map((p, i) => 
                                     <div className="pt-4" key={i}>
-                                        <BlogPostView {...p} />
+                                        <ShortenedBlogPostView {...p} />
                                     </div>)}
                             </Route>
                             <Route path={`${path}/:postId`}>
-                                <BlogView />
+                                <BlogPostView />
                             </Route>
                         </Switch>
                     </div>
@@ -83,7 +83,7 @@ function AddBlogPost({ user, refreshPosts }: {user: firebase.User, refreshPosts:
     }
 }
 
-function BlogPostView({ primaryKey, post }: IBlogPostWithKey) {
+function ShortenedBlogPostView({ primaryKey, post }: IBlogPostWithKey) {
     let {title, body, author } = post;
     let history = useHistory();
 
@@ -101,7 +101,7 @@ function BlogPostView({ primaryKey, post }: IBlogPostWithKey) {
     );
 }
 
-function BlogView(props){
+function BlogPostView(props){
     let { postId } = useParams();
     let [post, setPost] = React.useState<BlogPost>(null);
     
