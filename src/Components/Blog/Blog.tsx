@@ -1,9 +1,9 @@
 import * as React from 'react';
-import createWithAuth from '../firebase/createWithAuth';
+import createWithAuth from '../../firebase/createWithAuth';
 import { WrappedComponentProps } from 'react-with-firebase-auth';
-import BlogPostRepository, { BlogPost, IBlogPostWithKey } from '../firebase/BlogPost';
+import BlogPostRepository, { BlogPost, IBlogPostWithKey } from '../../firebase/BlogPost';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ShowLoading } from './Shared/ShowLoading';
+import { ShowLoading } from '../Shared/ShowLoading';
 import { Box, Button, TextArea, Grommet, Markdown } from 'grommet';
 import { useHistory, Route, Switch, useRouteMatch, useParams } from 'react-router-dom';
 
