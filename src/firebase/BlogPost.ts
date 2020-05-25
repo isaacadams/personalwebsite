@@ -10,6 +10,11 @@ export class BlogPost {
     title: string
 }
 
+export interface IBlogPostWithKey {
+    primaryKey: string,
+    post: BlogPost
+}
+
 export default class BlogPostRepository {
     
     writeNewPost(post: BlogPost) {
@@ -21,11 +26,23 @@ export default class BlogPostRepository {
         return database.ref().update(updates);
     }
 
-    async readUserPosts(uid: string) {
+    async readUserPosts(uid: string): Promise<IBlogPostWithKey[]> {
         const r = await read('user-posts/' + uid);
         if(!r) return Promise.reject("there were no records");
 
-        const promises = Object.values(r).map(key => read('posts/' + key));
+        const promises = Object.values(r)
+            .map(primaryKey => 
+                read<BlogPost>('posts/' + primaryKey)
+                .then(post => ({ primaryKey, post }))
+            );
         return Promise.all(promises);
+    }
+
+    async readPost(primaryKey: string): Promise<IBlogPostWithKey> {
+        let promise = read<BlogPost>('posts/' + primaryKey);
+
+        if(!promise) return Promise.reject("there were no records");
+        
+        return promise.then(post => ({ primaryKey, post }));
     }
 }

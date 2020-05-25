@@ -26,7 +26,7 @@ export function addWithNewKey(table, data, addToUpdate) {
   return { table, key, data };
 }
 
-export function read(table, eventType: firebase.database.EventType = 'value'){
+export function read<T>(table, eventType: firebase.database.EventType = 'value'): Promise<T>{
   return database.ref(table).once(eventType).then(snapshot => snapshot.val());
 }
 

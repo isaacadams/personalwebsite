@@ -1,14 +1,18 @@
 import * as React from 'react';
 import createWithAuth from '../firebase/createWithAuth';
 import { WrappedComponentProps } from 'react-with-firebase-auth';
-import BlogPostRepository, { BlogPost } from '../firebase/BlogPost';
+import BlogPostRepository, { BlogPost, IBlogPostWithKey } from '../firebase/BlogPost';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ShowLoading } from './Shared/ShowLoading';
 import { Box, Button, TextArea, Grommet, Markdown } from 'grommet';
+import { useHistory, Route, Switch, useRouteMatch, useParams } from 'react-router-dom';
+
+// text editors
+// https://reactjsexample.com/tag/editor/
 
 function Blog({user, error, loading }: WrappedComponentProps) {
     
-    let [posts, setPosts] = React.useState<BlogPost[]>([]);
+    let [posts, setPosts] = React.useState<IBlogPostWithKey[]>([]);
     let blogPostRepo = new BlogPostRepository();
 
     React.useEffect(() => {
@@ -16,6 +20,8 @@ function Blog({user, error, loading }: WrappedComponentProps) {
     }, [user]);
     
     if(loading) return <ShowLoading />;
+
+    let { path, url } = useRouteMatch();
 
     return (
         <div className="bootstrap-styles">
@@ -25,11 +31,18 @@ function Blog({user, error, loading }: WrappedComponentProps) {
                         {user && <AddBlogPost user={user} refreshPosts={refreshPosts} />}
                     </div>
                     <div className="col-12">
-                        {(!posts || posts.length < 1) && <ShowLoading />}
-                        {posts.map((p, i) => 
-                            <div className="pt-4" key={i}>
-                                <BlogPostView {...p} />
-                            </div>)}
+                        <Switch>
+                            <Route exact path={path}>
+                                {(!posts || posts.length < 1) && <ShowLoading />}
+                                {posts.map((p, i) => 
+                                    <div className="pt-4" key={i}>
+                                        <BlogPostView {...p} />
+                                    </div>)}
+                            </Route>
+                            <Route path={`${path}/:postId`}>
+                                <BlogView />
+                            </Route>
+                        </Switch>
                     </div>
                 </div>
             </div>
@@ -57,20 +70,53 @@ function AddBlogPost({ user, refreshPosts }: {user: firebase.User, refreshPosts:
     );
 
     function onAdd(e) {
-        blogPostRepo.writeNewPost({ uid: user.uid, author: user.displayName, title: "testing", body: content }).finally(refreshPosts);
+        blogPostRepo
+            .writeNewPost({ 
+                uid: user.uid, 
+                author: user.displayName, 
+                title: "testing", 
+                body: content 
+            })
+            .finally(refreshPosts);
+
         setContent("");
     }
 }
 
-function BlogPostView({title, body, author}: BlogPost) {
+function BlogPostView({ primaryKey, post }: IBlogPostWithKey) {
+    let {title, body, author } = post;
+    let history = useHistory();
+
     return (
         <div style={{ display: "flex", flexDirection: "column" }}>
             <h3>{title}</h3>
             <Markdown>{body}</Markdown>
             <div>
-                <Button label={"Continue Reading..."} />
+                <Button label={"Continue Reading..."} onClick={() => {
+                    history.push(`blog/${primaryKey}`);
+                }} />
             </div>
             {/* <small>written by {author}</small> */}
+        </div>
+    );
+}
+
+function BlogView(props){
+    let { postId } = useParams();
+    let [post, setPost] = React.useState<BlogPost>(null);
+    
+    React.useEffect(() => {
+        new BlogPostRepository()
+            .readPost(postId)
+            .then(r => setPost(r.post));
+    });
+
+    if(!post) return <ShowLoading />;
+
+    return (
+        <div style={{ display: "flex", flexDirection: "column" }}>
+            <h3>{post.title}</h3>
+            <Markdown>{post.body}</Markdown>
         </div>
     );
 }
