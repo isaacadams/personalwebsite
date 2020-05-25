@@ -8,24 +8,24 @@ export function Landing(props) {
     let data = React.useContext(LandingPageContext);
     
     return (
-        <div className="bootstrap-styles">
-            <div className="row">   
-                <section className="col-12">
-                    <Home data={data["home"]} />
-                </section>
-                <div className="col-12">
-                    <hr className="py-2" />
-                </div>
-                <section className="col-12">
-                    <Projects />
-                </section>
-                <div className="col-12">
-                    <hr className="py-2" />
-                </div>
-                <section className="col-12">
-                    <Gallery data={data["gallery"]} />
-                </section>        
-            </div> 
+        <div>
+            <div className="bootstrap-styles">
+                <div className="row">   
+                    <section className="col-12">
+                        <Home data={data["home"]} />
+                    </section>
+                    <div className="col-12">
+                        <hr className="py-2" />
+                    </div>
+                    <section className="col-12">
+                        <Projects />
+                    </section>
+                    <div className="col-12">
+                        <hr className="py-2" />
+                    </div>
+                </div> 
+            </div>
+            <Gallery data={data["gallery"]} />
         </div>
     );
 }
