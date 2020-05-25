@@ -14,7 +14,7 @@ export function Gallery({ data }) {
                 {data.map((value: string, index: number) => 
                     <img className="col-lg-4 col-12 py-3" style={imgCss} key={index} src={value} />
                 )}
-            </div>                
+            </div>
         </div>
     );
 }

@@ -14,6 +14,5 @@ export function ShortenedBlogPostView({ primaryKey, post }: IBlogPostWithKey) {
                 history.push(`blog/${primaryKey}`);
             }} />
         </div>
-
     </div>);
 }
