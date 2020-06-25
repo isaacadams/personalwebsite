@@ -4,10 +4,11 @@
   "description": "A personal website for information on Isaac Adams and a place where he showcases his public work",
   "main": "site.js",
   "scripts": {
-    "build": "gulp app",
-    "deploy": "npm run prod && firebase deploy",
+    "clean": "rimraf [dist/*,!dist/assets/imgs/*]",
+    "build": "npm run clean && gulp app",
     "start": "npm run build && parcel ./src/index.html",
-    "prod": "npm run build && parcel build ./src/index.html"
+    "prod": "npm run build && parcel build ./src/index.html",
+    "deploy": "npm run prod && firebase deploy"
   },
   "author": "Isaac Adams",
   "license": "ISC",
@@ -16,9 +17,11 @@
     "bootstrap": "^4.3.1",
     "grommet": "^2.13.0",
     "grommet-icons": "^4.4.0",
-    "jquery": "^3.5.0",
+    "jquery": "^3.5.1",
+    "popper.js": "1.16.0",
     "polished": "^3.6.3",
-    "styled-components": "^5.1.0"
+    "styled-components": "^5.1.0",
+    "react-is": "16.8.0"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
