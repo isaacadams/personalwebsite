@@ -13,11 +13,17 @@ export function Gallery({ data }) {
         return 3;
     }
 
-    const [columnCount, setColumnCount] = React.useState(1);
-
-    React.useLayoutEffect(() => {
-        setColumnCount(getColumnAmount());
+    const [gallery, setGallery] = React.useState({
+        columns: 1,
+        //opacity: {}
     });
+
+    React.useEffect(() => {
+        setGallery(p => ({
+            ...p,
+            columns: getColumnAmount()
+        }));
+    }, [width]);
 
     if(!data) return <ShowLoading />;
 
@@ -25,7 +31,7 @@ export function Gallery({ data }) {
         <Box align="center" >
             <Grid
                 columns={{
-                    count: columnCount,
+                    count: gallery.columns,
                     size: 'auto',
                 }}
                 gap="small" >
@@ -34,6 +40,7 @@ export function Gallery({ data }) {
                         <Image
                             src={value}
                             fit="cover"
+                            //opacity="medium" going to use opacity by default and then remove it when hovering
                         />
                     </Box>
                 )}
