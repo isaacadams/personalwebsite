@@ -1,19 +1,11 @@
 import '@isaacadams/extensions';
-import firebase from './firebase';
-import { read, addWithNewKey } from './database';
-const database = firebase.database;
+import myFirebase from './myFirebase';
+import { read, addWithNewKey, ISubscribed } from './database';
+import firebase from 'firebase';
+import { BlogPost, IBlogPostWithKey } from './useBlogPosts';
+const database = myFirebase.database;
 
-export class BlogPost {
-    author: string;
-    uid: string;
-    body: string;
-    title: string
-}
 
-export interface IBlogPostWithKey {
-    primaryKey: string,
-    post: BlogPost
-}
 
 export default class BlogPostRepository {
     
@@ -27,22 +19,23 @@ export default class BlogPostRepository {
     }
 
     async readUserPosts(uid: string): Promise<IBlogPostWithKey[]> {
-        const r = await read('user-posts/' + uid);
+        const r = await read<any>('user-posts/' + uid);
         if(!r) return Promise.reject("there were no records");
-
-        const promises = Object.values(r)
-            .map(primaryKey => 
-                read<BlogPost>('posts/' + primaryKey)
-                .then(post => ({ primaryKey, post }))
-            );
+        const promises = Object.values(r.value).map(this.readPostAsPromise);
         return Promise.all(promises);
     }
 
-    readPost(primaryKey: string): Promise<IBlogPostWithKey> {
+    async readPost(primaryKey: string, cb: (data: IBlogPostWithKey) => void): firebase.database.Reference {
         let promise = read<BlogPost>('posts/' + primaryKey);
-
         if(!promise) return Promise.reject("there were no records");
-        
-        return promise.then(post => ({ primaryKey, post }));
+        let {tableReference, value} = await promise;
+        cb({primaryKey, post: value});
+        return tableReference;
+    }
+
+    async readPostAsPromise(primaryKey: string): Promise<IBlogPostWithKey> {
+        let promise = read<BlogPost>('posts/' + primaryKey);
+        if(!promise) return Promise.reject("there were no records");
+        return promise.then(d => ({ primaryKey, post: d.value }));
     }
 }

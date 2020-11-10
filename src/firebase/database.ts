@@ -1,6 +1,6 @@
 import * as firebase from 'firebase/app';
 import 'firebase/database';
-import myFirebase from './firebase';
+import myFirebase from './myFirebase';
 const database = myFirebase.database;
 
 /* export function GetSignInMethods() {
@@ -26,8 +26,17 @@ export function addWithNewKey(table, data, addToUpdate) {
   return { table, key, data };
 }
 
-export function read<T>(table, eventType: firebase.database.EventType = 'value'): Promise<T>{
-  return database.ref(table).once(eventType).then(snapshot => snapshot.val());
+export interface ISubscribed<T> {
+  value: T;
+  tableReference: firebase.database.Reference;
+}
+
+export function read<T>(table, eventType: firebase.database.EventType = 'value'): Promise<ISubscribed<T>> {
+  let tableRef = database.ref(table)
+  return tableRef.once(eventType).then(snapshot => ({
+    value: snapshot.val(),
+    tableReference: tableRef
+  }));
 }
 
   

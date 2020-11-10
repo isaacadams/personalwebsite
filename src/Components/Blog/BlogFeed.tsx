@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IBlogPostWithKey } from '../../firebase/BlogPost';
+import { IBlogPostWithKey } from '../../firebase/useBlogPosts';
 import { ShowLoading } from '../Shared/ShowLoading';
 import { ShortenedBlogPostView } from './ShortenedBlogPostView';
 
