@@ -3,14 +3,16 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
 
-let app = firebase.initializeApp(config);
+let fb = firebase.default;
+
+let app = fb.initializeApp(config);
 const providers = {
-    googleProvider: new firebase.auth.GoogleAuthProvider(),
+    googleProvider: new fb.auth.GoogleAuthProvider(),
 };
 
 export default {
     providers,
     app,
-    auth: firebase.auth(),
-    database: firebase.database()
+    auth: fb.auth(),
+    database: fb.database()
 };
