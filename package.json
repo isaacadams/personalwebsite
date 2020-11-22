@@ -4,7 +4,7 @@
   "description": "A personal website for information on Isaac Adams and a place where he showcases his public work",
   "main": "site.js",
   "scripts": {
-    "clean": "rimraf [dist/*,!dist/assets/imgs/*]",
+    "clean": "gulp cleanDist",
     "format": "prettier --write src/**/*",
     "build": "npm run clean && gulp app",
     "start": "npm run build && parcel ./src/index.html",
@@ -27,6 +27,7 @@
     "@types/react-router-dom": "^5.1.6",
     "firebase": "^8.1.1",
     "firebase-tools": "^8.16.2",
+    "globby": "^11.0.1",
     "gulp": "^4.0.2",
     "gulp-rimraf": "1.0.0",
     "gulp-terser": "2.0.0",
