@@ -1,9 +1,7 @@
 import * as React from 'react';
 import createWithAuth from '../../firebase/createWithAuth';
 import {WrappedComponentProps} from 'react-with-firebase-auth';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {ShowLoading} from '../Shared/ShowLoading';
-import {Box, Grommet} from 'grommet';
 import {Route, Switch, useRouteMatch} from 'react-router-dom';
 import {AddBlogPost} from './AddBlogPost';
 import {BlogPostView} from './BlogPostView';
