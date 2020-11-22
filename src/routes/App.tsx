@@ -3,8 +3,8 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import {Routes} from './Routes';
 import {getData} from '../Components/Shared/useData';
 import {DisplayFooter} from '../Footer';
-import {Container, Row, YSpacer} from './StyleComponents';
 import {Navigation} from './view/Navigation';
+import {Box} from 'grommet';
 
 export const LandingPageContext = createContext({});
 
@@ -29,18 +29,13 @@ export function App() {
   return (
     <Router>
       <LandingPageContext.Provider value={data}>
-        <Container>
-          <Row>
-            <YSpacer height="75px" />
-            <Navigation />
-            <YSpacer height="25px" />
-            <div>
-              <Routes />
-            </div>
-            <YSpacer height="75px" />
-            <DisplayFooter />
-          </Row>
-        </Container>
+        <Box pad={{vertical: 'medium'}}>
+          <Navigation />
+        </Box>
+        <Box align="center" pad={{vertical: 'medium', horizontal: 'medium'}}>
+          <Routes />
+        </Box>
+        <DisplayFooter />
       </LandingPageContext.Provider>
     </Router>
   );
