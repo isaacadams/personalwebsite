@@ -1,11 +1,13 @@
 import {Box, Grid} from 'grommet';
 import * as React from 'react';
+import {useDynamicColumn} from './Gallery';
 import {ProjectCard} from './Projects/projectCard';
 
 export function Projects(props) {
+  let columns = useDynamicColumn(2);
   return (
     <Box align="center">
-      <Grid columns={{count: 2, size: 'small'}} gap="large">
+      <Grid columns={{count: columns, size: 'small'}} gap="large">
         <ProjectCard
           name="Game of War"
           website="https://cards-gameofwar.web.app/"

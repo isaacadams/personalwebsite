@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Box, Image, Grid, ResponsiveContext} from 'grommet';
+import {Box, Image, Grid} from 'grommet';
 import {ShowLoading} from './Shared/ShowLoading';
 import useWindowSize, {sizes} from './Shared/useWindowSize';
 
@@ -13,31 +13,13 @@ export function Gallery({data}) {
 }
 
 function DisplayGallery({data}) {
-  const [width, height] = useWindowSize();
-
-  let getColumnAmount = (): number => {
-    if (width < sizes.small) return 1;
-    if (width < sizes.large) return 2;
-    return 3;
-  };
-
-  const [gallery, setGallery] = React.useState({
-    columns: 1,
-    //opacity: {}
-  });
-
-  React.useEffect(() => {
-    setGallery((p) => ({
-      ...p,
-      columns: getColumnAmount(),
-    }));
-  }, [width]);
+  let columns = useDynamicColumn();
 
   return (
     <Box align="center">
       <Grid
         columns={{
-          count: gallery.columns,
+          count: columns,
           size: 'auto',
         }}
         gap="small"
@@ -56,4 +38,30 @@ function DisplayGallery({data}) {
       </Grid>
     </Box>
   );
+}
+
+export function useDynamicColumn(max?: number): number {
+  const [width, height] = useWindowSize();
+
+  let getColumnSize = (): number => {
+    if (width < sizes.small) return 1;
+    if (width < sizes.large) return 2;
+    return 3;
+  };
+
+  function getColumnSizeWithoutExceedingMax(): number {
+    let col = getColumnSize();
+    if (max) return Math.min(max, col);
+    return col;
+  }
+
+  const [column, setColumn] = React.useState<number>(
+    getColumnSizeWithoutExceedingMax()
+  );
+
+  React.useEffect(() => {
+    setColumn(getColumnSizeWithoutExceedingMax());
+  }, [width]);
+
+  return column;
 }
