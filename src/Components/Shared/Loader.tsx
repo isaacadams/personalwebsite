@@ -19,3 +19,6 @@ export const Loader = styled.div`
 `
 
 export default Loader
+
+// CREDIT
+// https://dev.to/stephencweiss/create-a-spinner-add-a-loader-in-react-4ic2
