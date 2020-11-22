@@ -2,7 +2,7 @@ import React, {useEffect, useState, createContext} from 'react';
 import {BrowserRouter as Router} from 'react-router-dom';
 import {Routes} from './Routes';
 import {getData} from '../Components/Shared/useData';
-import {Footer} from '../Footer';
+import {DisplayFooter} from '../Footer';
 import {Container, Row, YSpacer} from './StyleComponents';
 import {Navigation} from './view/Navigation';
 
@@ -38,9 +38,7 @@ export function App() {
               <Routes />
             </div>
             <YSpacer height="75px" />
-            <div className="bootstrap-styles">
-              <Footer />
-            </div>
+            <DisplayFooter />
           </Row>
         </Container>
       </LandingPageContext.Provider>

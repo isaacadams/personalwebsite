@@ -1,5 +1,17 @@
 import React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {
+  Box,
+  Button,
+  ButtonProps,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  Text,
+  Image,
+  Grid,
+} from 'grommet';
 
 interface IProps {
   website?: string;
@@ -10,42 +22,47 @@ interface IProps {
   tags: string[];
 }
 
-export class ProjectCard extends React.Component<IProps, any> {
-  constructor(props: IProps) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <div className="card" style={{width: '20rem'}}>
-        <img
-          className="card-img-top p-2"
-          src={this.props.image}
-          style={{height: '16rem'}}
+export function ProjectCard({
+  name,
+  github,
+  message,
+  image,
+  tags,
+  website,
+}: IProps) {
+  return (
+    <Card height="tall" width="medium" background="light-1">
+      <Image src={image} style={{height: '16rem'}} />
+      <CardHeader pad={{horizontal: 'medium', vertical: 'small'}} gap="xsmall">
+        {name}
+      </CardHeader>
+      <CardBody pad={{horizontal: 'medium', vertical: 'small'}}>
+        <Grid rows={['xsmall', 'xxsmall']} gap="small">
+          <Text>{message}</Text>
+          <Text>{tags.map((t) => `#${t} `)}</Text>
+        </Grid>
+      </CardBody>
+      <CardFooter
+        pad={{horizontal: 'medium', vertical: 'small'}}
+        background="light-2"
+      >
+        <DisplayButton href={website} label={'Website'} />
+        <DisplayButton
+          href={github}
+          secondary
+          icon={<FontAwesomeIcon icon={['fab', 'github']} />}
+          label={'GitHub'}
         />
-        <div className="card-body">
-          <h5 className="card-title">{this.props.name}</h5>
-          <p className="card-text mb-1" style={{height: '6rem'}}>
-            {this.props.message}
-          </p>
-          <span className="d-block small mb-3">
-            {this.props.tags.map((t) => `#${t} `)}
-          </span>
-          <div className="d-flex justify-content-between">
-            {this.props.website === undefined ? (
-              <div></div>
-            ) : (
-              <a href={this.props.website} className="btn  btn-outline-info">
-                Website
-              </a>
-            )}
-            <a href={this.props.github} className="btn btn-secondary">
-              <FontAwesomeIcon icon={['fab', 'github']} />
-              <span className="ml-1">GitHub</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    );
-  }
+      </CardFooter>
+    </Card>
+  );
+}
+
+function DisplayButton(props: ButtonProps) {
+  return (
+    <>
+      {!props?.href && <div></div>}
+      {props?.href && <Button {...props} />}
+    </>
+  );
 }

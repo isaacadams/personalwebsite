@@ -1,28 +1,18 @@
 import * as React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import meta from './meta';
+import {Footer, Anchor, Text} from 'grommet';
 
-export function Footer() {
+export function DisplayFooter() {
   return (
-    <div className="col-12">
-      <div className="row pb-5 d-flex justify-content-center">
-        <div className="col-12">
-          <hr className="py-2" />
-        </div>
-        <span className="w-75 justify-content-around d-flex">
-          <div className="d-flex align-items-center">{meta.owner}</div>
-          <div className="d-flex align-items-center">{meta.version}</div>
-          <div>
-            <a
-              className="page-link text-dark"
-              href="https://github.com/isaacadams/personalwebsite/tree/master"
-            >
-              <FontAwesomeIcon icon={['fab', 'github']} className="mr-2" />
-              source
-            </a>
-          </div>
-        </span>
-      </div>
-    </div>
+    <Footer background="brand" pad="medium">
+      <Text>{meta.owner}</Text>
+      <Text>{meta.version}</Text>
+      <Anchor
+        icon={<FontAwesomeIcon icon={['fab', 'github']} />}
+        label="source"
+        href="https://github.com/isaacadams/personalwebsite/tree/master"
+      />
+    </Footer>
   );
 }
