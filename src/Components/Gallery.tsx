@@ -4,7 +4,15 @@ import {ShowLoading} from './Shared/ShowLoading';
 import useWindowSize, {sizes} from './Shared/useWindowSize';
 
 export function Gallery({data}) {
-  //const size = React.useContext(ResponsiveContext);
+  return (
+    <>
+      {!data && <ShowLoading />}
+      {data && <DisplayGallery data={data} />}
+    </>
+  );
+}
+
+function DisplayGallery({data}) {
   const [width, height] = useWindowSize();
 
   let getColumnAmount = (): number => {
@@ -25,8 +33,6 @@ export function Gallery({data}) {
     }));
   }, [width]);
 
-  if (!data) return <ShowLoading />;
-
   return (
     <Box align="center">
       <Grid
@@ -38,11 +44,13 @@ export function Gallery({data}) {
       >
         {data.map((value: string, index: number) => (
           <Box key={index} height="medium" width="medium">
-            <Image
-              src={value}
-              fit="cover"
-              //opacity="medium" going to use opacity by default and then remove it when hovering
-            />
+            {value && (
+              <Image
+                src={value}
+                fit="cover"
+                //opacity="medium" going to use opacity by default and then remove it when hovering
+              />
+            )}
           </Box>
         ))}
       </Grid>
