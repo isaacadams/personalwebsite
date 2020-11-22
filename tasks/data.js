@@ -1,5 +1,5 @@
 let fs = require('fs');
-let { ensureDirectoriesExist } = require('@isaacadams/nodejs-utils');
+require('@isaacadams/extensions');
 let { paths } = require('./settings');
 
 let imgsFolder = paths.publish.images;
@@ -7,6 +7,7 @@ let dataFolder = paths.publish.data;
 
 function createFileObject(name) {
     return {
+        folder: dataFolder,
         path: dataFolder + '/' + name,
         data: []
     };
@@ -68,6 +69,6 @@ e.fails = function (cb) {
 };
 
 function write(file, cb) {
-    ensureDirectoriesExist(file.path);
+    fs.ensureDirectoryExists(file.folder);
     return fs.writeFile(file.path, JSON.stringify(file.data), 'utf8', cb);
 }

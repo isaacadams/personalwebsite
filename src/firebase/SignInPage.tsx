@@ -54,8 +54,8 @@ const SignInPage = ({
   error,
   loading,
 }: WrappedComponentProps) => (
-  <div className="bootstrap-styles">
-    <div className="d-flex justify-content-center">
+  <div>
+    <div>
       {!loading &&
         (user ? (
           <ShowLogout name={user.displayName} signOut={signOut} />

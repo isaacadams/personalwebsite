@@ -9,8 +9,8 @@ export class Calculator extends NavPageComponent {
   }
   render() {
     return (
-      <div className="bootstrap-styles">
-        <div className="row">
+      <div>
+        <div>
           <CompoundInterestCalculator />
           <LoanPaymentCalculator />
         </div>

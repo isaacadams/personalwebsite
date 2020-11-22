@@ -4,11 +4,10 @@
 /dist/index.html
 
 # standard
-.vs/
-node_modules/
+.vs
+node_modules
 /.firebase
 /.firebaserc
 /firebase.json
-dist/
-.cache/
-src/index.html
+dist
+.cache

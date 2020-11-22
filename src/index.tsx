@@ -5,8 +5,6 @@ import {App} from './routes/App';
 import './base.scss';
 import {Grommet} from 'grommet';
 import {grommet} from 'grommet/themes';
-import {normalizeColor} from 'grommet/utils';
-import {rgba} from 'polished';
 
 const customTheme = {
   name: 'personal website',
@@ -95,6 +93,10 @@ const customTheme = {
       dark: '#111111',
       light: '#FFFFFF',
     },
+  },
+  button: {
+    default: grommet.button.default,
+    secondary: grommet.button.secondary,
   },
 };
 
