@@ -1,6 +1,6 @@
 {
   "name": "personalwebsite",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "A personal website for information on Isaac Adams and a place where he showcases his public work",
   "main": "site.js",
   "scripts": {
