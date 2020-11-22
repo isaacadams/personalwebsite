@@ -1,42 +1,44 @@
 import NumberFormat from 'react-number-format';
-import React from "react";
+import React from 'react';
 
-
-export abstract class Input extends React.Component<{
+export abstract class Input extends React.Component<
+  {
     name: string;
     value: any;
     update: (name: string, value: any) => void;
-}, {
+  },
+  {
     value: any;
-}> {
-    abstract FormatOptions;
-    
-    constructor(props) {
-        super(props);
-    }
-    
-    onValueChange(values, name, update) {
-        let { value } = values;
-        update(name, value);
-    }
+  }
+> {
+  abstract FormatOptions;
 
-    formatValue(v) {
-        return v;
-    }
+  constructor(props) {
+    super(props);
+  }
 
-    render() {
-        let { update, children, ...remaining } = this.props;
-        let { value, name, ...atts } = remaining;
+  onValueChange(values, name, update) {
+    let {value} = values;
+    update(name, value);
+  }
 
-        return (
-            <NumberFormat 
-                {...this.FormatOptions}
-                {...atts}
-                value={this.formatValue(value)}
-                name={name}
-                className="form-control" 
-                onValueChange={v => this.onValueChange(v, name, update)}
-            />
-        );
-    }
+  formatValue(v) {
+    return v;
+  }
+
+  render() {
+    let {update, children, ...remaining} = this.props;
+    let {value, name, ...atts} = remaining;
+
+    return (
+      <NumberFormat
+        {...this.FormatOptions}
+        {...atts}
+        value={this.formatValue(value)}
+        name={name}
+        className="form-control"
+        onValueChange={(v) => this.onValueChange(v, name, update)}
+      />
+    );
+  }
 }

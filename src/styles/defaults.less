@@ -1,31 +1,32 @@
 @import 'colors';
 
 ::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    background-size: auto 100%;
-    background-repeat: no-repeat;
-    background-position: left top;
-    background-color: @colors[back-light];
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-color: @colors[back-light];
 }
 
 a {
-    :active {
-        color: none;
-    }
+  :active {
+    color: none;
+  }
 
-    &:hover {
-        color: darken(@colors[back-light], 20%);
-    }
+  &:hover {
+    color: darken(@colors[back-light], 20%);
+  }
 
-    text-decoration: none;
-    color: @colors[back-light];
+  text-decoration: none;
+  color: @colors[back-light];
 }

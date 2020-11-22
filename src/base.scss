@@ -1,51 +1,51 @@
 .bootstrap-styles {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    line-height: 1.428571429;
-    color: #333333;
-    background-color: white;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.428571429;
+  color: #333333;
+  background-color: white;
 
-    @import '../node_modules/bootstrap/scss/bootstrap.scss';
+  @import '../node_modules/bootstrap/scss/bootstrap.scss';
 }
 
 .x-scroll {
-    overflow-x: auto;
+  overflow-x: auto;
 }
 
 @media (min-width: 320px) {
-    .max-width {
-        max-width: 330px;
-    }
+  .max-width {
+    max-width: 330px;
+  }
 
-    .x-scroll {
-        display: flex;
-    }
+  .x-scroll {
+    display: flex;
+  }
 }
 
 @media (min-width: 576px) {
-    .max-width {
-        max-width: 540px;
-    }
+  .max-width {
+    max-width: 540px;
+  }
 
-    .x-scroll {
-        display: unset;
-    }
+  .x-scroll {
+    display: unset;
+  }
 }
 
 @media (min-width: 768px) {
-    .max-width {
-        max-width: 720px;
-    }
+  .max-width {
+    max-width: 720px;
+  }
 }
 
 @media (min-width: 992px) {
-    .max-width {
-        max-width: 960px;
-    }
+  .max-width {
+    max-width: 960px;
+  }
 }
 
 @media (min-width: 1200px) {
-    .max-width {
-        max-width: 1140px;
-    }
+  .max-width {
+    max-width: 1140px;
+  }
 }

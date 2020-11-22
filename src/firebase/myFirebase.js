@@ -7,12 +7,12 @@ let fb = firebase.default;
 
 let app = fb.initializeApp(config);
 const providers = {
-    googleProvider: new fb.auth.GoogleAuthProvider(),
+  googleProvider: new fb.auth.GoogleAuthProvider(),
 };
 
 export default {
-    providers,
-    app,
-    auth: fb.auth(),
-    database: fb.database()
+  providers,
+  app,
+  auth: fb.auth(),
+  database: fb.database(),
 };

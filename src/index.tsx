@@ -1,104 +1,106 @@
 import './styles';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { App } from './routes/App';
+import {App} from './routes/App';
 import './base.scss';
-import { Grommet } from 'grommet';
-import { grommet } from 'grommet/themes';
-import { normalizeColor } from 'grommet/utils';
-import { rgba } from 'polished';
+import {Grommet} from 'grommet';
+import {grommet} from 'grommet/themes';
+import {normalizeColor} from 'grommet/utils';
+import {rgba} from 'polished';
 
 const customTheme = {
-    "name": "personal website",
-    "rounding": 4,
-    "spacing": 24,
-    "defaultMode": "light",
-    "global": {
-      "colors": {
-        "brand": {
-          "dark": "background",
-          "light": "text"
-        },
-        "background": {
-          "dark": "#111111",
-          "light": "#FFFFFF"
-        },
-        "background-back": {
-          "dark": "#111111",
-          "light": "#EEEEEE"
-        },
-        "background-front": {
-          "dark": "#222222",
-          "light": "#FFFFFF"
-        },
-        "background-contrast": {
-          "dark": "#FFFFFF11",
-          "light": "#11111111"
-        },
-        "text": {
-          "dark": "#EEEEEE",
-          "light": "#333333"
-        },
-        "text-strong": {
-          "dark": "#FFFFFF",
-          "light": "#000000"
-        },
-        "text-weak": {
-          "dark": "#CCCCCC",
-          "light": "#444444"
-        },
-        "text-xweak": {
-          "dark": "#999999",
-          "light": "#666666"
-        },
-        "border": {
-          "dark": "#444444",
-          "light": "#CCCCCC"
-        },
-        "control": "brand",
-        "active-background": "background-contrast",
-        "active-text": "text-strong",
-        "selected-background": "brand",
-        "selected-text": "text-strong",
-        "status-critical": "#FF4040",
-        "status-warning": "#FFAA15",
-        "status-ok": "#00C781",
-        "status-unknown": "#CCCCCC",
-        "status-disabled": "#CCCCCC",
-        "graph-0": "brand",
-        "graph-1": "status-warning",
-        "focus": "selected-text"
+  name: 'personal website',
+  rounding: 4,
+  spacing: 24,
+  defaultMode: 'light',
+  global: {
+    colors: {
+      brand: {
+        dark: 'background',
+        light: 'text',
       },
-      "font": {
-        "family": "Helvetica"
+      background: {
+        dark: '#111111',
+        light: '#FFFFFF',
       },
-      "active": {
-        "background": "active-background",
-        "color": "active-text"
+      'background-back': {
+        dark: '#111111',
+        light: '#EEEEEE',
       },
-      "hover": {
-        "background": "active-background",
-        "color": "active-text"
+      'background-front': {
+        dark: '#222222',
+        light: '#FFFFFF',
       },
-      "selected": {
-        "background": "selected-background",
-        "color": "selected-text"
-      }
+      'background-contrast': {
+        dark: '#FFFFFF11',
+        light: '#11111111',
+      },
+      text: {
+        dark: '#EEEEEE',
+        light: '#333333',
+      },
+      'text-strong': {
+        dark: '#FFFFFF',
+        light: '#000000',
+      },
+      'text-weak': {
+        dark: '#CCCCCC',
+        light: '#444444',
+      },
+      'text-xweak': {
+        dark: '#999999',
+        light: '#666666',
+      },
+      border: {
+        dark: '#444444',
+        light: '#CCCCCC',
+      },
+      control: 'brand',
+      'active-background': 'background-contrast',
+      'active-text': 'text-strong',
+      'selected-background': 'brand',
+      'selected-text': 'text-strong',
+      'status-critical': '#FF4040',
+      'status-warning': '#FFAA15',
+      'status-ok': '#00C781',
+      'status-unknown': '#CCCCCC',
+      'status-disabled': '#CCCCCC',
+      'graph-0': 'brand',
+      'graph-1': 'status-warning',
+      focus: 'selected-text',
     },
-    "chart": {},
-    "diagram": {
-      "line": {}
+    font: {
+      family: 'Helvetica',
     },
-    "meter": {},
-    "layer": {
-      "background": {
-        "dark": "#111111",
-        "light": "#FFFFFF"
-      }
-    }
-  }
+    active: {
+      background: 'active-background',
+      color: 'active-text',
+    },
+    hover: {
+      background: 'active-background',
+      color: 'active-text',
+    },
+    selected: {
+      background: 'selected-background',
+      color: 'selected-text',
+    },
+  },
+  chart: {},
+  diagram: {
+    line: {},
+  },
+  meter: {},
+  layer: {
+    background: {
+      dark: '#111111',
+      light: '#FFFFFF',
+    },
+  },
+};
 
 ReactDOM.render(
-<Grommet full={true} theme={customTheme}>
+  <Grommet full={true} theme={customTheme}>
     <App />
-</Grommet>, document.getElementById('app'));
+  </Grommet>,
+  document.getElementById('app')
+);

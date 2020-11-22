@@ -1,21 +1,20 @@
 //Help: http://lesscss.org/features/
 
-#desktop() {    
-    .set-prop(@prop, @default, @desktop) {
-        @{prop}: @default;
+#desktop() {
+  .set-prop(@prop, @default, @desktop) {
+    @{prop}: @default;
 
-        @media only screen and (min-width: 768px) {
-            @{prop}: @desktop;
-        }
+    @media only screen and (min-width: 768px) {
+      @{prop}: @desktop;
     }
+  }
 
-    .set-rules(@rules) {
-        @media only screen and (min-width: 768px) {
-            @rules();
-        }
+  .set-rules(@rules) {
+    @media only screen and (min-width: 768px) {
+      @rules();
     }
+  }
 }
-
 
 /*
     Usage for .if() mixin: 
@@ -40,61 +39,60 @@
 */
 
 .if(@condition, @then, @else) {
-    & when (@condition) {
-        @then();
-    }
+  & when (@condition) {
+    @then();
+  }
 
-    & when not (@condition) {
-        @else();
-    }
+  & when not (@condition) {
+    @else () ;
+  }
 }
 
-
 .center-horizontal() {
-    left: 50%;
-    transform: translateX(-50%);
-    position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
 }
 
 .center-vertical() {
-    top: 50%;
-    transform: translateY(-50%);
-    position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
 }
 
 .center() {
-    .abs() {
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        position: absolute;
-    }
+  .abs() {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+  }
 
-    .rel() {
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: auto;
+  .rel() {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
 
-        .vertical() {
-            top: 0;
-            bottom: 0;
-            margin: auto;
-        }
+    .vertical() {
+      top: 0;
+      bottom: 0;
+      margin: auto;
     }
+  }
 }
 
 .messageBox() {
-    border: 2px solid #000000;
-    border-radius: 6px;
-    background-color: rgba(255, 255, 255, 0.90);
-    align-items: center;
-    text-align: center;
-    .center();
+  border: 2px solid #000000;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.9);
+  align-items: center;
+  text-align: center;
+  .center();
 }
 
 .box(@size) {
-    height: @size;
-    width: @size;
+  height: @size;
+  width: @size;
 }

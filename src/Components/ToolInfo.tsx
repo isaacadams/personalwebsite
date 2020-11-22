@@ -1,6 +1,5 @@
-import { NavPageComponent } from "./Shared/NavPageComponent";
-import React from "react";
-
+import {NavPageComponent} from './Shared/NavPageComponent';
+import React from 'react';
 
 /* export class ToolInfo extends NavPageComponent {
     

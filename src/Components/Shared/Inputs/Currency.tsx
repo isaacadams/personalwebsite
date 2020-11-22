@@ -1,12 +1,12 @@
-import { Input } from './Input';
+import {Input} from './Input';
 
 export class Currency extends Input {
-    FormatOptions: any;
-    constructor(props) {
-        super(props);
-        this.FormatOptions = {
-            thousandSeparator: true,
-            prefix: '$'
-        };
-    }
+  FormatOptions: any;
+  constructor(props) {
+    super(props);
+    this.FormatOptions = {
+      thousandSeparator: true,
+      prefix: '$',
+    };
+  }
 }

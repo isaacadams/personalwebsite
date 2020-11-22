@@ -2,16 +2,16 @@
 @import (reference) '../colors';
 
 header {
-    margin-bottom: 7%;
-    background-size: cover;
-    background-color: transparent;
-    background-position: 50% 10%;
-    background-image: url("/assets/imgs/wedding.jpg");
-    //max-height: 600px;
-    height: 100%;
-    background-attachment: fixed;
+  margin-bottom: 7%;
+  background-size: cover;
+  background-color: transparent;
+  background-position: 50% 10%;
+  background-image: url('/assets/imgs/wedding.jpg');
+  //max-height: 600px;
+  height: 100%;
+  background-attachment: fixed;
 
-    /*div {
+  /*div {
         .center.abs();
         border: solid;
         border-color: @color-main;
@@ -25,85 +25,84 @@ header {
 }
 
 #navbar() {
-    .defaults(@prop, @default-display) {
-        @desktop-display: none;
-        @desktop-display: if(@default-display = none, block);
-        
-        ul {
-            font-size: 18px;
-            text-transform: uppercase;
-            font-weight: 500;
-            letter-spacing: 3px;
-            #desktop.set-prop(display, @default-display, @desktop-display);
-        }
-
-        @{prop}: 5%;
-        position: fixed;
-        background-color: @colors[back-dark];
-    }
-}
-
-nav {    
-    #navbar.defaults(height, none);
-    padding-top: 1%;
-    padding-bottom: 1%;
-    width: 100%;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    /* Center vertically */
-    align-items: center;    
-    top: 0;
-
-    span {
-        color: white;
-    }
+  .defaults(@prop, @default-display) {
+    @desktop-display: none;
+    @desktop-display: if(@default-display = none, block);
 
     ul {
-        text-align: center;
-        margin-left: 5%;
+      font-size: 18px;
+      text-transform: uppercase;
+      font-weight: 500;
+      letter-spacing: 3px;
+      #desktop.set-prop(display, @default-display, @desktop-display);
     }
 
-    li {
-        display: inline-block;
-        margin-right: 40px; //spacing between each link
-    }
+    @{prop}: 5%;
+    position: fixed;
+    background-color: @colors[back-dark];
+  }
+}
+
+nav {
+  #navbar.defaults(height, none);
+  padding-top: 1%;
+  padding-bottom: 1%;
+  width: 100%;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  /* Center vertically */
+  align-items: center;
+  top: 0;
+
+  span {
+    color: white;
+  }
+
+  ul {
+    text-align: center;
+    margin-left: 5%;
+  }
+
+  li {
+    display: inline-block;
+    margin-right: 40px; //spacing between each link
+  }
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 
-    li {
-        .fa {
-            margin-right: 10px; //provides spacing between font awesome icon and link text
-        }
+  li {
+    .fa {
+      margin-right: 10px; //provides spacing between font awesome icon and link text
     }
+  }
 }
 
 .routes {
-    
 }
 
 #mobilenav {
-    padding-left: 5%;
-    display: block;
-    #desktop.set-prop(display, block, none);
+  padding-left: 5%;
+  display: block;
+  #desktop.set-prop(display, block, none);
 }
 
 #sidebar {
-    #navbar.defaults(top, block);
-    display: none;
+  #navbar.defaults(top, block);
+  display: none;
 
-    #desktop.set-rules({
+  #desktop.set-rules({
         display: none !important;
     });
 
-    ul {
-        padding-inline-start: 20px;
-        padding-inline-end: 20px;
-    }
+  ul {
+    padding-inline-start: 20px;
+    padding-inline-end: 20px;
+  }
 
-    li {
-        padding-bottom: 5px;
-    }
+  li {
+    padding-bottom: 5px;
+  }
 }

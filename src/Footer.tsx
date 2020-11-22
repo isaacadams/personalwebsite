@@ -1,20 +1,28 @@
 import * as React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import meta from './meta';
 
 export function Footer() {
-    return (
+  return (
+    <div className="col-12">
+      <div className="row pb-5 d-flex justify-content-center">
         <div className="col-12">
-            <div className="row pb-5 d-flex justify-content-center">
-                <div className="col-12">
-                    <hr className="py-2" />
-                </div>
-                <span className="w-75 justify-content-around d-flex">
-                    <div className="d-flex align-items-center">{meta.owner}</div>
-                    <div className="d-flex align-items-center">{meta.version}</div>
-                    <div><a className="page-link text-dark" href="https://github.com/isaacadams/personalwebsite/tree/master"><FontAwesomeIcon icon={["fab", "github"]} className="mr-2" />source</a></div>
-                </span>
-            </div>
+          <hr className="py-2" />
         </div>
-    );
+        <span className="w-75 justify-content-around d-flex">
+          <div className="d-flex align-items-center">{meta.owner}</div>
+          <div className="d-flex align-items-center">{meta.version}</div>
+          <div>
+            <a
+              className="page-link text-dark"
+              href="https://github.com/isaacadams/personalwebsite/tree/master"
+            >
+              <FontAwesomeIcon icon={['fab', 'github']} className="mr-2" />
+              source
+            </a>
+          </div>
+        </span>
+      </div>
+    </div>
+  );
 }

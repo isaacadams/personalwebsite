@@ -11,19 +11,21 @@ const database = myFirebase.database;
 } */
 
 export function writeUserData(userId, name, email, imageUrl) {
-  database.ref('users/' + userId).set({
+  database
+    .ref('users/' + userId)
+    .set({
       username: name,
       email: email,
-      profile_picture : imageUrl
-  })
-  .then(r => console.log(r))
-  .catch(e => console.log(e));
+      profile_picture: imageUrl,
+    })
+    .then((r) => console.log(r))
+    .catch((e) => console.log(e));
 }
 
 export function addWithNewKey(table, data, addToUpdate) {
   var key = database.ref().child(table).push().key;
   addToUpdate[`/${table}/${key}`] = data;
-  return { table, key, data };
+  return {table, key, data};
 }
 
 export interface ISubscribed<T> {
@@ -31,15 +33,17 @@ export interface ISubscribed<T> {
   tableReference: firebase.database.Reference;
 }
 
-export function read<T>(table, eventType: firebase.database.EventType = 'value'): Promise<ISubscribed<T>> {
-  let tableRef = database.ref(table)
-  return tableRef.once(eventType).then(snapshot => ({
+export function read<T>(
+  table,
+  eventType: firebase.database.EventType = 'value'
+): Promise<ISubscribed<T>> {
+  let tableRef = database.ref(table);
+  return tableRef.once(eventType).then((snapshot) => ({
     value: snapshot.val(),
-    tableReference: tableRef
+    tableReference: tableRef,
   }));
 }
 
-  
 /*   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
   
