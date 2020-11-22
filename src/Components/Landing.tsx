@@ -3,29 +3,22 @@ import {Projects} from './Projects';
 import {Home} from './Home';
 import * as React from 'react';
 import {LandingPageContext} from '../routes/App';
+import {Box, Grid} from 'grommet';
 
 export function Landing(props) {
   let data = React.useContext(LandingPageContext);
 
   return (
-    <div>
-      <div className="bootstrap-styles">
-        <div className="row">
-          <section className="col-12">
-            <Home data={data['home']} />
-          </section>
-          <div className="col-12">
-            <hr className="py-2" />
-          </div>
-          <section className="col-12">
-            <Projects />
-          </section>
-          <div className="col-12">
-            <hr className="py-2" />
-          </div>
-        </div>
-      </div>
-      <Gallery data={data['gallery']} />
-    </div>
+    <Grid gap="large">
+      <Box align="center">
+        <Home data={data['home']} />
+      </Box>
+      <Box align="center">
+        <Projects />
+      </Box>
+      <Box align="center">
+        <Gallery data={data['gallery']} />
+      </Box>
+    </Grid>
   );
 }

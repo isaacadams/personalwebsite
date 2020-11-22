@@ -16,27 +16,25 @@ function DisplayGallery({data}) {
   let columns = useDynamicColumn();
 
   return (
-    <Box align="center">
-      <Grid
-        columns={{
-          count: columns,
-          size: 'auto',
-        }}
-        gap="small"
-      >
-        {data.map((value: string, index: number) => (
-          <Box key={index} height="medium" width="medium">
-            {value && (
-              <Image
-                src={value}
-                fit="cover"
-                //opacity="medium" going to use opacity by default and then remove it when hovering
-              />
-            )}
-          </Box>
-        ))}
-      </Grid>
-    </Box>
+    <Grid
+      columns={{
+        count: columns,
+        size: 'auto',
+      }}
+      gap="small"
+    >
+      {data.map((value: string, index: number) => (
+        <Box key={index} responsive height="medium">
+          {value && (
+            <Image
+              src={value}
+              fit="cover"
+              //opacity="medium" going to use opacity by default and then remove it when hovering
+            />
+          )}
+        </Box>
+      ))}
+    </Grid>
   );
 }
 
