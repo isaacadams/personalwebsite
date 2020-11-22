@@ -1,10 +1,8 @@
 import * as React from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {Loader} from './Loader';
 
 export function ShowLoading(props) {
   return (
-    <div className="d-flex justify-content-center align-items-center">
-      <FontAwesomeIcon icon={['fas', 'spinner']} spin />
-    </div>
+    <Loader />
   );
 }
