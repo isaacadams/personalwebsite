@@ -1,20 +1,19 @@
 import * as React from 'react';
 import {WrappedComponentProps} from 'react-with-firebase-auth';
 import createWithAuth from './createWithAuth';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {Google} from 'grommet-icons';
+import {Button, ButtonProps} from 'grommet';
 import {ShowLoading} from '../Components/Shared/ShowLoading';
 
 function ShowLogin({signIn}) {
   return (
     <Layout
       header={`Log in`}
-      clickFunction={signIn}
-      buttonContent={
-        <React.Fragment>
-          <FontAwesomeIcon icon={['fab', 'google']} className="mr-2" /> Sign in
-          with Google
-        </React.Fragment>
-      }
+      button={{
+        label: 'Sign in with Google',
+        icon: <Google />,
+      }}
+      onClick={signIn}
     />
   );
 }
@@ -23,19 +22,25 @@ function ShowLogout({name, signOut}) {
   return (
     <Layout
       header={`Hello, ${name}`}
-      clickFunction={signOut}
-      buttonContent={'Sign out'}
+      button={{
+        label: 'Sign Out',
+      }}
+      onClick={signOut}
     />
   );
 }
 
-function Layout({header, clickFunction, buttonContent}) {
+interface IProps {
+  header: string;
+  button: ButtonProps;
+  onClick: any;
+}
+
+function Layout({header, button, onClick}: IProps) {
   return (
     <div className="d-flex flex-column align-items-center">
       <h1>{header}</h1>
-      <button className="btn btn-outline-dark" onClick={clickFunction}>
-        {buttonContent}
-      </button>
+      <Button {...button} onClick={onClick} />
     </div>
   );
 }

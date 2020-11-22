@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import meta from './meta';
 import {Footer, Anchor, Text} from 'grommet';
+import {Github} from 'grommet-icons';
 
 export function DisplayFooter() {
   return (
@@ -9,7 +9,7 @@ export function DisplayFooter() {
       <Text>{meta.owner}</Text>
       <Text>{meta.version}</Text>
       <Anchor
-        icon={<FontAwesomeIcon icon={['fab', 'github']} />}
+        icon={<Github />}
         label="source"
         href="https://github.com/isaacadams/personalwebsite/tree/master"
       />

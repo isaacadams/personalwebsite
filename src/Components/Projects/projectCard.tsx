@@ -1,5 +1,5 @@
 import React from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {Github} from 'grommet-icons';
 import {
   Box,
   Button,
@@ -50,7 +50,7 @@ export function ProjectCard({
         <DisplayButton
           href={github}
           secondary
-          icon={<FontAwesomeIcon icon={['fab', 'github']} />}
+          icon={<Github />}
           label={'GitHub'}
         />
       </CardFooter>
