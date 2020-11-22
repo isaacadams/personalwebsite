@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components'
+import styled, {keyframes} from 'styled-components';
 
 const spin = keyframes`
     0% {
@@ -7,7 +7,7 @@ const spin = keyframes`
     100% {
         transform: rotate(360deg);
     }
-`
+`;
 
 export const Loader = styled.div`
   border: 0.2em solid rgba(0, 0, 0, 0.1);
@@ -16,9 +16,9 @@ export const Loader = styled.div`
   width: 2.28571429rem;
   height: 2.28571429rem;
   animation: ${spin} 0.6s linear infinite;
-`
+`;
 
-export default Loader
+export default Loader;
 
 // CREDIT
 // https://dev.to/stephencweiss/create-a-spinner-add-a-loader-in-react-4ic2
