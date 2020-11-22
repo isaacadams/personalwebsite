@@ -5,6 +5,7 @@
   "main": "site.js",
   "scripts": {
     "clean": "rimraf [dist/*,!dist/assets/imgs/*]",
+    "format": "prettier --write src/**/*",
     "build": "npm run clean && gulp app",
     "start": "npm run build && parcel ./src/index.html",
     "prod": "npm run build && parcel build ./src/index.html",
@@ -18,10 +19,10 @@
     "grommet": "^2.15.2",
     "grommet-icons": "^4.5.0",
     "jquery": "^3.5.1",
-    "popper.js": "1.16.1",
     "polished": "^4.0.4",
-    "styled-components": "^5.2.1",
-    "react-is": "17.0.1"
+    "popper.js": "1.16.1",
+    "react-is": "17.0.1",
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
@@ -54,6 +55,7 @@
     "react-with-firebase-auth": "^1.3.2",
     "rimraf": "3.0.2",
     "sass": "^1.29.0",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.2",
+    "prettier": "^2.2.0"
   }
 }
