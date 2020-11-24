@@ -20,14 +20,14 @@ function Blog({user, error, loading}: WrappedComponentProps) {
 
   return (
     <Switch>
-        <Route exact path={path}>
-          {user && <AddBlogPost user={user} refreshPosts={() => {}} />}
-          {!blogProps?.loading && <BlogFeed posts={data} />}
-        </Route>
-        <Route path={`${path}/:postId`}>
-          <BlogPostView />
-        </Route>
-      </Switch>
+      <Route exact path={path}>
+        {user && <AddBlogPost user={user} refreshPosts={() => {}} />}
+        {!blogProps?.loading && <BlogFeed posts={data} />}
+      </Route>
+      <Route path={`${path}/:postId`}>
+        <BlogPostView />
+      </Route>
+    </Switch>
   );
 }
 
