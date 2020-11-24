@@ -1,5 +1,6 @@
 import {Box, Heading, Paragraph} from 'grommet';
 import * as React from 'react';
+import Loader from './Shared/Loader';
 
 interface IHome {
   title: string;
@@ -7,7 +8,7 @@ interface IHome {
 }
 
 export function Home({data}: {data: IHome[]}) {
-  if (!data) return <div>Loading...</div>;
+  if (!data) return <Loader />;
 
   return (
     <>

@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {Box, Image, Grid} from 'grommet';
-import {ShowLoading} from './Shared/ShowLoading';
 import useWindowSize, {sizes} from './Shared/useWindowSize';
+import {Loader} from './Shared/Loader';
 
 export function Gallery({data}) {
   return (
     <>
-      {!data && <ShowLoading />}
+      {!data && <Loader />}
       {data && <DisplayGallery data={data} />}
     </>
   );
