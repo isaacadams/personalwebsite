@@ -4,7 +4,7 @@ import {Routes} from './Routes';
 import {getData} from '../Components/Shared/useData';
 import {DisplayFooter} from '../Footer';
 import {Navigation} from './view/Navigation';
-import {Box, Grid, Header} from 'grommet';
+import {Box, Grid, Header, Main} from 'grommet';
 
 export const LandingPageContext = createContext({});
 
@@ -29,18 +29,13 @@ export function App() {
   return (
     <Router>
       <LandingPageContext.Provider value={data}>
-        <Grid rows={['xsmall', 'responsive', 'xsmall']}>
-          <Header
-            fill="horizontal"
-            flex
-            justify="center"
-            pad={{vertical: 'medium'}}
-          >
+        <Grid fill="vertical" style={{gridTemplateRows: 'min-content 1fr'}}>
+          <Header fill="horizontal" justify="center" pad={{vertical: 'medium'}}>
             <Navigation />
           </Header>
-          <Box align="center" pad={{vertical: 'medium', horizontal: 'medium'}}>
+          <Main align="center" pad={{vertical: 'medium', horizontal: 'medium'}}>
             <Routes />
-          </Box>
+          </Main>
           <Box>
             <DisplayFooter />
           </Box>
