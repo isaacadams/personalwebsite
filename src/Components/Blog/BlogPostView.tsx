@@ -11,10 +11,9 @@ export function BlogPostView(props) {
   let {data, error, loading} = useDatabase<BlogPost>({
     table: `posts/${postId}`,
   });
+  let {goBack} = useHistory();
 
   if (loading || !data) return <Loader />;
-
-  let {goBack} = useHistory();
 
   return (
     <>
