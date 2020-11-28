@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {ShowLoading} from '../Shared/ShowLoading';
 import {Box, Button, Heading, Markdown} from 'grommet';
-import {FormPrevious} from 'grommet-icons'
+import {FormPrevious} from 'grommet-icons';
 import {useHistory, useParams} from 'react-router-dom';
 import {BlogPost} from '../../firebase/useBlogPosts';
 import {useDatabase} from '../../firebase/useDatabase';
@@ -18,8 +18,8 @@ export function BlogPostView(props) {
 
   return (
     <>
-      <Box fill align='start'>
-        <Button onClick={goBack} label='Back' icon={<FormPrevious />} />
+      <Box fill={'horizontal'} align="start">
+        <Button onClick={goBack} label="Back" icon={<FormPrevious />} />
       </Box>
       <Box>
         <Heading size={'2'}>{post.title}</Heading>

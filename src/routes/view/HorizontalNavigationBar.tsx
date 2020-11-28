@@ -9,12 +9,7 @@ export function HorizontalNavigationBar({
   routes: RouteModels.Definition[];
 }) {
   return (
-    <Nav
-      direction="row"
-      alignSelf="center"
-      alignContent="center"
-      responsive={true}
-    >
+    <Nav direction="row" align="center" responsive>
       {routes.map((r, i) => (
         <Link to={r.GetPathToRoute()} key={i}>
           <Anchor icon={<r.view.icon />} label={r.name} as="div" />
