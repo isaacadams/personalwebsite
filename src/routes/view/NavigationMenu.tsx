@@ -9,6 +9,7 @@ export function NavigationMenu({routes}: {routes: RouteModels.Definition[]}) {
   const history = useHistory();
   return (
     <Menu
+      fill='horizontal'
       icon={<Icons.Menu />}
       label={'Menu'}
       items={routes.map((r) => ({
