@@ -4,7 +4,11 @@ import {IBlogPostWithKey} from '../../firebase/useBlogPosts';
 import {ShowLoading} from '../Shared/ShowLoading';
 import {ShortenedBlogPostView} from './ShortenedBlogPostView';
 
-export function BlogFeed({posts}: {posts: IBlogPostWithKey[]}) {
+interface IProps {
+  posts: IBlogPostWithKey[];
+}
+
+export function BlogFeed({posts}: IProps) {
   if (!posts || posts.length < 1) return <ShowLoading />;
   return (
     <Box>
