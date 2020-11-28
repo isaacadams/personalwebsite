@@ -7,7 +7,7 @@ import {ShortenedBlogPostView} from './ShortenedBlogPostView';
 export function BlogFeed({posts}: {posts: IBlogPostWithKey[]}) {
   if (!posts || posts.length < 1) return <ShowLoading />;
   return (
-    <Box fill>
+    <Box>
       {posts.map((p, i) => (
         <ShortenedBlogPostView {...p} key={i} />
       ))}
