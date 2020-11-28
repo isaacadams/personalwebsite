@@ -29,7 +29,11 @@ export function App() {
   return (
     <Router>
       <LandingPageContext.Provider value={data}>
-        <Grid fill="vertical" style={{gridTemplateRows: 'min-content 1fr'}} gap='small'>
+        <Grid
+          fill="vertical"
+          style={{gridTemplateRows: 'min-content 1fr'}}
+          gap="small"
+        >
           <Header fill="horizontal" justify="center" pad={{vertical: 'medium'}}>
             <Navigation />
           </Header>
