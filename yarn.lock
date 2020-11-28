@@ -1178,10 +1178,10 @@
   "resolved" "https://registry.npmjs.org/@isaacadams/extensions/-/extensions-1.1.1.tgz"
   "version" "1.1.1"
 
-"@isaacadams/resume@^0.2.3":
-  "integrity" "sha512-rHJvqkxVh5Wx1gVvK1Z77dXygAHmRDvBXeJqboMpVgEOCem4DgyFGYdDwl8LNLyYQ06gF4yPehuKosn/TOU9/w=="
-  "resolved" "https://registry.npmjs.org/@isaacadams/resume/-/resume-0.2.3.tgz"
-  "version" "0.2.3"
+"@isaacadams/resume@^0.2.4":
+  "integrity" "sha512-3aVZhQxkRZ/YCEzRrHywYQE7YOlh60G9cshruTl77QPGv9YOPFo4OBkFQvA0vKoAEWzW4n9L8I/HzPTBiYFR6A=="
+  "resolved" "https://registry.npmjs.org/@isaacadams/resume/-/resume-0.2.4.tgz"
+  "version" "0.2.4"
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.32"
     "@fortawesome/free-brands-svg-icons" "^5.15.1"

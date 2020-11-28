@@ -14,7 +14,7 @@
   "author": "Isaac Adams",
   "license": "ISC",
   "dependencies": {
-    "@isaacadams/resume": "^0.2.3",
+    "@isaacadams/resume": "^0.2.4",
     "grommet": "^2.15.2",
     "grommet-icons": "^4.5.0",
     "react-is": "^17.0.1",
