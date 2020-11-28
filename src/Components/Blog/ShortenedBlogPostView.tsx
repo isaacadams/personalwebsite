@@ -1,23 +1,32 @@
 import * as React from 'react';
 import {IBlogPostWithKey} from '../../firebase/useBlogPosts';
-import {Button, Markdown} from 'grommet';
+import {Button, Heading, Markdown} from 'grommet';
 import {useHistory} from 'react-router-dom';
+import { useAuthHook } from '../../firebase/useAuth';
+import {FormClose} from 'grommet-icons';
 
 export function ShortenedBlogPostView({primaryKey, post}: IBlogPostWithKey) {
-  let {title, body, author} = post;
+  let {title, body, author, uid} = post;
   let history = useHistory();
+  let {user} = useAuthHook();
   return (
     <div style={{display: 'flex', flexDirection: 'column'}}>
-      <h3>{title}</h3>
+      <Heading size={'3'}>{title}</Heading>
+      {
+        !!user &&
+        user.uid === uid &&
+        <Button 
+          label={'Delete'}
+          icon={<FormClose />}
+        />
+      }
       <Markdown>{body}</Markdown>
-      <div>
-        <Button
+      <Button
           label={'Continue Reading...'}
           onClick={() => {
             history.push(`blog/${primaryKey}`);
           }}
         />
-      </div>
     </div>
   );
 }
