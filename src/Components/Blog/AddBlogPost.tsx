@@ -1,6 +1,6 @@
 import * as React from 'react';
-import BlogPostRepository from '../../firebase/BlogPost';
 import {Button, TextArea} from 'grommet';
+import { BlogPostRepository } from '../../firebase/BlogPostRepository';
 
 export function AddBlogPost({
   user,
@@ -26,12 +26,13 @@ export function AddBlogPost({
   );
   function onAdd(e) {
     blogPostRepo
-      .writeNewPost({
+      .create({
         uid: user.uid,
         author: user.displayName,
         title: 'testing',
         body: content,
       })
+      .catch(console.error)
       .finally(refreshPosts);
     setContent('');
   }
