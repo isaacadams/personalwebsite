@@ -6,7 +6,7 @@ export function AddBlogPost({
   user,
   refreshPosts,
 }: {
-  user: firebase.User;
+  user: firebase.default.User;
   refreshPosts: () => void;
 }) {
   let [content, setContent] = React.useState('');
