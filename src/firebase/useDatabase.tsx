@@ -21,8 +21,9 @@ export function useDatabase<T>({
   let [loading, setLoading] = React.useState(true);
   let [data, setData] = React.useState<T>(null);
 
+  const db = myFirebase.app.database();
+
   useEffect(() => {
-    const db = myFirebase.app.database();
     let tableRef = db.ref(table);
     tableRef.on(
       'value',
