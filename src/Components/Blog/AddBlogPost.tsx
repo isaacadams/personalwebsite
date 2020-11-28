@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Button, TextArea} from 'grommet';
-import { BlogPostRepository } from '../../firebase/BlogPostRepository';
+import {BlogPostRepository} from '../../firebase/BlogPostRepository';
 
 export function AddBlogPost({
   user,
