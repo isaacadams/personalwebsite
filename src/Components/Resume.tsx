@@ -1,11 +1,11 @@
 import * as React from 'react';
-import Resume from '@isaacadams/resume';
-import '@isaacadams/resume/package/Resume.css';
+import {Resume} from '@isaacadams/resume';
+import {Box} from 'grommet';
 
 export function ResumePage(props) {
   return (
-    <div className="max-width x-scroll">
+    <Box fill="horizontal" responsive>
       <Resume />
-    </div>
+    </Box>
   );
 }
