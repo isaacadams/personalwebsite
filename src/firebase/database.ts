@@ -1,7 +1,7 @@
 import * as firebase from 'firebase/app';
 import 'firebase/database';
-import myFirebase from './myFirebase';
-const database = myFirebase.database;
+import { getFirebaseApp } from './FirebaseApp';
+const {database} = getFirebaseApp();
 
 /* export function GetSignInMethods() {
   auth

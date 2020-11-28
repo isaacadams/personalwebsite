@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react';
-import myFirebase from './myFirebase';
+import React, {useContext, useEffect} from 'react';
+import {getFirebaseApp} from './FirebaseApp';
 
 export interface IDatabaseProps<T> {
   table: string;
@@ -20,11 +20,10 @@ export function useDatabase<T>({
   let [error, setError] = React.useState(false);
   let [loading, setLoading] = React.useState(true);
   let [data, setData] = React.useState<T>(null);
-
-  const db = myFirebase.app.database();
+  let {database} = getFirebaseApp();
 
   useEffect(() => {
-    let tableRef = db.ref(table);
+    let tableRef = database.ref(table);
     tableRef.on(
       'value',
       (snapShot) => {

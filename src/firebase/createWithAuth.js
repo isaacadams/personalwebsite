@@ -1,8 +1,12 @@
 import withFirebaseAuth from 'react-with-firebase-auth';
 import 'firebase/auth';
-import myFirebase from './myFirebase';
+import * as fb from 'firebase/app';
+import {getFirebaseApp} from './FirebaseApp';
 
+let {auth} = getFirebaseApp();
 export default withFirebaseAuth({
-  providers: myFirebase.providers,
-  firebaseAppAuth: myFirebase.auth,
+  providers: {
+    googleProvider: new fb.default.auth.GoogleAuthProvider(),
+  },
+  firebaseAppAuth: auth,
 });

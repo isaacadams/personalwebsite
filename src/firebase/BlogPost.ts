@@ -1,9 +1,9 @@
 import '@isaacadams/extensions';
-import myFirebase from './myFirebase';
 import {read, addWithNewKey} from './database';
 import * as firebase from 'firebase/app';
 import {BlogPost, IBlogPostWithKey} from './useBlogPosts';
-const database = myFirebase.database;
+import { getFirebaseApp } from './FirebaseApp';
+const {database} = getFirebaseApp();
 
 export default class BlogPostRepository {
   writeNewPost(post: BlogPost) {
