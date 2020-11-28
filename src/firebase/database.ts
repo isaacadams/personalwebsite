@@ -30,12 +30,12 @@ export function addWithNewKey(table, data, addToUpdate) {
 
 export interface ISubscribed<T> {
   value: T;
-  tableReference: firebase.database.Reference;
+  tableReference: firebase.default.database.Reference;
 }
 
 export function read<T>(
   table,
-  eventType: firebase.database.EventType = 'value'
+  eventType: firebase.default.database.EventType = 'value'
 ): Promise<ISubscribed<T>> {
   let tableRef = database.ref(table);
   return tableRef.once(eventType).then((snapshot) => ({

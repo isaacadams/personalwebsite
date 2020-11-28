@@ -1,7 +1,7 @@
 import '@isaacadams/extensions';
 import myFirebase from './myFirebase';
-import {read, addWithNewKey, ISubscribed} from './database';
-import firebase from 'firebase';
+import {read, addWithNewKey} from './database';
+import * as firebase from 'firebase/app';
 import {BlogPost, IBlogPostWithKey} from './useBlogPosts';
 const database = myFirebase.database;
 
@@ -26,7 +26,7 @@ export default class BlogPostRepository {
   async readPost(
     primaryKey: string,
     cb: (data: IBlogPostWithKey) => void
-  ): firebase.database.Reference {
+  ): Promise<firebase.default.database.Reference> {
     let promise = read<BlogPost>('posts/' + primaryKey);
     if (!promise) return Promise.reject('there were no records');
     let {tableReference, value} = await promise;
