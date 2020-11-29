@@ -1,18 +1,19 @@
 import {Box} from 'grommet';
 import * as React from 'react';
-import {IBlogPostWithKey} from '../../firebase/useBlogPosts';
-import {ShowLoading} from '../Shared/ShowLoading';
+import {IBlogPostWithKey, useBlogPosts} from '../../firebase/useBlogPosts';
+import Loader from '../Shared/Loader';
 import {ShortenedBlogPostView} from './ShortenedBlogPostView';
 
 interface IProps {
   posts: IBlogPostWithKey[];
 }
 
-export function BlogFeed({posts}: IProps) {
-  if (!posts || posts.length < 1) return <ShowLoading />;
+export function BlogFeed(props) {
+  let {data, loading, error} = useBlogPosts();
+  if (!data || data.length < 1) return <Loader />;
   return (
     <Box>
-      {posts.map((p, i) => (
+      {data.map((p, i) => (
         <ShortenedBlogPostView {...p} key={i} />
       ))}
     </Box>
