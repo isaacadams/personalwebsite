@@ -7,6 +7,7 @@ export interface IRepository<T> {
   update(key: string, data: T): Promise<any>;
   remove(key: string): Promise<any>;
   removeAll(): Promise<any>;
+  table: firebase.default.database.Reference;
 }
 
 type Rule<T> = (data: T) => Promise<any>;

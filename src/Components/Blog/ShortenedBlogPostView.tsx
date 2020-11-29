@@ -1,13 +1,18 @@
 import * as React from 'react';
-import {IBlogPostWithKey} from '../../firebase/useBlogPosts';
+import {BlogPost} from '../../firebase/useBlogPosts';
 import {Button, Heading, Markdown} from 'grommet';
 import {useHistory} from 'react-router-dom';
 import {useAuthHook} from '../../firebase/useAuth';
 import {FormClose} from 'grommet-icons';
-import {BlogPostRepository} from '../../firebase/BlogPostRepository';
+import {ITableService} from '../../firebase/useDatabaseWithService';
 
-export function ShortenedBlogPostView({primaryKey, post}: IBlogPostWithKey) {
-  let {title, body, author, uid} = post;
+export function ShortenedBlogPostView({
+  data,
+  remove,
+  update,
+  primaryKey,
+}: ITableService<BlogPost>) {
+  let {title, body, author, uid} = data;
   let history = useHistory();
   let {user} = useAuthHook();
   return (
@@ -18,7 +23,7 @@ export function ShortenedBlogPostView({primaryKey, post}: IBlogPostWithKey) {
           label={'Delete'}
           icon={<FormClose />}
           onClick={(e) => {
-            new BlogPostRepository().remove(primaryKey);
+            remove();
           }}
         />
       )}
