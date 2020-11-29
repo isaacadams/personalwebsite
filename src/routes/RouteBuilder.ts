@@ -1,6 +1,5 @@
 import {RouteModels} from './RouteModels';
 import {RouteProps} from 'react-router-dom';
-import {config} from '../../dist/src.a094dec4';
 
 export class RouteBuilder {
   route: RouteModels.Definition;
