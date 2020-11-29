@@ -4,7 +4,7 @@ import {Landing} from '../Components/Landing';
 import {Calculator} from '../Components/Calculator';
 import {ResumePage} from '../Components/Resume';
 import SignInPage from '../firebase/SignInPage';
-import Blog from '../Components/Blog/Blog';
+import {Blog} from '../Components/Blog/Blog';
 import {TestingSuite} from '../Components/TestingSuite';
 import meta from '../meta';
 import * as Icon from 'grommet-icons';
