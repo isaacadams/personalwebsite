@@ -2,7 +2,7 @@ import * as React from 'react';
 import {WrappedComponentProps} from 'react-with-firebase-auth';
 import createWithAuth from './createWithAuth';
 import {Google} from 'grommet-icons';
-import {Button, ButtonProps} from 'grommet';
+import {Box, Button, ButtonProps, Heading} from 'grommet';
 import {ShowLoading} from '../Components/Shared/ShowLoading';
 
 function ShowLogin({signIn}) {
@@ -38,14 +38,14 @@ interface IProps {
 
 function Layout({header, button, onClick}: IProps) {
   return (
-    <div className="d-flex flex-column align-items-center">
-      <h1>{header}</h1>
+    <Box>
+      <Heading size={'1'}>{header}</Heading>
       <Button {...button} onClick={onClick} />
-    </div>
+    </Box>
   );
 }
 
-const SignInPage = ({
+function SignInPage({
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signInWithGoogle,
@@ -58,9 +58,9 @@ const SignInPage = ({
   user,
   error,
   loading,
-}: WrappedComponentProps) => (
-  <div>
-    <div>
+}: WrappedComponentProps) {
+  return (
+    <>
       {!loading &&
         (user ? (
           <ShowLogout name={user.displayName} signOut={signOut} />
@@ -68,8 +68,8 @@ const SignInPage = ({
           <ShowLogin signIn={signInWithGoogle} />
         ))}
       {loading && <ShowLoading />}
-    </div>
-  </div>
-);
+    </>
+  );
+}
 
 export default createWithAuth(SignInPage);
