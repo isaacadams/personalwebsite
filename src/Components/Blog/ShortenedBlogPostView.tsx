@@ -1,10 +1,10 @@
 import * as React from 'react';
-import {BlogPost} from '../../firebase/useBlogPosts';
 import {Button, Heading, Markdown} from 'grommet';
 import {useHistory} from 'react-router-dom';
 import {useAuthHook} from '../../firebase/useAuth';
 import {FormClose} from 'grommet-icons';
 import {ITableService} from '../../firebase/useDatabaseWithService';
+import {BlogPost} from '../../firebase/BlogPostRepository';
 
 export function ShortenedBlogPostView({
   data,

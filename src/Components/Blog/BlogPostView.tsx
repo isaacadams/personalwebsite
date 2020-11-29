@@ -2,9 +2,9 @@ import * as React from 'react';
 import {Box, Button, Heading, Markdown} from 'grommet';
 import {FormPrevious} from 'grommet-icons';
 import {useHistory, useParams} from 'react-router-dom';
-import {BlogPost} from '../../firebase/useBlogPosts';
 import {useDatabase} from '../../firebase/useDatabase';
 import Loader from '../Shared/Loader';
+import {BlogPost} from '../../firebase/BlogPostRepository';
 
 export function BlogPostView(props) {
   let {postId} = useParams();

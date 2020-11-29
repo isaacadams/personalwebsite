@@ -1,6 +1,12 @@
-import {BlogPost} from './useBlogPosts';
 import {Repository} from './Repository';
 import '@isaacadams/extensions';
+
+export class BlogPost {
+  author: string;
+  uid: string;
+  body: string;
+  title: string;
+}
 
 export class BlogPostRepository extends Repository<BlogPost> {
   constructor() {

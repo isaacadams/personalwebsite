@@ -1,18 +1,6 @@
-import {BlogPostRepository} from './BlogPostRepository';
+import {BlogPost, BlogPostRepository} from './BlogPostRepository';
 import {IDatabaseReturn, useDatabase} from './useDatabase';
 import {ITableService, useDatabaseWithService} from './useDatabaseWithService';
-
-export class BlogPost {
-  author: string;
-  uid: string;
-  body: string;
-  title: string;
-}
-
-export interface IBlogPostWithKey {
-  primaryKey: string;
-  post: BlogPost;
-}
 
 /* export function useBlogPosts(): IDatabaseReturn<ITableService<BlogPost>[]> {
   let repo = new BlogPostRepository();
