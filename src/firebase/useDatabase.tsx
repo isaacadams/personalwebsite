@@ -24,7 +24,7 @@ export function useDatabase<T>({
 
   useEffect(() => {
     let tableRef = database.ref(table);
-    tableRef.on(
+    tableRef.once(
       'value',
       (snapShot) => {
         setLoading(false);
