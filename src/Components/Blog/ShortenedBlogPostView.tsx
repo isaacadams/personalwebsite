@@ -4,6 +4,7 @@ import {Button, Heading, Markdown} from 'grommet';
 import {useHistory} from 'react-router-dom';
 import {useAuthHook} from '../../firebase/useAuth';
 import {FormClose} from 'grommet-icons';
+import {BlogPostRepository} from '../../firebase/BlogPostRepository';
 
 export function ShortenedBlogPostView({primaryKey, post}: IBlogPostWithKey) {
   let {title, body, author, uid} = post;
@@ -13,7 +14,13 @@ export function ShortenedBlogPostView({primaryKey, post}: IBlogPostWithKey) {
     <div style={{display: 'flex', flexDirection: 'column'}}>
       <Heading size={'3'}>{title}</Heading>
       {!!user && user.uid === uid && (
-        <Button label={'Delete'} icon={<FormClose />} />
+        <Button
+          label={'Delete'}
+          icon={<FormClose />}
+          onClick={(e) => {
+            new BlogPostRepository().remove(primaryKey);
+          }}
+        />
       )}
       <Markdown>{body}</Markdown>
       <Button
