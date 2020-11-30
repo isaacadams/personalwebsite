@@ -2,8 +2,9 @@ import * as React from 'react';
 import {WrappedComponentProps} from 'react-with-firebase-auth';
 import createWithAuth from './createWithAuth';
 import {Google} from 'grommet-icons';
-import {Box, Button, ButtonProps, Heading} from 'grommet';
-import {ShowLoading} from '../Components/Shared/ShowLoading';
+import {Box, Button, ButtonProps, Grid, Heading} from 'grommet';
+import Loader from '../Components/Shared/Loader';
+import {AddBlogPost} from '../Components/Blog/AddBlogPost';
 
 function ShowLogin({signIn}) {
   return (
@@ -59,16 +60,17 @@ function SignInPage({
   error,
   loading,
 }: WrappedComponentProps) {
+  if (loading) return <Loader />;
+
   return (
-    <>
-      {!loading &&
-        (user ? (
-          <ShowLogout name={user.displayName} signOut={signOut} />
-        ) : (
-          <ShowLogin signIn={signInWithGoogle} />
-        ))}
-      {loading && <ShowLoading />}
-    </>
+    <Grid gap="small">
+      {user ? (
+        <ShowLogout name={user.displayName} signOut={signOut} />
+      ) : (
+        <ShowLogin signIn={signInWithGoogle} />
+      )}
+      <AddBlogPost />
+    </Grid>
   );
 }
 

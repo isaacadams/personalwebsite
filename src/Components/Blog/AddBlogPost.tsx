@@ -1,28 +1,25 @@
 import * as React from 'react';
-import {Button, TextArea} from 'grommet';
+import {Button, FormField, Grid, Header, TextArea, TextInput} from 'grommet';
 import {BlogPostRepository} from '../../firebase/BlogPostRepository';
+import {useAuthHook} from '../../firebase/useAuth';
 
-export function AddBlogPost({
-  user,
-  refreshPosts,
-}: {
-  user: firebase.default.User;
-  refreshPosts: () => void;
-}) {
+export function AddBlogPost({}) {
+  let {user} = useAuthHook();
   let [content, setContent] = React.useState('');
   let blogPostRepo = new BlogPostRepository();
   return (
-    <div className="row">
-      <div className="col-12 d-flex flex-column">
-        <TextArea
-          value={content}
-          onChange={(e) => setContent(e.currentTarget.value)}
-        />
-        <div className="pt-3 d-flex justify-content-end">
-          <Button primary label="Submit" onClick={onAdd} />
-        </div>
-      </div>
-    </div>
+    <Grid>
+      <Header>
+        <Button primary label="Submit" onClick={onAdd} />
+      </Header>
+      <FormField name="name" htmlFor="text-input-id" label="Name">
+        <TextInput id="text-input-id" name="name" />
+      </FormField>
+      <TextArea
+        value={content}
+        onChange={(e) => setContent(e.currentTarget.value)}
+      />
+    </Grid>
   );
   function onAdd(e) {
     blogPostRepo
@@ -32,8 +29,7 @@ export function AddBlogPost({
         title: 'testing',
         body: content,
       })
-      .catch(console.error)
-      .finally(refreshPosts);
+      .catch(console.error);
     setContent('');
   }
 }

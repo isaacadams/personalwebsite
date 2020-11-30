@@ -1,5 +1,15 @@
 import * as React from 'react';
-import {Button, Heading, Markdown} from 'grommet';
+import {
+  Box,
+  Text,
+  Button,
+  Grid,
+  Heading,
+  Markdown,
+  Paragraph,
+  Stack,
+  Anchor,
+} from 'grommet';
 import {useHistory} from 'react-router-dom';
 import {useAuthHook} from '../../firebase/useAuth';
 import {FormClose} from 'grommet-icons';
@@ -16,7 +26,7 @@ export function ShortenedBlogPostView({
   let history = useHistory();
   let {user} = useAuthHook();
   return (
-    <div style={{display: 'flex', flexDirection: 'column'}}>
+    <Box direction="column" fill>
       <Heading size={'3'}>{title}</Heading>
       {!!user && user.uid === uid && (
         <Button
@@ -27,13 +37,16 @@ export function ShortenedBlogPostView({
           }}
         />
       )}
-      <Markdown>{body}</Markdown>
-      <Button
-        label={'Continue Reading...'}
-        onClick={() => {
-          history.push(`blog/${primaryKey}`);
-        }}
-      />
-    </div>
+      <Paragraph>
+        {body}
+        <Anchor
+          onClick={() => {
+            history.push(`blog/${primaryKey}`);
+          }}
+        >
+          &nbsp;...&nbsp;Continue Reading
+        </Anchor>
+      </Paragraph>
+    </Box>
   );
 }

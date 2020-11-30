@@ -1,4 +1,4 @@
-import {Box} from 'grommet';
+import {Box, Grid} from 'grommet';
 import * as React from 'react';
 import {useBlogPostsWithService} from '../../firebase/useBlogPosts';
 import Loader from '../Shared/Loader';
@@ -8,10 +8,10 @@ export function BlogFeed(props) {
   let {data, loading, error} = useBlogPostsWithService();
   if (!data || data.length < 1) return <Loader />;
   return (
-    <Box>
+    <Grid>
       {data.map((p, i) => (
         <ShortenedBlogPostView {...p} key={i} />
       ))}
-    </Box>
+    </Grid>
   );
 }
